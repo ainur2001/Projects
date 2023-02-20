@@ -1,0 +1,29 @@
+﻿@page
+@using System.Data.SqlClient
+
+@{
+    try
+    {
+        string Id = Request.Query["Id"];
+
+        string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BarberShop;Integrated Security=True";
+        using (SqlConnection connection = new(connectionString))
+        {
+            connection.Open();
+            string sql = "DELETE FROM Appointment WHERE Id=@Id";
+
+            using (SqlCommand command = new(sql, connection))
+            {
+                command.Parameters.AddWithValue("@Id", Id);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+    }
+    catch (Exception)
+    {
+    }
+
+    Response.Redirect("/Appointments/Index");
+}

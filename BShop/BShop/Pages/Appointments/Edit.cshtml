@@ -1,0 +1,51 @@
+﻿@page
+@model BShop.Pages.Appointments.EditModel
+@{
+}
+<div style="margin-left: 50px">
+    <br>
+    <h2>Изменение</h2>
+</div>
+
+
+<form method="post" style="margin-left: 50px">
+    <input type="hidden" name="Id" value="@Model.appointment.Id">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Имя</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="name" value="@Model.appointment.Name" required />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Номер телефона</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="phoneNumber" value="@Model.appointment.phoneNumber" required/>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Мастер</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="MasterName" value="@Model.appointment.MasterName" required/>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Дата и время стрижки</label>
+        <div class="col-sm-6">
+            <input type="datetime-local" class="form-control" name="DateOfHaircut" value="@Model.appointment.DateOfHaircut" required />
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/Appointments/Index" role="button">Отмена</a>
+        </div>
+    </div>
+
+</form>

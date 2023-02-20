@@ -1,0 +1,28 @@
+﻿@page
+@model BShop.Pages.Appointments.MakeAppointmentModel
+@{
+}
+
+<div class="f_main mt-0">
+    <div class="blur">
+        <div class="pop_up_container">
+            <div class="pop_up_body" id="pop_up_body">
+                <p>Онлайн-запись</p>
+                <form method="post">
+                    <input type="text" placeholder="Имя" name="Name" required />
+                    <input type="text" placeholder="Номер телефона" name="phoneNumber" required />
+                    <select name="MasterName" required>
+                        <option>Выбирете мастера</option>
+                        <option value="Дмитрий Золотухин">Дмитрий Золотухин</option>
+                        <option value="Зуля Хуснуллина">Зуля Хуснуллина</option>
+                        <option value="Ирман Насибуллин">Ирман Насибуллин</option>
+                    </select>
+                    <input type="datetime-local" placeholder="Дата и время" name="DateOfHaircut" required/>
+                    <button type="submit">Отправить заявку</button>
+                    <a class="btn" style="position: absolute; top: 15px; right: 15px; font-size: 21px; cursor: pointer;" href="/">✕</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,40 @@
+﻿@page
+@model BShop.Pages.Appointments.IndexModel
+@{
+}
+<div style="margin-left: 50px">
+    <br>
+    <h2 st>Список клиентов</h2>
+    <a class="btn btn-primary btn-sm" href="/Appointments/Create">Новый клиент</a>
+</div>
+
+<table class="table" style="margin-left: 50px">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Клиент</th>
+            <th>Телефон</th>
+            <th>Мастер</th>
+            <th>Время и дата стрижки</th>
+            <th>Создано</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.appointments)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.phoneNumber</td>
+                <td>@item.MasterName</td>
+                <td>@item.DateOfHaircut</td>
+                <td>@item.created_at</td>
+                <td>
+                    <a class="btn btn-warning" href="/Appointments/Edit?Id=@item.Id">Изменить</a>
+                    <a class="btn btn-danger" href="/Appointments/Delete?Id=@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
