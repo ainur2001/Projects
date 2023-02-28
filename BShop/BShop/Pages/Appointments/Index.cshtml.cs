@@ -2,12 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BShop.Models;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BShop.Pages.Appointments
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         public List<Appointment> appointments = new();
+
         public void OnGet()
         {
             try

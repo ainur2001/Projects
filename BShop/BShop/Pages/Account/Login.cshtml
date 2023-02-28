@@ -1,0 +1,25 @@
+﻿@page
+@model BShop.Pages.LoginModel
+@{
+}
+
+<div class="f_main mt-0">
+    <div class="blur">
+        <div class="pop_up_container">
+            <div class="pop_up_body" id="pop_up_body">
+                <p>Вход в систему</p>
+                <form method="post">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                    <input type="text" asp-for="credential.Login" class="form-control" placeholder="Логин"/>
+                    <span class="text-danger" asp-validation-for="credential.Login"></span>
+
+                    <input type="password" asp-for="credential.Password" class="form-control" placeholder="Пароль"/>
+                    <span class="text-danger" asp-validation-for="credential.Password"></span>
+
+                    <input type="submit" class="btn btn-danger mb-5" value="Вход" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
