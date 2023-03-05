@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0ASbxOeW3urCCrTikZM01g1IIuXhCo9dA+ehCSZTdcG1dhA+/rtmQ1IkrJ5IZY7kNWsTrHpVSuVGwZw9IOefDQ==",
+  "dgSpecHash": "A6VuoDmJ6IW/IjMGRPGsEzvZ/tQ1mPuD6iu5h9QhY/qbj2kcnEsEcylHVDNSF5eBPH7EXgJFd0QJ0bVVWxm7qg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Администратор\\source\\repos\\SecurityOfCS\\Server\\Server.csproj",
+  "projectFilePath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\SecurityOfCS\\Server\\Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ypf5szgivIS6pDIVyktTL8sNl2bmRCkBp0UnJiOvBqljT+Gau8ySVT1wmQ30jQWWlyhd6VdD9X/bnlK7ANOykQ==",
+  "dgSpecHash": "aWBVX8EQcj2O5Uvs6dmEcVROOwetuZwuceSf8g4S40JZ82iwUHjltaKlS0Dy5+psB4hUi7NZzVBta9kv62C49Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\BShop\\BShop\\BShop.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Администратор\\.nuget\\packages\\commonservicelocator\\1.3.0\\commonservicelocator.1.3.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
@@ -12,7 +13,29 @@
     "C:\\Users\\Администратор\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\Администратор\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+    "C:\\Users\\Администратор\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\xact.core.pcl\\0.0.5014\\xact.core.pcl.0.0.5014.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"CommonServiceLocator 1.3.0\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net6.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "CommonServiceLocator",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"XAct.Core.PCL 0.0.5014\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net6.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "XAct.Core.PCL",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

@@ -475,11 +475,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\SecurityOfCS\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\SecurityOfCS\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\Администратор\\source\\repos\\SecurityOfCS\\Server\\Server.csproj",
+      "projectPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\SecurityOfCS\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Администратор\\source\\repos\\SecurityOfCS\\Server\\obj\\",
+      "outputPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\SecurityOfCS\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Администратор\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Администратор\\source\\repos\\SecurityOfCS\\SecurityOfCS\\Client.csproj": {}
+    "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\SecurityOfCS\\SecurityOfCS\\Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Администратор\\source\\repos\\SecurityOfCS\\SecurityOfCS\\Client.csproj": {
+    "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\SecurityOfCS\\SecurityOfCS\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\SecurityOfCS\\SecurityOfCS\\Client.csproj",
+        "projectUniqueName": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\SecurityOfCS\\SecurityOfCS\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "C:\\Users\\Администратор\\source\\repos\\SecurityOfCS\\SecurityOfCS\\Client.csproj",
+        "projectPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\SecurityOfCS\\SecurityOfCS\\Client.csproj",
         "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Администратор\\source\\repos\\SecurityOfCS\\SecurityOfCS\\obj\\",
+        "outputPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\SecurityOfCS\\SecurityOfCS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Администратор\\AppData\\Roaming\\NuGet\\NuGet.Config",
