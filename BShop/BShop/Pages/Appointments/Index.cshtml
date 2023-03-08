@@ -3,8 +3,13 @@
 @{
 }
 <div style="margin-left: 50px">
-    <br>
-    <h2 st>Список клиентов</h2>
+    <form method="post" class="form-check-inline" asp-page="/Account/Logout">
+        <div style="font-size: 28px">
+            Добро пожаловать, @User.Identity.Name!
+            <button type="submit" class="btn btn-warning ml-2">Выйти</button>
+        </div>
+    </form>
+    <h4>Список клиентов</h4>
     <a class="btn btn-primary btn-sm" href="/Appointments/Create">Новый клиент</a>
 </div>
 

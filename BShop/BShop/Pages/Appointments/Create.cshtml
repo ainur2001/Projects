@@ -26,7 +26,12 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Мастер</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="MasterName" value="@Model.appointment.MasterName" required/>
+            <select name="MasterName" required class="form-control">
+                <option>Выбирете мастера</option>
+                <option value="Дмитрий Золотухин">Дмитрий Золотухин</option>
+                <option value="Зуля Хуснуллина">Зуля Хуснуллина</option>
+                <option value="Ирман Насибуллин">Ирман Насибуллин</option>
+            </select>
         </div>
     </div>
 

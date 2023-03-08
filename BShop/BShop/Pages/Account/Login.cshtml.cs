@@ -25,7 +25,7 @@ namespace BShop.Pages
             if (!ModelState.IsValid) return Page();
             if(IsRegistrated(credential.Login) && GetHashPasswordByLogin(credential.Login) == ComputeSHA256Hash(credential.Password))
             {
-                var cliams = new List<Claim> { new Claim(ClaimTypes.Name, "staff") };
+                var cliams = new List<Claim> { new Claim(ClaimTypes.Name, GetNameByLogin(credential.Login)) };
 
                 var identity = new ClaimsIdentity(cliams, "MyCookieAuth");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
@@ -81,6 +81,28 @@ namespace BShop.Pages
                 }
             }
             return password;
+        }
+
+        public string GetNameByLogin(string Login)
+        {
+            string Name = "";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT Name FROM Staff WHERE Login = @Login;";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Login", Login);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Name = reader.GetString(0);
+                        }
+                    }
+                }
+            }
+            return Name;
         }
     }
 
