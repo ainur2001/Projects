@@ -28,7 +28,7 @@
         <label class="col-sm-3 col-form-label">Мастер</label>
         <div class="col-sm-6">
             <select name="MasterName" required class="form-control">
-                <option>Выбирете мастера</option>
+                <option></option>
                 <option value="Дмитрий Золотухин">Дмитрий Золотухин</option>
                 <option value="Зуля Хуснуллина">Зуля Хуснуллина</option>
                 <option value="Ирман Насибуллин">Ирман Насибуллин</option>
@@ -39,7 +39,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Дата и время стрижки</label>
         <div class="col-sm-6">
-            <input type="datetime-local" class="form-control" name="DateOfHaircut" value="@Model.appointment.DateOfHaircut" required />
+            <input type="text" id="airdatepicker" class="form-control" name="DateOfHaircut" value="@Model.appointment.DateOfHaircut" required />
         </div>
     </div>
 
@@ -54,3 +54,14 @@
     </div>
 
 </form>
+
+<script src="~/js/air-datepicker.js"></script>
+
+<script>
+    new AirDatepicker('#airdatepicker', {
+        timepicker: true,
+        minHours: 10,
+        maxHours: 19,
+        minutesStep: 15
+    });
+</script>

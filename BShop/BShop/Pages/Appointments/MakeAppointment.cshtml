@@ -17,7 +17,7 @@
                         <option value="Зуля Хуснуллина">Зуля Хуснуллина</option>
                         <option value="Ирман Насибуллин">Ирман Насибуллин</option>
                     </select>
-                    <input type="datetime-local" placeholder="Дата и время" name="DateOfHaircut" required/>
+                    <input type="text" id="airdatepicker" class="form-control" name="DateOfHaircut" placeholder="Дата и время" value="@Model.appointment.DateOfHaircut" required />
                     <button type="submit">Отправить заявку</button>
                     <a class="btn" style="position: absolute; top: 15px; right: 15px; font-size: 21px; cursor: pointer;" href="/">✕</a>
                 </form>
@@ -26,3 +26,13 @@
     </div>
 </div>
 
+<script src="~/js/air-datepicker.js"></script>
+
+<script>
+    new AirDatepicker('#airdatepicker', {
+        timepicker: true,
+        minHours: 10,
+        maxHours: 19,
+        minutesStep: 15
+    });
+</script>

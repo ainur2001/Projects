@@ -32,7 +32,7 @@ namespace BShop.Pages.Appointments
                                 appointment.Name = reader.GetString(1);
                                 appointment.phoneNumber = reader.GetString(2);
                                 appointment.MasterName = reader.GetString(3);
-                                appointment.DateOfHaircut = reader.GetDateTime(4);
+                                appointment.DateOfHaircut = reader.GetString(4);
                             }
                         }
                     }
@@ -50,7 +50,7 @@ namespace BShop.Pages.Appointments
             appointment.Name = Request.Form["Name"];
             appointment.phoneNumber = Request.Form["phoneNumber"];
             appointment.MasterName = Request.Form["MasterName"];
-            appointment.DateOfHaircut = DateTime.Parse(Request.Form["DateOfHaircut"]);
+            appointment.DateOfHaircut = Request.Form["DateOfHaircut"];
 
             try
             {

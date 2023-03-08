@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mERzLy+YkMtH8lSwJm+Ibq5um98ASGc/YNczcIuGgGE=",
+  "Hash": "6gcwypCfatbW6UfdoP+kRonurlo/5fO2A3yiZatrz1M=",
   "Source": "BShop",
   "BasePath": "_content/BShop",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\BShop\\BShop\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BShop.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\BShop\\BShop\\wwwroot\\css\\air-datepicker.css",
+      "SourceId": "BShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\BShop\\BShop\\wwwroot\\",
+      "BasePath": "_content/BShop",
+      "RelativePath": "css/air-datepicker.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\air-datepicker.css"
     },
     {
       "Identity": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\BShop\\BShop\\wwwroot\\css\\bootstrap.min.css",
@@ -491,6 +508,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\услуги.png"
+    },
+    {
+      "Identity": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\BShop\\BShop\\wwwroot\\js\\air-datepicker.js",
+      "SourceId": "BShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\BShop\\BShop\\wwwroot\\",
+      "BasePath": "_content/BShop",
+      "RelativePath": "js/air-datepicker.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\air-datepicker.js"
     },
     {
       "Identity": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\BShop\\BShop\\wwwroot\\js\\myScript.js",

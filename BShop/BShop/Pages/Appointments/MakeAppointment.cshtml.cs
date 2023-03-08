@@ -13,7 +13,7 @@ namespace BShop.Pages.Appointments
             appointment.Name = Request.Form["Name"];
             appointment.phoneNumber = Request.Form["phoneNumber"];
             appointment.MasterName = Request.Form["MasterName"];
-            appointment.DateOfHaircut = DateTime.Parse(Request.Form["DateOfHaircut"]);
+            appointment.DateOfHaircut = Request.Form["DateOfHaircut"];
 
             try
             {
@@ -44,7 +44,7 @@ namespace BShop.Pages.Appointments
             appointment.Name = "";
             appointment.MasterName = "";
             appointment.phoneNumber = "";
-            appointment.DateOfHaircut = default;
+            appointment.DateOfHaircut = "";
 
             Response.Redirect("/");
         }

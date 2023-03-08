@@ -32,7 +32,7 @@ namespace BShop.Pages.Appointments
                                 appointment.Name = reader.GetString(1);
                                 appointment.phoneNumber = reader.GetString(2);
                                 appointment.MasterName = reader.GetString(3);
-                                appointment.DateOfHaircut = reader.GetDateTime(4);
+                                appointment.DateOfHaircut = reader.GetString(4);
                                 appointment.created_at = reader.GetDateTime(5).ToString();
 
                                 appointments.Add(appointment);
