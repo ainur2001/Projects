@@ -12,14 +12,14 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Имя</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="Name" value="@Model.appointment.Name" required/>
+            <input type="text" class="form-control" name="Name" value="@Model.appointment.Name" required autocomplete="off" />
         </div>
     </div>
 
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Номер телефона</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="phoneNumber" value="@Model.appointment.phoneNumber" required />
+            <input type="text" class="form-control" name="phoneNumber" value="@Model.appointment.phoneNumber" required autocomplete="off" />
         </div>
     </div>
 
@@ -38,7 +38,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Дата и время стрижки</label>
         <div class="col-sm-6">
-            <input type="text" id="airdatepicker" class="form-control" name="DateOfHaircut" value="@Model.appointment.DateOfHaircut" required />
+            <input type="text" id="airdatepicker" class="form-control" name="DateOfHaircut" value="@Model.appointment.DateOfHaircut" required autocomplete="off" />
         </div>
     </div>
 
