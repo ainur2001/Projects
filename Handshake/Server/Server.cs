@@ -93,19 +93,21 @@ namespace Server
                     }
                     string HashPassword, Salt;
                     (HashPassword, Salt) = GetRegistrationData(login);
-                    string HashSalt = ComputeSHA256Hash(Salt);
+                    //string HashSalt = ComputeSHA256Hash(Salt);
 
+                    string CW = DateTime.Now.ToString();
+;
                     HashPW_TextBox.Text = HashPassword;
-                    HashSalt_TextBox.Text = HashSalt;
+                    HashSalt_TextBox.Text = ComputeSHA256Hash(CW);
 
-                    bytesOut = Encoding.UTF8.GetBytes(HashSalt);
+                    bytesOut = Encoding.UTF8.GetBytes(CW);
                     stream.Write(bytesOut, 0, bytesOut.Length); // отсылаем хеш соли
 
                     length = stream.Read(bytesIn, 0, bytesIn.Length);
                     request = Encoding.UTF8.GetString(bytesIn, 0, length); // получаем Т клиента
 
                     string T_c = request;
-                    string T_s = ComputeSHA256Hash(HashPassword + HashSalt);
+                    string T_s = ComputeSHA256Hash(HashPassword + CW);
                     T_client_TextBox.Text = T_c;
                     T_server_TextBox.Text = T_s;
 

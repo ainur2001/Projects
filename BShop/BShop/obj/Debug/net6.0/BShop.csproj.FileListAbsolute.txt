@@ -66,3 +66,6 @@ C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\obj\De
 C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\obj\Debug\net6.0\ref\BShop.dll
 C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\bin\Debug\net6.0\Microsoft.Practices.ServiceLocation.dll
 C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\bin\Debug\net6.0\XAct.Core.PCL.dll
+C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\bin\Debug\net6.0\AspNetCoreRateLimit.dll
+C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\bin\Debug\net6.0\Newtonsoft.Json.dll

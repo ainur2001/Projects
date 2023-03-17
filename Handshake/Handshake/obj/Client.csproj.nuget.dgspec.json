@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Администратор\\source\\repos\\Handshake\\Handshake\\Client.csproj": {}
+    "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Handshake\\Handshake\\Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Администратор\\source\\repos\\Handshake\\Handshake\\Client.csproj": {
+    "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Handshake\\Handshake\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\Handshake\\Handshake\\Client.csproj",
+        "projectUniqueName": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Handshake\\Handshake\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "C:\\Users\\Администратор\\source\\repos\\Handshake\\Handshake\\Client.csproj",
+        "projectPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Handshake\\Handshake\\Client.csproj",
         "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Администратор\\source\\repos\\Handshake\\Handshake\\obj\\",
+        "outputPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Handshake\\Handshake\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Администратор\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ckyBF0BGff8Pm+iLOPdS6MtFguEMEZs0+7RWpJg80c6WwYDsQt+L82D8+7z60d54Pr2qjqiC7MSAkXOnN+27YA==",
+  "dgSpecHash": "j5HoaasU8ceTl6u8jeYUqoZ8aGeBRlgs7mzegQ/pSVRWTgnRj/EvSwnIWLpmn//0Aka6+ArVO2fei2E2OjD51A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Администратор\\source\\repos\\Handshake\\Server\\Server.csproj",
+  "projectFilePath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Handshake\\Server\\Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Администратор\\.nuget\\packages\\commonservicelocator\\1.3.0\\commonservicelocator.1.3.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
