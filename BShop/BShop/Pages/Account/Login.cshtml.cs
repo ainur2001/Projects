@@ -13,7 +13,7 @@ namespace BShop.Pages
     {
         [BindProperty]
         public Credential credential { get; set; }
-        public string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BarberShop;Integrated Security=True";
+        public string connectionString = "Data Source=WIN-NJ7HQJ5ADFM\\SQLEXPRESS;Initial Catalog=BarberShop;User ID=sa;Password=787898Ainur!";
 
         public void OnGet()
         {

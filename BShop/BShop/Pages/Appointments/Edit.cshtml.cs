@@ -15,7 +15,7 @@ namespace BShop.Pages.Appointments
 
             try
             {
-                string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BarberShop;Integrated Security=True";
+                string connectionString = "Data Source=WIN-NJ7HQJ5ADFM\\SQLEXPRESS;Initial Catalog=BarberShop;User ID=sa;Password=787898Ainur!"; ;
 
                 using (SqlConnection connection = new(connectionString))
                 {
@@ -54,7 +54,7 @@ namespace BShop.Pages.Appointments
 
             try
             {
-                string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BarberShop;Integrated Security=True";
+                string connectionString = "Data Source=WIN-NJ7HQJ5ADFM\\SQLEXPRESS;Initial Catalog=BarberShop;User ID=sa;Password=787898Ainur!"; ;
                 using (SqlConnection connection = new(connectionString))
                 {
                     connection.Open();
