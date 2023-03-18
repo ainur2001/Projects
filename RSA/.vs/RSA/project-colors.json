@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "06b48706-fa9c-4ea9-be3f-f1dc75dcc17b": {
+      "ProjectGuid": "06b48706-fa9c-4ea9-be3f-f1dc75dcc17b",
+      "DisplayName": "RSA",
+      "ColorIndex": 0
+    },
+    "e8a8b586-21c1-40a1-81ee-12ac53f004ba": {
+      "ProjectGuid": "e8a8b586-21c1-40a1-81ee-12ac53f004ba",
+      "DisplayName": "Utils",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
