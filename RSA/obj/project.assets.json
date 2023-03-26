@@ -5,9 +5,7 @@
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": [
-      "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Utils\\Utils.csproj"
-    ]
+    "net6.0-windows7.0": []
   },
   "packageFolders": {
     "C:\\Users\\Администратор\\.nuget\\packages\\": {}
@@ -35,11 +33,7 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {
-            "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Utils\\Utils.csproj": {
-              "projectPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Utils\\Utils.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -73,16 +67,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Не удалось найти проект \"C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Utils\\Utils.csproj\". Убедитесь, что ссылка на проект действительна и файл проекта существует.",
-      "libraryId": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Utils\\Utils.csproj",
-      "targetGraphs": [
-        "net6.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }

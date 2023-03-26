@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dkFzpN8KAN5gtCRTQy5eUiYEHsu9EuWGKv6cxN1/3pf2QlYRIA1LU6AbhvLGqjtgwHTfbGGs/EMZW29gDuU7nQ==",
-  "success": false,
+  "dgSpecHash": "BigNJSg4rqmXq1WrbHWIzh5rKQpVubiw3RJtu4JZaHgaYuNeu1QF14tCwEHjOg5Ies0LJfVaPL9GKTjPhyqFNg==",
+  "success": true,
   "projectFilePath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\RSA\\RSA.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Не удалось найти проект \"C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Utils\\Utils.csproj\". Убедитесь, что ссылка на проект действительна и файл проекта существует.",
-      "libraryId": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Utils\\Utils.csproj",
-      "targetGraphs": [
-        "net6.0-windows7.0"
-      ]
-    }
-  ]
+  "logs": []
 }
