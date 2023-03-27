@@ -138,6 +138,7 @@ namespace class_RSA
         }
         private static Parameters GenerateParam()
         {
+            int _bitNumber = 512;
             BigInteger p = 0;
             BigInteger q = 0;
             BigInteger n = 0;
@@ -145,7 +146,6 @@ namespace class_RSA
             BigInteger e_ = 0;
             BigInteger d = 0;
             Parameters param = new Parameters();
-            int _bitNumber = 512;
             Thread qt = new(() => q = qf(_bitNumber));
             Thread pt = new(() => p = pf(_bitNumber));
             pt.Start();

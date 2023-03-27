@@ -50,3 +50,4 @@ C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Server\o
 C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Server\obj\Debug\net6.0-windows\Server.pdb
 C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Server\obj\Debug\net6.0-windows\Server.genruntimeconfig.cache
 C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Server\obj\Debug\net6.0-windows\ref\Server.dll
+C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Server\bin\Debug\net6.0-windows\Newtonsoft.Json.dll

@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Login_TextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.EDS_Button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +64,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel2.Controls.Add(this.EDS_Button);
             this.panel2.Controls.Add(this.SignIn_Button);
             this.panel2.Controls.Add(this.Password_TextBox);
             this.panel2.Controls.Add(this.label3);
@@ -78,7 +80,7 @@
             // 
             this.SignIn_Button.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.SignIn_Button.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.SignIn_Button.Location = new System.Drawing.Point(102, 156);
+            this.SignIn_Button.Location = new System.Drawing.Point(31, 150);
             this.SignIn_Button.Name = "SignIn_Button";
             this.SignIn_Button.Size = new System.Drawing.Size(110, 38);
             this.SignIn_Button.TabIndex = 5;
@@ -125,6 +127,18 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Логин:";
             // 
+            // EDS_Button
+            // 
+            this.EDS_Button.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.EDS_Button.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EDS_Button.Location = new System.Drawing.Point(183, 150);
+            this.EDS_Button.Name = "EDS_Button";
+            this.EDS_Button.Size = new System.Drawing.Size(110, 38);
+            this.EDS_Button.TabIndex = 6;
+            this.EDS_Button.Text = "ЭЦП";
+            this.EDS_Button.UseVisualStyleBackColor = false;
+            this.EDS_Button.Click += new System.EventHandler(this.EDS_Button_Click);
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -152,5 +166,6 @@
         private TextBox Login_TextBox;
         private Label label2;
         private Button SignIn_Button;
+        private Button EDS_Button;
     }
 }

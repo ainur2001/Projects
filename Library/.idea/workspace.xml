@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dd4ed2c6-1dc9-4d2f-a725-a4e66981854f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BShop/.vs/BShop/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../BShop/.vs/BShop/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BShop/.vs/BShop/FileContentIndex/3b890eef-ecef-4597-b019-6b3354ad7188.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BShop/.vs/BShop/FileContentIndex/72bb86b8-4502-4137-9e9f-fac2d678d84c.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BShop/.vs/BShop/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../BShop/.vs/BShop/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BShop/.vs/ProjectEvaluation/bshop.metadata.v5.1" beforeDir="false" afterPath="$PROJECT_DIR$/../BShop/.vs/ProjectEvaluation/bshop.metadata.v5.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BShop/.vs/ProjectEvaluation/bshop.projects.v5.1" beforeDir="false" afterPath="$PROJECT_DIR$/../BShop/.vs/ProjectEvaluation/bshop.projects.v5.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/Handshake/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/Handshake/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/Handshake/FileContentIndex/bb0c5e3c-3f28-44a1-85cd-0436f0b2ba85.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/Handshake/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/Handshake/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/Handshake/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/Handshake/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/ProjectEvaluation/handshake.metadata.v5.1" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/ProjectEvaluation/handshake.metadata.v5.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/ProjectEvaluation/handshake.projects.v5.1" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/ProjectEvaluation/handshake.projects.v5.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Handshake.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Handshake.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/Server.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/Server.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Server.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Server.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RSA/.vs/RSA/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../RSA/.vs/RSA/v17/.suo" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NEstsPVuGwUmfZx4isR4ynmU5M" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Администратор/Documents/GitHub/Projects/ML"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Library" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dd4ed2c6-1dc9-4d2f-a725-a4e66981854f" name="Changes" comment="" />
+      <created>1679240794100</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679240794100</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

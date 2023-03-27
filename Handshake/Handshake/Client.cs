@@ -1,6 +1,10 @@
+using class_RSA;
+using System.IO;
 using System.Net.Sockets;
+using System.Numerics;
 using System.Text;
 using XSystem.Security.Cryptography;
+using Newtonsoft.Json;
 
 namespace Handshake
 {
@@ -10,9 +14,11 @@ namespace Handshake
         {
             InitializeComponent();
         }
-
         private void SignIn_Button_Click(object sender, EventArgs e)
         {
+            TcpClient client = new("127.0.0.1", 7000);
+            NetworkStream stream;
+            stream = client.GetStream();
             string answer = "";
             try
             {
@@ -20,8 +26,8 @@ namespace Handshake
                 string password = Password_TextBox.Text;
                 if (login == "" || password == "") throw new Exception("Необходимо заполнить все поля регистрации");
                 if (login.Contains(' ') || password.Contains(' ')) throw new Exception("Логин и пароль не может содержать в себе пробелы");
-                TcpClient client = new("127.0.0.1", 7000);
-                NetworkStream stream = client.GetStream();
+                
+                
                 byte[] bytesIn = new byte[256];
                 byte[] bytesOut = new byte[256];
 
@@ -58,5 +64,67 @@ namespace Handshake
                 return BitConverter.ToString(sha256.ComputeHash(Encoding.UTF8.GetBytes(text))).Replace("-", "");
             }
         }
+        private void EDS_Button_Click(object sender, EventArgs e)
+        {
+            TcpClient client = new("127.0.0.1", 7000);
+            NetworkStream stream;
+            stream = client.GetStream();
+            try
+            {
+                stream = client.GetStream();
+                RSA rsa = new();
+                BigInteger nonce = GenerateNumber(256);
+
+                string hashNonce = ComputeSHA256Hash(nonce.ToString());
+                var temp = hashNonce.Select(item => ((int)item).ToString()).ToArray();
+                BigInteger T = BigInteger.Parse(string.Join("", temp)); // T = sha256(nonce)
+
+                BigInteger d = rsa.par.d;
+                BigInteger n = rsa.par.n;
+                BigInteger e1 = rsa.par.e_;
+
+                BigInteger S = BigInteger.ModPow(T, d, n);
+
+                var data = new
+                {
+                    S = S,
+                    nonce = nonce,
+                    e = e1,
+                    n = n,
+                };
+
+                var json = JsonConvert.SerializeObject(data);
+
+                var buffer = Encoding.UTF8.GetBytes(json);
+                stream.Write(buffer, 0, buffer.Length);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            stream.Flush();
+            client.Close();
+        }
+        private static BigInteger GenerateNumber(int bitNumber)
+        {
+            Random random = new();
+            List<char> bits = new();
+            for (int i = 0; i < bitNumber; ++i)
+            {
+                bits.Add((char)(random.Next(2) + '0'));
+            }
+            return BinToDec(bits);
+        }
+        private static BigInteger BinToDec(List<char> number)
+        {
+            BigInteger result = 0;
+            for (int i = 0; number.Count > 0; ++i)
+            {
+                result += BigInteger.Pow(2, i) * (number.Last() - '0');
+                number.RemoveAt(number.Count - 1);
+            }
+            return result;
+        }
+
     }
 }

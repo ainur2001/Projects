@@ -3,6 +3,10 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using XSystem.Security.Cryptography;
+using System.Numerics;
+using System.Text.Json;
+using System.Security.Policy;
+using Newtonsoft.Json;
 
 namespace Server
 {
@@ -17,7 +21,10 @@ namespace Server
         public Server()
         {
             InitializeComponent();
-            task = new Task(() => StartServer());
+            //task = new Task(() => StartServer());
+            //task.Start();
+
+            task = new Task(() => EDidS());
             task.Start();
         }
         private void Registration_Button_Click(object sender, EventArgs e)
@@ -74,7 +81,7 @@ namespace Server
                     int length = stream.Read(bytesIn, 0, bytesIn.Length);
                     string request = Encoding.UTF8.GetString(bytesIn, 0, length); //получаем логин
                     string login = request;
-                    Login_TextBox.Text = request;
+                    
 
                     if (!IsRegistered(login)) //если пользователь не зарегистрирован
                     {
@@ -83,11 +90,6 @@ namespace Server
                         stream.Write(bytesOut, 0, bytesOut.Length);
                         stream.Flush();
                         clientSocket.Close();
-                        
-                        HashPW_TextBox.Text = "";
-                        HashSalt_TextBox.Text = "";
-                        T_client_TextBox.Text = "";
-                        T_server_TextBox.Text = "";
                         StartServer();
                         //throw new Exception("Пользователя с таким логином не существует!");
                     }
@@ -97,8 +99,7 @@ namespace Server
 
                     string CW = DateTime.Now.ToString();
 ;
-                    HashPW_TextBox.Text = HashPassword;
-                    HashSalt_TextBox.Text = ComputeSHA256Hash(CW);
+                    
 
                     bytesOut = Encoding.UTF8.GetBytes(CW);
                     stream.Write(bytesOut, 0, bytesOut.Length); // отсылаем хеш соли
@@ -108,8 +109,7 @@ namespace Server
 
                     string T_c = request;
                     string T_s = ComputeSHA256Hash(HashPassword + CW);
-                    T_client_TextBox.Text = T_c;
-                    T_server_TextBox.Text = T_s;
+                    
 
 
                     if (T_c != T_s) // если Т клиента != Т сервера
@@ -137,6 +137,56 @@ namespace Server
             stream.Flush();
             clientSocket.Close();
             StartServer();
+        }
+        public void EDidS()
+        {
+            try
+            {
+                serverSocket.Start();
+                while (true)
+                {
+                    clientSocket = serverSocket.AcceptTcpClient();
+                    stream = clientSocket.GetStream();
+
+                    var buffer = new byte[1280];
+                    var bytesRead = stream.Read(buffer, 0, buffer.Length);
+                    var json = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+
+                    var data = JsonConvert.DeserializeObject<dynamic>(json);
+
+                    BigInteger S = data.S;
+                    BigInteger nonce = data.nonce;
+                    BigInteger e = data.e;
+                    BigInteger n = data.n;
+
+
+                    string hashNonce = ComputeSHA256Hash(nonce.ToString());
+                    var temp = hashNonce.Select(item => ((int)item).ToString()).ToArray();
+
+                    BigInteger T = BigInteger.Parse(string.Join("", temp));
+                    BigInteger T_strih = BigInteger.ModPow(S, e, n);
+
+                    if (T == T_strih)
+                    {
+                        MessageBox.Show("Ok");
+                        stream.Flush();
+                        clientSocket.Close();
+                        EDidS();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not ok");
+                        stream.Flush();
+                        clientSocket.Close();
+                        EDidS();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                EDidS();
+            }
         }
 
         private bool IsRegistered(string login)
@@ -179,6 +229,5 @@ namespace Server
             }
             return (password, salt);
         }
-
     }
 }

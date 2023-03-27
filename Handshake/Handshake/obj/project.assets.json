@@ -15,6 +15,19 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "XAct.Core.PCL/0.0.5014": {
         "type": "package",
         "dependencies": {
@@ -25,6 +38,16 @@
         },
         "runtime": {
           "lib/portable-win+net45+sl50+wp80/XAct.Core.PCL.dll": {}
+        }
+      },
+      "class_RSA/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/class_RSA.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/class_RSA.dll": {}
         }
       }
     }
@@ -44,6 +67,36 @@
         "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.pdb"
       ]
     },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "XAct.Core.PCL/0.0.5014": {
       "sha512": "r0rX5Dzr0mfUp8FtVnxXlv5w+cXhz6tHfQ79lf6naLB92J+h2wkGw0q6CfOa2FiveN2ahSflf6LB2G1cOx43AQ==",
       "type": "package",
@@ -55,11 +108,18 @@
         "xact.core.pcl.0.0.5014.nupkg.sha512",
         "xact.core.pcl.nuspec"
       ]
+    },
+    "class_RSA/1.0.0": {
+      "type": "project",
+      "path": "../../class_RSA/class_RSA/class_RSA.csproj",
+      "msbuildProject": "../../class_RSA/class_RSA/class_RSA.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "XAct.Core.PCL >= 0.0.5014"
+      "Newtonsoft.Json >= 13.0.3",
+      "XAct.Core.PCL >= 0.0.5014",
+      "class_RSA >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -88,7 +148,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\class_RSA\\class_RSA\\class_RSA.csproj": {
+              "projectPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\class_RSA\\class_RSA\\class_RSA.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -101,6 +165,10 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
+          },
           "XAct.Core.PCL": {
             "target": "Package",
             "version": "[0.0.5014, )"
@@ -125,7 +193,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   },
