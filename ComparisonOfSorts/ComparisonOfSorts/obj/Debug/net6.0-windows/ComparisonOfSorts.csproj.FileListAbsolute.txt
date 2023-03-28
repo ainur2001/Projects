@@ -1,0 +1,17 @@
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\bin\Debug\net6.0-windows\ComparisonOfSorts.exe
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\bin\Debug\net6.0-windows\ComparisonOfSorts.deps.json
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\bin\Debug\net6.0-windows\ComparisonOfSorts.runtimeconfig.json
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\bin\Debug\net6.0-windows\ComparisonOfSorts.dll
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\bin\Debug\net6.0-windows\ComparisonOfSorts.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.csproj.AssemblyReference.cache
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.Form1.resources
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.csproj.GenerateResource.cache
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.AssemblyInfoInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.AssemblyInfo.cs
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.dll
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\refint\ComparisonOfSorts.dll
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ComparisonOfSorts.genruntimeconfig.cache
+C:\Users\Администратор\Documents\GitHub\Projects\ComparisonOfSorts\ComparisonOfSorts\obj\Debug\net6.0-windows\ref\ComparisonOfSorts.dll
