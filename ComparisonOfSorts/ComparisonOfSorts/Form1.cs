@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 
 namespace ComparisonOfSorts
@@ -17,263 +16,29 @@ namespace ComparisonOfSorts
             try
             {
                 if (CountData_TextBox.Text == "") throw new ArgumentException("Ќеобходимо заполнить пол€!");
-                string TypeSort = TypeSort_ComboBox.Text;
+                string typeSort = TypeSort_ComboBox.Text;
                 int countData = int.Parse(CountData_TextBox.Text);
                 string typeData = TypeData_ComboBox.Text;
                 Stopwatch stopwatch = new();
+                dynamic array = 0; 
 
-                switch (TypeSort)
-                {
-                    case "—ортировка вставкой":
+                if(typeData == "массив чисел(double)") array = GenerateRandomArray<double>(countData);
+                else if(typeData == "массив чисел(int)") array = GenerateRandomArray<int>(countData);
+                else if(typeData == "массив строк(string)") array = GenerateRandomArray<string>(countData);
+                else if(typeData == "массив дат(DateTime)") array = GenerateRandomArray<DateTime>(countData);
+                
+                stopwatch.Start();
 
-                        if (typeData == "массив чисел(double)")
-                        {
-                            double[] array = GenerateRandomArray<double>(countData);
-                            stopwatch.Start();
-                            InsertionSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив чисел(int)")
-                        {
-                            int[] array = GenerateRandomArray<int>(countData);
-                            stopwatch.Start();
-                            InsertionSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив строк(string)")
-                        {
-                            string[] array = GenerateRandomArray<string>(countData);
-                            stopwatch.Start();
-                            InsertionSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив дат(DateTime)")
-                        {
-                            DateTime[] array = GenerateRandomArray<DateTime>(countData);
-                            stopwatch.Start();
-                            InsertionSort(array);
-                            stopwatch.Stop();
-                        }
-                        break;
+                if (typeSort == "—ортировка вставкой") InsertionSort(array);
+                else if (typeSort == "—ортировка пузырьком") BubbleSort(array);
+                else if (typeSort == "—ортировка выбором") SelectionSort(array);
+                else if (typeSort == "—ортировка Ўелла") ShellSort(array);
+                else if (typeSort == "Ѕыстра€ сортировка") QuickSort(array);
+                else if (typeSort == "—ортировка сли€нием") MergeSort(array);
+                else if (typeSort == "—ортировка кучей") HeapSort(array);
+                else if (typeSort == "¬строенна€ сортировка") Array.Sort(array);
 
-                    case "—ортировка пузырьком":
-                        if (typeData == "массив чисел(double)")
-                        {
-                            double[] array = GenerateRandomArray<double>(countData);
-                            stopwatch.Start();
-                            BubbleSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив чисел(int)")
-                        {
-                            int[] array = GenerateRandomArray<int>(countData);
-                            stopwatch.Start();
-                            BubbleSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив строк(string)")
-                        {
-                            string[] array = GenerateRandomArray<string>(countData);
-                            stopwatch.Start();
-                            BubbleSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив дат(DateTime)")
-                        {
-                            DateTime[] array = GenerateRandomArray<DateTime>(countData);
-                            stopwatch.Start();
-                            BubbleSort(array);
-                            stopwatch.Stop();
-                        }
-                        break;
-
-                    case "—ортировка выбором":
-                        if (typeData == "массив чисел(double)")
-                        {
-                            double[] array = GenerateRandomArray<double>(countData);
-                            stopwatch.Start();
-                            SelectionSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив чисел(int)")
-                        {
-                            int[] array = GenerateRandomArray<int>(countData);
-                            stopwatch.Start();
-                            SelectionSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив строк(string)")
-                        {
-                            string[] array = GenerateRandomArray<string>(countData);
-                            stopwatch.Start();
-                            SelectionSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив дат(DateTime)")
-                        {
-                            DateTime[] array = GenerateRandomArray<DateTime>(countData);
-                            stopwatch.Start();
-                            SelectionSort(array);
-                            stopwatch.Stop();
-                        }
-                        break;
-
-                    case "—ортировка Ўелла":
-                        if (typeData == "массив чисел(double)")
-                        {
-                            double[] array = GenerateRandomArray<double>(countData);
-                            stopwatch.Start();
-                            ShellSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив чисел(int)")
-                        {
-                            int[] array = GenerateRandomArray<int>(countData);
-                            stopwatch.Start();
-                            ShellSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив строк(string)")
-                        {
-                            string[] array = GenerateRandomArray<string>(countData);
-                            stopwatch.Start();
-                            ShellSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив дат(DateTime)")
-                        {
-                            DateTime[] array = GenerateRandomArray<DateTime>(countData);
-                            stopwatch.Start();
-                            ShellSort(array);
-                            stopwatch.Stop();
-                        }
-                        break;
-
-                    case "Ѕыстра€ сортировка":
-                        if (typeData == "массив чисел(double)")
-                        {
-                            double[] array = GenerateRandomArray<double>(countData);
-                            stopwatch.Start();
-                            QuickSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив чисел(int)")
-                        {
-                            int[] array = GenerateRandomArray<int>(countData);
-                            stopwatch.Start();
-                            QuickSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив строк(string)")
-                        {
-                            string[] array = GenerateRandomArray<string>(countData);
-                            stopwatch.Start();
-                            QuickSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив дат(DateTime)")
-                        {
-                            DateTime[] array = GenerateRandomArray<DateTime>(countData);
-                            stopwatch.Start();
-                            QuickSort(array);
-                            stopwatch.Stop();
-                        }
-                        break;
-
-                    case "—ортировка сли€нием":
-                        if (typeData == "массив чисел(double)")
-                        {
-                            double[] array = GenerateRandomArray<double>(countData);
-                            stopwatch.Start();
-                            MergeSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив чисел(int)")
-                        {
-                            int[] array = GenerateRandomArray<int>(countData);
-                            stopwatch.Start();
-                            MergeSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив строк(string)")
-                        {
-                            string[] array = GenerateRandomArray<string>(countData);
-                            stopwatch.Start();
-                            MergeSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив дат(DateTime)")
-                        {
-                            DateTime[] array = GenerateRandomArray<DateTime>(countData);
-                            stopwatch.Start();
-                            MergeSort(array);
-                            stopwatch.Stop();
-                        }
-                        break;
-
-                    case "—ортировка кучей":
-                        if (typeData == "массив чисел(double)")
-                        {
-                            double[] array = GenerateRandomArray<double>(countData);
-                            stopwatch.Start();
-                            HeapSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив чисел(int)")
-                        {
-                            int[] array = GenerateRandomArray<int>(countData);
-                            stopwatch.Start();
-                            HeapSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив строк(string)")
-                        {
-                            string[] array = GenerateRandomArray<string>(countData);
-                            stopwatch.Start();
-                            HeapSort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив дат(DateTime)")
-                        {
-                            DateTime[] array = GenerateRandomArray<DateTime>(countData);
-                            stopwatch.Start();
-                            HeapSort(array);
-                            stopwatch.Stop();
-                        }
-                        break;
-
-                    case "¬строенна€ сортировка":
-                        if (typeData == "массив чисел(double)")
-                        {
-                            double[] array = GenerateRandomArray<double>(countData);
-                            stopwatch.Start();
-                            Array.Sort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив чисел(int)")
-                        {
-                            int[] array = GenerateRandomArray<int>(countData);
-                            stopwatch.Start();
-                            Array.Sort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив строк(string)")
-                        {
-                            string[] array = GenerateRandomArray<string>(countData);
-                            stopwatch.Start();
-                            Array.Sort(array);
-                            stopwatch.Stop();
-                        }
-                        else if (typeData == "массив дат(DateTime)")
-                        {
-                            DateTime[] array = GenerateRandomArray<DateTime>(countData);
-                            stopwatch.Start();
-                            Array.Sort(array);
-                            stopwatch.Stop();
-                        }
-                        break;
-
-                }
+                stopwatch.Stop();
                 TimeSort_TextBox.Text = stopwatch.ElapsedMilliseconds.ToString() + "ms.";
             }
             catch (Exception ex)
@@ -434,13 +199,12 @@ namespace ComparisonOfSorts
         {
             int heapSize = array.Length;
 
-            // Build the heap
             for (int i = (heapSize / 2) - 1; i >= 0; i--)
             {
                 Heapify(array, heapSize, i);
             }
 
-            // Extract elements from the heap in sorted order
+           
             for (int i = heapSize - 1; i >= 1; i--)
             {
                 Swap(array, i, 0);
