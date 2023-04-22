@@ -1,0 +1,11 @@
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\bin\Debug\Sorts.exe.config
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\bin\Debug\Sorts.exe
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\bin\Debug\Sorts.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\obj\Debug\Sorts.csproj.AssemblyReference.cache
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\obj\Debug\Sorts.csproj.SuggestedBindingRedirects.cache
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\obj\Debug\Sorts.Form1.resources
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\obj\Debug\Sorts.Properties.Resources.resources
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\obj\Debug\Sorts.csproj.GenerateResource.cache
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\obj\Debug\Sorts.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\obj\Debug\Sorts.exe
+C:\Users\Администратор\Documents\GitHub\Projects\Sorts\Sorts\obj\Debug\Sorts.pdb

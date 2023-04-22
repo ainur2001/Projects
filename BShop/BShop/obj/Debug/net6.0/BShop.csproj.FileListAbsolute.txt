@@ -69,3 +69,8 @@ C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\bin\De
 C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\bin\Debug\net6.0\AspNetCoreRateLimit.dll
 C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\obj\Debug\net6.0\staticwebassets\msbuild.BShop.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\obj\Debug\net6.0\staticwebassets\msbuild.build.BShop.props
+C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.BShop.props
+C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.BShop.props
+C:\Users\Администратор\Documents\GitHub\Projects\BShop\BShop\obj\Debug\net6.0\staticwebassets.pack.json

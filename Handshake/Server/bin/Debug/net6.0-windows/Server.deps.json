@@ -10,7 +10,8 @@
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "System.Data.SqlClient": "4.8.5",
-          "XAct.Core.PCL": "0.0.5014"
+          "XAct.Core.PCL": "0.0.5014",
+          "class_RSA": "1.0.0"
         },
         "runtime": {
           "Server.dll": {}
@@ -117,6 +118,11 @@
             "fileVersion": "0.0.5014.0"
           }
         }
+      },
+      "class_RSA/1.0.0": {
+        "runtime": {
+          "class_RSA.dll": {}
+        }
       }
     }
   },
@@ -209,6 +215,11 @@
       "sha512": "sha512-r0rX5Dzr0mfUp8FtVnxXlv5w+cXhz6tHfQ79lf6naLB92J+h2wkGw0q6CfOa2FiveN2ahSflf6LB2G1cOx43AQ==",
       "path": "xact.core.pcl/0.0.5014",
       "hashPath": "xact.core.pcl.0.0.5014.nupkg.sha512"
+    },
+    "class_RSA/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

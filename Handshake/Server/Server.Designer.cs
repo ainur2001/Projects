@@ -28,101 +28,110 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label7 = new System.Windows.Forms.Label();
-            this.R_Login_TextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Password_Textbox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Registration_Button = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.SuspendLayout();
+            label7 = new Label();
+            R_Login_TextBox = new TextBox();
+            label8 = new Label();
+            Password_Textbox = new TextBox();
+            label9 = new Label();
+            Registration_Button = new Button();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            CommonKey_TextBox = new TextBox();
+            SuspendLayout();
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(515, 69);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(158, 35);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Регистрация";
+            label7.AutoSize = true;
+            label7.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(515, 69);
+            label7.Name = "label7";
+            label7.Size = new Size(158, 35);
+            label7.TabIndex = 14;
+            label7.Text = "Регистрация";
             // 
             // R_Login_TextBox
             // 
-            this.R_Login_TextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.R_Login_TextBox.Location = new System.Drawing.Point(571, 138);
-            this.R_Login_TextBox.Multiline = true;
-            this.R_Login_TextBox.Name = "R_Login_TextBox";
-            this.R_Login_TextBox.Size = new System.Drawing.Size(153, 37);
-            this.R_Login_TextBox.TabIndex = 15;
+            R_Login_TextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            R_Login_TextBox.Location = new Point(571, 138);
+            R_Login_TextBox.Multiline = true;
+            R_Login_TextBox.Name = "R_Login_TextBox";
+            R_Login_TextBox.Size = new Size(153, 37);
+            R_Login_TextBox.TabIndex = 15;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(464, 136);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(96, 35);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Логин:";
+            label8.AutoSize = true;
+            label8.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(464, 136);
+            label8.Name = "label8";
+            label8.Size = new Size(96, 35);
+            label8.TabIndex = 16;
+            label8.Text = "Логин:";
             // 
             // Password_Textbox
             // 
-            this.Password_Textbox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Password_Textbox.Location = new System.Drawing.Point(571, 185);
-            this.Password_Textbox.Multiline = true;
-            this.Password_Textbox.Name = "Password_Textbox";
-            this.Password_Textbox.Size = new System.Drawing.Size(153, 37);
-            this.Password_Textbox.TabIndex = 17;
+            Password_Textbox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Password_Textbox.Location = new Point(571, 185);
+            Password_Textbox.Multiline = true;
+            Password_Textbox.Name = "Password_Textbox";
+            Password_Textbox.Size = new Size(153, 37);
+            Password_Textbox.TabIndex = 17;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(464, 182);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(115, 35);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Пароль:";
+            label9.AutoSize = true;
+            label9.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Location = new Point(464, 182);
+            label9.Name = "label9";
+            label9.Size = new Size(115, 35);
+            label9.TabIndex = 18;
+            label9.Text = "Пароль:";
             // 
             // Registration_Button
             // 
-            this.Registration_Button.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.Registration_Button.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Registration_Button.Location = new System.Drawing.Point(504, 241);
-            this.Registration_Button.Name = "Registration_Button";
-            this.Registration_Button.Size = new System.Drawing.Size(189, 51);
-            this.Registration_Button.TabIndex = 19;
-            this.Registration_Button.Text = "Зарегистрировать";
-            this.Registration_Button.UseVisualStyleBackColor = false;
-            this.Registration_Button.Click += new System.EventHandler(this.Registration_Button_Click);
+            Registration_Button.BackColor = SystemColors.ButtonShadow;
+            Registration_Button.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Registration_Button.Location = new Point(504, 241);
+            Registration_Button.Name = "Registration_Button";
+            Registration_Button.Size = new Size(189, 51);
+            Registration_Button.TabIndex = 19;
+            Registration_Button.Text = "Зарегистрировать";
+            Registration_Button.UseVisualStyleBackColor = false;
+            Registration_Button.Click += Registration_Button_Click;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(422, 1);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(12, 347);
-            this.flowLayoutPanel1.TabIndex = 21;
+            flowLayoutPanel1.BackColor = SystemColors.ActiveCaptionText;
+            flowLayoutPanel1.Location = new Point(422, 1);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(12, 347);
+            flowLayoutPanel1.TabIndex = 21;
+            // 
+            // CommonKey_TextBox
+            // 
+            CommonKey_TextBox.Location = new Point(61, 54);
+            CommonKey_TextBox.Multiline = true;
+            CommonKey_TextBox.Name = "CommonKey_TextBox";
+            CommonKey_TextBox.Size = new Size(209, 134);
+            CommonKey_TextBox.TabIndex = 22;
             // 
             // Server
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(750, 347);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.Registration_Button);
-            this.Controls.Add(this.Password_Textbox);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.R_Login_TextBox);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Name = "Server";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.AppWorkspace;
+            ClientSize = new Size(750, 347);
+            Controls.Add(CommonKey_TextBox);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(Registration_Button);
+            Controls.Add(Password_Textbox);
+            Controls.Add(label9);
+            Controls.Add(R_Login_TextBox);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Name = "Server";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -133,5 +142,6 @@
         private Label label9;
         private Button Registration_Button;
         private FlowLayoutPanel flowLayoutPanel1;
+        private TextBox CommonKey_TextBox;
     }
 }

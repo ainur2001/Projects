@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cdaa42ce-47a0-4478-95cc-91e8e4db30a8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ComparisonOfSorts/.vs/ComparisonOfSorts/FileContentIndex/7b86c348-6fae-4a93-9054-4aac78b0966b.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComparisonOfSorts/.vs/ComparisonOfSorts/FileContentIndex/f5ddeca1-8efa-441a-b2b6-1fbe04c2bc09.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComparisonOfSorts/.vs/ComparisonOfSorts/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../ComparisonOfSorts/.vs/ComparisonOfSorts/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComparisonOfSorts/.vs/ProjectEvaluation/comparisonofsorts.metadata.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/../ComparisonOfSorts/.vs/ProjectEvaluation/comparisonofsorts.metadata.v6.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ComparisonOfSorts/.vs/ProjectEvaluation/comparisonofsorts.projects.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/../ComparisonOfSorts/.vs/ProjectEvaluation/comparisonofsorts.projects.v6.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/Handshake/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/Handshake/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/Handshake/FileContentIndex/f34e9569-b207-4edb-968a-923a7f244770.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/Handshake/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/Handshake/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/Handshake/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/Handshake/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/ProjectEvaluation/handshake.metadata.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/ProjectEvaluation/handshake.metadata.v6.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/.vs/ProjectEvaluation/handshake.projects.v6.1" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/.vs/ProjectEvaluation/handshake.projects.v6.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Handshake/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Handshake/Client.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Handshake/bin/Debug/net6.0-windows/Client.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Handshake/bin/Debug/net6.0-windows/Client.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Handshake/bin/Debug/net6.0-windows/Client.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Handshake/bin/Debug/net6.0-windows/Client.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/Client.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/Client.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/Client.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/Client.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/Client.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/Client.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/ref/Client.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/ref/Client.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/refint/Client.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Handshake/obj/Debug/net6.0-windows/refint/Client.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/Server.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/Server.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/bin/Debug/net6.0-windows/Server.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/Server.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/ref/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/ref/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/refint/Server.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Debug/net6.0-windows/refint/Server.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/Server.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/Server.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Handshake/Server/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Handshake/Server/obj/project.nuget.cache" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2O38M1R6TR7bo3iJOxgyTvkC2Xc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cdaa42ce-47a0-4478-95cc-91e8e4db30a8" name="Changes" comment="" />
+      <created>1680777857394</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680777857394</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

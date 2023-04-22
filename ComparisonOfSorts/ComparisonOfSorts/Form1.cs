@@ -20,13 +20,13 @@ namespace ComparisonOfSorts
                 int countData = int.Parse(CountData_TextBox.Text);
                 string typeData = TypeData_ComboBox.Text;
                 Stopwatch stopwatch = new();
-                dynamic array = 0; 
+                dynamic array = 0;
 
-                if(typeData == "массив чисел(double)") array = GenerateRandomArray<double>(countData);
-                else if(typeData == "массив чисел(int)") array = GenerateRandomArray<int>(countData);
-                else if(typeData == "массив строк(string)") array = GenerateRandomArray<string>(countData);
-                else if(typeData == "массив дат(DateTime)") array = GenerateRandomArray<DateTime>(countData);
-                
+                if (typeData == "массив чисел(double)") array = GenerateRandomArray<double>(countData);
+                else if (typeData == "массив чисел(int)") array = GenerateRandomArray<int>(countData);
+                else if (typeData == "массив строк(string)") array = GenerateRandomArray<string>(countData);
+                else if (typeData == "массив дат(DateTime)") array = GenerateRandomArray<DateTime>(countData);
+
                 stopwatch.Start();
 
                 if (typeSort == "—ортировка вставкой") InsertionSort(array);
@@ -37,6 +37,7 @@ namespace ComparisonOfSorts
                 else if (typeSort == "—ортировка сли€нием") MergeSort(array);
                 else if (typeSort == "—ортировка кучей") HeapSort(array);
                 else if (typeSort == "¬строенна€ сортировка") Array.Sort(array);
+                else if (typeSort == "ѕирамидальна€ сортировка") PyramidSort(array);
 
                 stopwatch.Stop();
                 TimeSort_TextBox.Text = stopwatch.ElapsedMilliseconds.ToString() + "ms.";
@@ -204,7 +205,7 @@ namespace ComparisonOfSorts
                 Heapify(array, heapSize, i);
             }
 
-           
+
             for (int i = heapSize - 1; i >= 1; i--)
             {
                 Swap(array, i, 0);
@@ -278,5 +279,55 @@ namespace ComparisonOfSorts
             }
             return arr;
         }
+        private static void PyramidSort<T>(T[] arr) where T : IComparable<T>
+        {
+            int n = arr.Length;
+
+            // Build max heap
+            for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                Heapify(arr, n, i);
+            }
+
+            // Extract elements from heap in sorted order
+            for (int i = n - 1; i >= 0; i--)
+            {
+                // Swap root and last element
+                T temp = arr[0];
+                arr[0] = arr[i];
+                arr[i] = temp;
+
+                // Heapify reduced heap
+                Heapify(arr, i, 0);
+            }
+        }
+        private static void HeapifyForPyramid<T>(T[] arr, int n, int i) where T : IComparable<T>
+        {
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+
+            if (left < n && arr[left].CompareTo(arr[largest]) > 0)
+            {
+                largest = left;
+            }
+
+            if (right < n && arr[right].CompareTo(arr[largest]) > 0)
+            {
+                largest = right;
+            }
+
+            if (largest != i)
+            {
+                // Swap elements
+                T temp = arr[i];
+                arr[i] = arr[largest];
+                arr[largest] = temp;
+
+                // Recursively heapify sub-tree
+                Heapify(arr, n, largest);
+            }
+        }
+
     }
 }

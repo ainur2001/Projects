@@ -184,6 +184,16 @@
         "runtime": {
           "lib/portable-win+net45+sl50+wp80/XAct.Core.PCL.dll": {}
         }
+      },
+      "class_RSA/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/class_RSA.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/class_RSA.dll": {}
+        }
       }
     }
   },
@@ -556,13 +566,19 @@
         "xact.core.pcl.0.0.5014.nupkg.sha512",
         "xact.core.pcl.nuspec"
       ]
+    },
+    "class_RSA/1.0.0": {
+      "type": "project",
+      "path": "../../class_RSA/class_RSA/class_RSA.csproj",
+      "msbuildProject": "../../class_RSA/class_RSA/class_RSA.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "Newtonsoft.Json >= 13.0.3",
       "System.Data.SqlClient >= 4.8.5",
-      "XAct.Core.PCL >= 0.0.5014"
+      "XAct.Core.PCL >= 0.0.5014",
+      "class_RSA >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -591,7 +607,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\class_RSA\\class_RSA\\class_RSA.csproj": {
+              "projectPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\class_RSA\\class_RSA\\class_RSA.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

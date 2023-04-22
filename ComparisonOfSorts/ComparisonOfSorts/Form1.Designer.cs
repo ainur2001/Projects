@@ -37,15 +37,16 @@
             label5 = new Label();
             TimeSort_TextBox = new TextBox();
             Sort_Button = new Button();
+            label4 = new Label();
             SuspendLayout();
             // 
             // TypeSort_ComboBox
             // 
             TypeSort_ComboBox.FormattingEnabled = true;
-            TypeSort_ComboBox.Items.AddRange(new object[] { "Сортировка вставкой", "Сортировка пузырьком", "Сортировка выбором", "Сортировка Шелла", "Быстрая сортировка", "Сортировка слиянием", "Сортировка кучей", "Встроенная сортировка" });
+            TypeSort_ComboBox.Items.AddRange(new object[] { "Сортировка вставкой", "Сортировка пузырьком", "Сортировка выбором", "Сортировка Шелла", "Быстрая сортировка", "Сортировка слиянием", "Пирамидальная сортировка", "Сортировка кучей", "Встроенная сортировка" });
             TypeSort_ComboBox.Location = new Point(161, 16);
             TypeSort_ComboBox.Name = "TypeSort_ComboBox";
-            TypeSort_ComboBox.Size = new Size(168, 23);
+            TypeSort_ComboBox.Size = new Size(178, 23);
             TypeSort_ComboBox.TabIndex = 0;
             // 
             // label1
@@ -60,7 +61,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 45);
+            label2.Location = new Point(12, 74);
             label2.Name = "label2";
             label2.Size = new Size(143, 15);
             label2.TabIndex = 2;
@@ -68,7 +69,7 @@
             // 
             // CountData_TextBox
             // 
-            CountData_TextBox.Location = new Point(161, 45);
+            CountData_TextBox.Location = new Point(161, 74);
             CountData_TextBox.Name = "CountData_TextBox";
             CountData_TextBox.Size = new Size(80, 23);
             CountData_TextBox.TabIndex = 3;
@@ -76,7 +77,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 73);
+            label3.Location = new Point(12, 45);
             label3.Name = "label3";
             label3.Size = new Size(124, 15);
             label3.TabIndex = 4;
@@ -86,7 +87,7 @@
             // 
             TypeData_ComboBox.FormattingEnabled = true;
             TypeData_ComboBox.Items.AddRange(new object[] { "массив чисел(double)", "массив чисел(int)", "массив строк(string)", "массив дат(DateTime)" });
-            TypeData_ComboBox.Location = new Point(161, 73);
+            TypeData_ComboBox.Location = new Point(161, 45);
             TypeData_ComboBox.Name = "TypeData_ComboBox";
             TypeData_ComboBox.Size = new Size(168, 23);
             TypeData_ComboBox.TabIndex = 5;
@@ -94,7 +95,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 172);
+            label5.Location = new Point(13, 245);
             label5.Name = "label5";
             label5.Size = new Size(113, 15);
             label5.TabIndex = 8;
@@ -102,14 +103,14 @@
             // 
             // TimeSort_TextBox
             // 
-            TimeSort_TextBox.Location = new Point(161, 169);
+            TimeSort_TextBox.Location = new Point(162, 242);
             TimeSort_TextBox.Name = "TimeSort_TextBox";
             TimeSort_TextBox.Size = new Size(100, 23);
             TimeSort_TextBox.TabIndex = 9;
             // 
             // Sort_Button
             // 
-            Sort_Button.Location = new Point(12, 102);
+            Sort_Button.Location = new Point(13, 175);
             Sort_Button.Name = "Sort_Button";
             Sort_Button.Size = new Size(123, 42);
             Sort_Button.TabIndex = 10;
@@ -117,11 +118,21 @@
             Sort_Button.UseVisualStyleBackColor = true;
             Sort_Button.Click += Sort_Button_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(13, 100);
+            label4.Name = "label4";
+            label4.Size = new Size(143, 15);
+            label4.TabIndex = 11;
+            label4.Text = "Кол-во входных данных:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(351, 210);
+            ClientSize = new Size(1054, 507);
+            Controls.Add(label4);
             Controls.Add(Sort_Button);
             Controls.Add(TimeSort_TextBox);
             Controls.Add(label5);
@@ -148,5 +159,6 @@
         private Label label5;
         private TextBox TimeSort_TextBox;
         private Button Sort_Button;
+        private Label label4;
     }
 }
