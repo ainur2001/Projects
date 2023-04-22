@@ -7,7 +7,6 @@ using System.Numerics;
 using System.Text.Json;
 using System.Security.Policy;
 using Newtonsoft.Json;
-//using System.Security.Cryptography;
 using class_RSA;
 
 namespace Server
@@ -18,19 +17,20 @@ namespace Server
         public static TcpListener serverSocket = new(IPAddress.Parse("127.0.0.1"), 7000);
         public static TcpClient clientSocket = new();
         public static NetworkStream stream;
+        public static BigInteger CommonKey = 0;
         Task task;
 
         public Server()
         {
             InitializeComponent();
-            //task = new Task(() => StartServer());
-            //task.Start();
+            task = new Task(() => Authentication());
+            task.Start();
 
             //task = new Task(() => EDidS());
             //task.Start();
 
-            task = new Task(() => DiffieHellman());
-            task.Start();
+            //task = new Task(() => DiffieHellman());
+            //task.Start();
         }
         private void Registration_Button_Click(object sender, EventArgs e)
         {
@@ -70,7 +70,7 @@ namespace Server
             }
         }
 
-        public void StartServer()
+        public void Authentication()
         {
             string answer = "";
             byte[] bytesIn = new byte[256];
@@ -95,15 +95,12 @@ namespace Server
                         stream.Write(bytesOut, 0, bytesOut.Length);
                         stream.Flush();
                         clientSocket.Close();
-                        StartServer();
-                        //throw new Exception("Пользователя с таким логином не существует!");
+                        Authentication();
                     }
                     string HashPassword, Salt;
                     (HashPassword, Salt) = GetRegistrationData(login);
-                    //string HashSalt = ComputeSHA256Hash(Salt);
 
                     string CW = DateTime.Now.ToString();
-                    ;
 
 
                     bytesOut = Encoding.UTF8.GetBytes(CW);
@@ -116,7 +113,6 @@ namespace Server
                     string T_s = ComputeSHA256Hash(HashPassword + CW);
 
 
-
                     if (T_c != T_s) // если Т клиента != Т сервера
                     {
                         answer = "3"; // отсылаем ошибку 3(Пароль введен неверно)
@@ -124,8 +120,7 @@ namespace Server
                         stream.Write(bytesOut, 0, bytesOut.Length);
                         stream.Flush();
                         clientSocket.Close();
-                        StartServer();
-                        //throw new Exception("Пароль пользователя введен неверно!");
+                        Authentication();
                     }
                     else break;
                 }
@@ -133,15 +128,14 @@ namespace Server
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                StartServer();
+                Authentication();
             }
-            //MessageBox.Show("Пользователь успешно вошел");
             answer = "1";
             bytesOut = Encoding.UTF8.GetBytes(answer);
             stream.Write(bytesOut, 0, bytesOut.Length);
+            DiffieHellman2();
             stream.Flush();
             clientSocket.Close();
-            StartServer();
         }
         public void EDidS()
         {
@@ -251,8 +245,7 @@ namespace Server
                     var buffer2 = Encoding.UTF8.GetBytes(json2);
                     stream.Write(buffer2, 0, buffer2.Length); // отправили В
 
-                    BigInteger CommonKey = BigInteger.ModPow(A, b, p);
-                    CommonKey_TextBox.Text = "модуль: " + p.ToString() + "\r\nгенератор группы: " + g.ToString() + "\r\nэкспанента b: " + b.ToString() + "\r\nобщий ключ: " + CommonKey.ToString();
+                    CommonKey = BigInteger.ModPow(A, b, p);
                     stream.Flush();
                     clientSocket.Close();
                     DiffieHellman();
@@ -327,5 +320,36 @@ namespace Server
             }
             return result;
         }
+
+
+
+        public void DiffieHellman2()
+        {
+            var buffer = new byte[1280];
+            var bytesRead = stream.Read(buffer, 0, buffer.Length);
+            var json = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+
+            var data = JsonConvert.DeserializeObject<dynamic>(json);
+
+            BigInteger p = data.p; // получили генератор группы(g) и модуль(p)
+            BigInteger g = data.g;
+
+            BigInteger A = data.A; // получили A 
+
+            BigInteger b = GenerateNumber(256);
+            BigInteger B = BigInteger.ModPow(g, b, p);
+
+            var data2 = new
+            {
+                B = B,
+            };
+            var json2 = JsonConvert.SerializeObject(data2);
+            var buffer2 = Encoding.UTF8.GetBytes(json2);
+            stream.Write(buffer2, 0, buffer2.Length); // отправили В
+
+            CommonKey = BigInteger.ModPow(A, b, p);
+        }
+
+
     }
 }

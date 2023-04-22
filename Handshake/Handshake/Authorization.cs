@@ -5,19 +5,22 @@ using System.Numerics;
 using System.Text;
 using XSystem.Security.Cryptography;
 using Newtonsoft.Json;
+using Client;
 
 namespace Handshake
 {
     public partial class Authorization : Form
     {
+        public static BigInteger CommonKey;
+        public static TcpClient client = new("127.0.0.1", 7000);
+        public static NetworkStream stream;
+        
         public Authorization()
         {
             InitializeComponent();
         }
         private void SignIn_Button_Click(object sender, EventArgs e)
         {
-            TcpClient client = new("127.0.0.1", 7000);
-            NetworkStream stream;
             stream = client.GetStream();
             string answer = "";
             try
@@ -47,8 +50,6 @@ namespace Handshake
 
                 length = stream.Read(bytesIn, 0, bytesIn.Length);
                 answer = Encoding.UTF8.GetString(bytesIn, 0, length); //получаем ответ от сервера: 3 - пароль неверный, 1 - аутентификация успешна
-                stream.Flush();
-                client.Close();
                 if (answer == "3") throw new Exception("Пароль введен неверно!");
             }
             catch (Exception ex)
@@ -58,7 +59,13 @@ namespace Handshake
             if (answer == "1")
             {
                 MessageBox.Show("Вы успешно авторизовались!");
-                }
+                DiffieHellman();
+                Hide();
+                Chat chat = new();
+                chat.Show();
+                stream.Flush();
+                client.Close();
+            }
         }
         public static string ComputeSHA256Hash(string text)
         {
@@ -159,51 +166,6 @@ namespace Handshake
                 number.RemoveAt(number.Count - 1);
             }
             return result;
-        }
-
-        static public BigInteger CommonKey = 0;
-
-        private void DiffieHellman_Button_Click(object sender, EventArgs e)
-        {
-            TcpClient client = new("127.0.0.1", 7000);
-            NetworkStream stream;
-            stream = client.GetStream();
-
-            try
-            {
-                stream = client.GetStream();
-                BigInteger p = GeneratingPrimeNumber(50);
-                BigInteger g = FindPrimitiveRoot(p);
-
-                BigInteger a = GenerateNumber(256);
-                BigInteger A = BigInteger.ModPow(g, a, p);
-
-                var data = new
-                {
-                    p = p,
-                    g = g,
-                    A = A
-                };
-                var json = JsonConvert.SerializeObject(data);
-                var buffer = Encoding.UTF8.GetBytes(json);
-                stream.Write(buffer, 0, buffer.Length);
-
-                var buffer2 = new byte[512];
-                var bytesRead = stream.Read(buffer2, 0, buffer2.Length);
-                var json2 = Encoding.UTF8.GetString(buffer2, 0, bytesRead);
-                var data2 = JsonConvert.DeserializeObject<dynamic>(json2);
-
-                BigInteger B = data2.B;
-
-                CommonKey = BigInteger.ModPow(B, a, p);
-                CommonKey_TextBox.Text = "модуль: " + p.ToString() + "\r\nгенератор группы: " + g.ToString() + "\r\nэкспанента а: " + a.ToString() + "\r\nобщий ключ: " + CommonKey.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            stream.Flush();
-            client.Close();
         }
         public BigInteger GeneratingPrimeNumber(int bitNumber)
         {
@@ -312,6 +274,33 @@ namespace Handshake
             }
 
             return -1;
+        }
+        public void DiffieHellman()
+        {
+            BigInteger p = GeneratingPrimeNumber(50);
+            BigInteger g = FindPrimitiveRoot(p);
+
+            BigInteger a = GenerateNumber(256);
+            BigInteger A = BigInteger.ModPow(g, a, p);
+
+            var data = new
+            {
+                p = p,
+                g = g,
+                A = A
+            };
+            var json = JsonConvert.SerializeObject(data);
+            var buffer = Encoding.UTF8.GetBytes(json);
+            stream.Write(buffer, 0, buffer.Length);
+
+            var buffer2 = new byte[512];
+            var bytesRead = stream.Read(buffer2, 0, buffer2.Length);
+            var json2 = Encoding.UTF8.GetString(buffer2, 0, bytesRead);
+            var data2 = JsonConvert.DeserializeObject<dynamic>(json2);
+
+            BigInteger B = data2.B;
+
+            CommonKey = BigInteger.ModPow(B, a, p);
         }
     }
 }
