@@ -6,7 +6,6 @@ namespace Client
 {
     public partial class Chat : Form
     {
-        public string rus = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя0123456789";
         private BigInteger CommonKey = Handshake.Authorization.CommonKey;
         public Chat()
         {
@@ -34,10 +33,11 @@ namespace Client
             string BinaryCodeText = "";
             string BinaryKey = "";
 
-            BinaryCodeText = string.Join(separator: "", message.Select(item => Convert.ToString((int)item, 2)).ToArray());
-            BinaryKey = string.Join(separator: "", key.ToString().Select(item => Convert.ToString((int)item, 2)).ToArray());
+            BinaryCodeText = string.Join(separator: "", message.Select(item => string.Join("", Enumerable.Repeat("0", 8 - Convert.ToString((int)item, 2).Length).ToArray()) + Convert.ToString((int)item, 2)).ToArray());
+            BinaryKey = string.Join(separator: "", key.ToString().Select(item => string.Join("", Enumerable.Repeat("0", 8 - Convert.ToString((int)item, 2).Length).ToArray()) + Convert.ToString((int)item, 2)).ToArray());
+
             if (BinaryCodeText.Length < BinaryKey.Length)
-                BinaryKey = string.Join("", Enumerable.Repeat(BinaryKey, ((BinaryCodeText.Length - BinaryKey.Length) / BinaryKey.Length) + 1));
+                BinaryKey = string.Join(separator: "", Enumerable.Repeat(BinaryKey, ((BinaryCodeText.Length - BinaryKey.Length) / BinaryKey.Length) + 1));
             return (BinaryCodeText, BinaryKey);
         }
 
@@ -47,7 +47,7 @@ namespace Client
 
             for (int i = 0; i < BinaryCodeText.Length; i++)
             {
-                result += (((int)BinaryCodeText[i] + (int)BinaryKey[i]) % 2).ToString();
+                result += (((int)BinaryCodeText[i] + (int)BinaryKey[i%BinaryKey.Length]) % 2).ToString();
             }
             return result;
         }
@@ -57,7 +57,20 @@ namespace Client
             return Encrypt(BinaryCodeText, BinaryKey);
         }
 
-        string Decode(string BinaryCodeText) => Encoding.Unicode.GetString(BinaryCodeText.Split("").Select(item => Convert.ToByte(item[0]-'0')).ToArray());
+        string Decode(string BinaryCodeText)
+        {
+            StringBuilder result = new StringBuilder();
+            try
+            {
+                while(true)
+                {
+                    result.Append((char)Convert.ToInt32(BinaryCodeText[0..8], 2));
+                    BinaryCodeText = BinaryCodeText[8..];
+                }
+            }
+            catch (ArgumentOutOfRangeException) { }
+            return result.ToString();
+        }
 
     }
 }

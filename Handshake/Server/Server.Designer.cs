@@ -35,7 +35,8 @@
             label9 = new Label();
             Registration_Button = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            CommonKey_TextBox = new TextBox();
+            Chat_TextBox = new TextBox();
+            SendMessage_Button = new Button();
             SuspendLayout();
             // 
             // label7
@@ -103,24 +104,37 @@
             flowLayoutPanel1.BackColor = SystemColors.ActiveCaptionText;
             flowLayoutPanel1.Location = new Point(422, 1);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(12, 347);
+            flowLayoutPanel1.Size = new Size(12, 380);
             flowLayoutPanel1.TabIndex = 21;
             // 
-            // CommonKey_TextBox
+            // Chat_TextBox
             // 
-            CommonKey_TextBox.Location = new Point(61, 54);
-            CommonKey_TextBox.Multiline = true;
-            CommonKey_TextBox.Name = "CommonKey_TextBox";
-            CommonKey_TextBox.Size = new Size(209, 134);
-            CommonKey_TextBox.TabIndex = 22;
+            Chat_TextBox.Location = new Point(12, 47);
+            Chat_TextBox.Multiline = true;
+            Chat_TextBox.Name = "Chat_TextBox";
+            Chat_TextBox.ReadOnly = true;
+            Chat_TextBox.ScrollBars = ScrollBars.Vertical;
+            Chat_TextBox.Size = new Size(393, 245);
+            Chat_TextBox.TabIndex = 22;
+            // 
+            // SendMessage_Button
+            // 
+            SendMessage_Button.Location = new Point(12, 315);
+            SendMessage_Button.Name = "SendMessage_Button";
+            SendMessage_Button.Size = new Size(393, 52);
+            SendMessage_Button.TabIndex = 24;
+            SendMessage_Button.Text = "Отправить сообщение";
+            SendMessage_Button.UseVisualStyleBackColor = true;
+            SendMessage_Button.Click += SendMessage_Button_Click;
             // 
             // Server
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
-            ClientSize = new Size(750, 347);
-            Controls.Add(CommonKey_TextBox);
+            ClientSize = new Size(750, 379);
+            Controls.Add(SendMessage_Button);
+            Controls.Add(Chat_TextBox);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(Registration_Button);
             Controls.Add(Password_Textbox);
@@ -142,6 +156,7 @@
         private Label label9;
         private Button Registration_Button;
         private FlowLayoutPanel flowLayoutPanel1;
-        private TextBox CommonKey_TextBox;
+        private TextBox Chat_TextBox;
+        private Button SendMessage_Button;
     }
 }

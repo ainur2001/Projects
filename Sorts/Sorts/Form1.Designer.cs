@@ -34,16 +34,18 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.CountData_TextBox = new System.Windows.Forms.TextBox();
             this.TypeSort_ComboBox = new System.Windows.Forms.ComboBox();
             this.TypeData_ComboBox = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.TimeSort_TextBox = new System.Windows.Forms.TextBox();
             this.Sort_Button = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -61,7 +63,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 69);
+            this.label1.Location = new System.Drawing.Point(8, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 18);
             this.label1.TabIndex = 0;
@@ -71,7 +73,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(12, 111);
+            this.label2.Location = new System.Drawing.Point(8, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 18);
             this.label2.TabIndex = 1;
@@ -81,27 +83,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(12, 150);
+            this.label3.Location = new System.Drawing.Point(8, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(180, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Кол-во входных данных:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(12, 191);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(164, 18);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Порождение массива:";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(12, 284);
+            this.label5.Location = new System.Drawing.Point(8, 202);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(142, 18);
             this.label5.TabIndex = 4;
@@ -109,7 +101,7 @@
             // 
             // CountData_TextBox
             // 
-            this.CountData_TextBox.Location = new System.Drawing.Point(189, 151);
+            this.CountData_TextBox.Location = new System.Drawing.Point(185, 105);
             this.CountData_TextBox.Multiline = true;
             this.CountData_TextBox.Name = "CountData_TextBox";
             this.CountData_TextBox.Size = new System.Drawing.Size(104, 22);
@@ -128,7 +120,7 @@
             "Пирамидальная сортировка",
             "Сортировка кучей",
             "Встроенная сортировка"});
-            this.TypeSort_ComboBox.Location = new System.Drawing.Point(189, 66);
+            this.TypeSort_ComboBox.Location = new System.Drawing.Point(185, 20);
             this.TypeSort_ComboBox.Name = "TypeSort_ComboBox";
             this.TypeSort_ComboBox.Size = new System.Drawing.Size(162, 21);
             this.TypeSort_ComboBox.TabIndex = 7;
@@ -141,22 +133,14 @@
             "массив чисел(int)",
             "массив строк(string)",
             "массив дат(DateTime)"});
-            this.TypeData_ComboBox.Location = new System.Drawing.Point(189, 112);
+            this.TypeData_ComboBox.Location = new System.Drawing.Point(185, 66);
             this.TypeData_ComboBox.Name = "TypeData_ComboBox";
             this.TypeData_ComboBox.Size = new System.Drawing.Size(141, 21);
             this.TypeData_ComboBox.TabIndex = 8;
             // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(189, 192);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(150, 21);
-            this.comboBox3.TabIndex = 9;
-            // 
             // TimeSort_TextBox
             // 
-            this.TimeSort_TextBox.Location = new System.Drawing.Point(189, 284);
+            this.TimeSort_TextBox.Location = new System.Drawing.Point(185, 202);
             this.TimeSort_TextBox.Multiline = true;
             this.TimeSort_TextBox.Name = "TimeSort_TextBox";
             this.TimeSort_TextBox.Size = new System.Drawing.Size(104, 22);
@@ -165,7 +149,7 @@
             // Sort_Button
             // 
             this.Sort_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Sort_Button.Location = new System.Drawing.Point(13, 222);
+            this.Sort_Button.Location = new System.Drawing.Point(9, 140);
             this.Sort_Button.Name = "Sort_Button";
             this.Sort_Button.Size = new System.Drawing.Size(141, 46);
             this.Sort_Button.TabIndex = 11;
@@ -175,10 +159,11 @@
             // 
             // chart1
             // 
-            chartArea1.AxisX.Title = "время(мс.)";
+            chartArea1.AxisX.Title = "кол-во элементов";
             chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            chartArea1.AxisY.Title = "кол-во элементов";
+            chartArea1.AxisY.Title = "время(мс.)";
             chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            chartArea1.BorderWidth = 2;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -190,37 +175,78 @@
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.EmptyPointStyle.MarkerBorderWidth = 3;
             series1.Legend = "Legend1";
-            series1.LegendText = "Массив чисел(double)";
-            series1.Name = "SeriesDouble";
+            series1.LegendText = "Сортировка вставокй";
+            series1.MarkerSize = 10;
+            series1.Name = "SeriesInsertionSort";
             series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.EmptyPointStyle.MarkerBorderWidth = 3;
             series2.Legend = "Legend1";
-            series2.LegendText = "Массив чисел(int)";
-            series2.Name = "SeriesInt";
+            series2.LegendText = "Сортировка пузырьком";
+            series2.Name = "SeriesBubbleSort";
             series3.BorderWidth = 2;
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.EmptyPointStyle.MarkerBorderWidth = 3;
             series3.Legend = "Legend1";
-            series3.LegendText = "Массив строк";
-            series3.Name = "SeriesString";
+            series3.LegendText = "Сортировка выбором";
+            series3.Name = "SeriesSelectionSort";
+            series4.BorderColor = System.Drawing.Color.Transparent;
             series4.BorderWidth = 2;
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Color = System.Drawing.Color.Fuchsia;
+            series4.EmptyPointStyle.MarkerBorderWidth = 3;
             series4.Legend = "Legend1";
-            series4.LegendText = "Массив дат";
-            series4.Name = "SeriesDateTime";
+            series4.LegendText = "Сортировка Шелла";
+            series4.Name = "SeriesShellSort";
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.Color = System.Drawing.Color.Lime;
+            series5.EmptyPointStyle.MarkerBorderWidth = 3;
+            series5.Legend = "Legend1";
+            series5.LegendText = "Быстрая сортировка";
+            series5.Name = "SeriesQuickSort";
+            series6.BorderWidth = 2;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.EmptyPointStyle.MarkerBorderWidth = 3;
+            series6.Legend = "Legend1";
+            series6.LegendText = "Сортировка слиянием";
+            series6.Name = "SeriesMergeSort";
+            series7.BorderWidth = 2;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.EmptyPointStyle.MarkerBorderWidth = 3;
+            series7.Legend = "Legend1";
+            series7.LegendText = "Сортировка кучей";
+            series7.Name = "SeriesHeapSort";
+            series8.BorderWidth = 2;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            series8.EmptyPointStyle.MarkerBorderWidth = 3;
+            series8.Legend = "Legend1";
+            series8.LegendText = "Встроенная сортировка";
+            series8.Name = "SeriesIncludeSort";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
             this.chart1.Series.Add(series4);
+            this.chart1.Series.Add(series5);
+            this.chart1.Series.Add(series6);
+            this.chart1.Series.Add(series7);
+            this.chart1.Series.Add(series8);
             this.chart1.Size = new System.Drawing.Size(675, 359);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
             title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             title1.Name = "Title1";
-            title1.Text = "График N(t)";
+            title1.Text = "График t(N)";
             this.chart1.Titles.Add(title1);
             // 
             // DrawGraphic_Button
@@ -291,7 +317,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1044, 479);
+            this.ClientSize = new System.Drawing.Size(1561, 479);
             this.Controls.Add(this.Step_TextBox);
             this.Controls.Add(this.End_TextBox);
             this.Controls.Add(this.Begin_TextBox);
@@ -299,12 +325,10 @@
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.Sort_Button);
             this.Controls.Add(this.TimeSort_TextBox);
-            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.TypeData_ComboBox);
             this.Controls.Add(this.TypeSort_ComboBox);
             this.Controls.Add(this.CountData_TextBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -324,12 +348,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox CountData_TextBox;
         private System.Windows.Forms.ComboBox TypeSort_ComboBox;
         private System.Windows.Forms.ComboBox TypeData_ComboBox;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.TextBox TimeSort_TextBox;
         private System.Windows.Forms.Button Sort_Button;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;

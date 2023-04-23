@@ -14,7 +14,7 @@ namespace Handshake
         public static BigInteger CommonKey;
         public static TcpClient client = new("127.0.0.1", 7000);
         public static NetworkStream stream;
-        
+
         public Authorization()
         {
             InitializeComponent();
@@ -60,9 +60,6 @@ namespace Handshake
             {
                 MessageBox.Show("Вы успешно авторизовались!");
                 DiffieHellman();
-                Hide();
-                Chat chat = new();
-                chat.Show();
                 stream.Flush();
                 client.Close();
             }
@@ -301,6 +298,100 @@ namespace Handshake
             BigInteger B = data2.B;
 
             CommonKey = BigInteger.ModPow(B, a, p);
+        }
+
+
+        public void Chat()
+        {
+
+            TcpClient client = new("127.0.0.1", 7000);
+            NetworkStream stream;
+            stream = client.GetStream();
+
+            try
+            {
+                string answer = "";
+
+                byte[] bytesIn = new byte[512];
+                byte[] bytesOut = new byte[512];
+
+                string message = "Hello, kitty!Hello, kitty,Hello, kitty,Hello, kitty";
+                Chat_TextBox.Text += "Вы:\r\n" + message + "\r\n";
+
+                string BinaryCodeText, BinaryCode;
+                (BinaryCodeText, BinaryCode) = Encode(message, CommonKey);
+                var cryptogram = Encrypt(BinaryCodeText, BinaryCode); // зашифровали сообщение
+                Chat_TextBox.Text += "Криптограмма:\r\n" + cryptogram + "\r\n\r\n";
+
+                bytesOut = Encoding.UTF8.GetBytes(cryptogram);
+                stream.Write(bytesOut, 0, bytesOut.Length); // отправили криптограмму
+
+                int length = stream.Read(bytesIn, 0, bytesIn.Length);
+                answer = Encoding.UTF8.GetString(bytesIn, 0, length); // получили криптограмму
+                string receivedMessage = answer;
+                Chat_TextBox.Text += "Сообщение(критограмма):\r\n" + receivedMessage + "\r\n";
+
+                var BinarySourceText = Decrypt(receivedMessage, BinaryCode); // расшифровали сообщение
+                var sourceText = Decode(BinarySourceText);
+                Chat_TextBox.Text += "Расшифрованное сообщение\r\n" + sourceText + "\r\n\r\n";
+                stream.Flush();
+                client.Close();
+            }
+            catch (Exception)
+            {
+                stream.Flush();
+                client.Close();
+                throw;
+            }
+        }
+
+        (string, string) Encode(string message, BigInteger key)
+        {
+            string BinaryCodeText = "";
+            string BinaryKey = "";
+
+            BinaryCodeText = string.Join(separator: "", message.Select(item => string.Join("", Enumerable.Repeat("0", 8 - Convert.ToString((int)item, 2).Length).ToArray()) + Convert.ToString((int)item, 2)).ToArray());
+            BinaryKey = string.Join(separator: "", key.ToString().Select(item => string.Join("", Enumerable.Repeat("0", 8 - Convert.ToString((int)item, 2).Length).ToArray()) + Convert.ToString((int)item, 2)).ToArray());
+
+            if (BinaryCodeText.Length < BinaryKey.Length)
+                BinaryKey = string.Join(separator: "", Enumerable.Repeat(BinaryKey, ((BinaryCodeText.Length - BinaryKey.Length) / BinaryKey.Length) + 1));
+            return (BinaryCodeText, BinaryKey);
+        }
+
+        private string Encrypt(string BinaryCodeText, string BinaryKey)
+        {
+            string result = "";
+
+            for (int i = 0; i < BinaryCodeText.Length; i++)
+            {
+                result += (((int)BinaryCodeText[i] + (int)BinaryKey[i % BinaryKey.Length]) % 2).ToString();
+            }
+            return result;
+        }
+
+        private string Decrypt(string BinaryCodeText, string BinaryKey)
+        {
+            return Encrypt(BinaryCodeText, BinaryKey);
+        }
+
+        string Decode(string BinaryCodeText)
+        {
+            StringBuilder result = new StringBuilder();
+            try
+            {
+                while (true)
+                {
+                    result.Append((char)Convert.ToInt32(BinaryCodeText[0..8], 2));
+                    BinaryCodeText = BinaryCodeText[8..];
+                }
+            }
+            catch (ArgumentOutOfRangeException) { }
+            return result.ToString();
+        }
+
+        private void Send_Button_Click(object sender, EventArgs e)
+        {
+            Chat();
         }
     }
 }

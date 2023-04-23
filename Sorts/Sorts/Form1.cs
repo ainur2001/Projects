@@ -20,7 +20,7 @@ namespace Sorts
             Begin_TextBox.Text = "1000";
             End_TextBox.Text = "10000";
             Step_TextBox.Text = "1000";
-            TypeSort_ComboBox.SelectedIndex = 0;
+            TypeData_ComboBox.SelectedIndex = 0;
         }
 
         private void Sort_Button_Click(object sender, EventArgs e)
@@ -346,9 +346,12 @@ namespace Sorts
             chart1.Series[1].Points.Clear();
             chart1.Series[2].Points.Clear();
             chart1.Series[3].Points.Clear();
+            chart1.Series[4].Points.Clear();
+            chart1.Series[5].Points.Clear();
+            chart1.Series[6].Points.Clear();
+            chart1.Series[7].Points.Clear();
 
             int begin = int.Parse(Begin_TextBox.Text), end = int.Parse(End_TextBox.Text), step = int.Parse(Step_TextBox.Text);
-            string typeSort = TypeSort_ComboBox.Text;
             if (begin > end)
             {
                 MessageBox.Show("Данные не корректны!");
@@ -356,17 +359,30 @@ namespace Sorts
             }
             for (int countData = begin; countData <= end; countData+=step)
             {
-                Stopwatch stopwatchDouble = new Stopwatch();
-                Stopwatch stopwatchInt = new Stopwatch();
-                Stopwatch stopwatchString = new Stopwatch();
-                Stopwatch stopwatchDateTime = new Stopwatch();
+                string typeData = TypeData_ComboBox.Text;
+                dynamic array = 0;
+                if (typeData == "массив чисел(double)") array = GenerateRandomArray<double>(countData);
+                else if (typeData == "массив чисел(int)") array = GenerateRandomArray<int>(countData);
+                else if (typeData == "массив строк(string)") array = GenerateRandomArray<string>(countData);
+                else if (typeData == "массив дат(DateTime)") array = GenerateRandomArray<DateTime>(countData);
 
-                double[] arrayDouble = GenerateRandomArray<double>(countData);
+
+                Stopwatch stopwatchInsertionSort = new Stopwatch();
+                Stopwatch stopwatchBubbleSort = new Stopwatch();
+                Stopwatch stopwatchSelectionSort = new Stopwatch();
+                Stopwatch stopwatchShellSort = new Stopwatch();
+                Stopwatch stopwatchQuickSort = new Stopwatch();
+                Stopwatch stopwatchMergeSort = new Stopwatch();
+                Stopwatch stopwatchHeapSort = new Stopwatch();
+                Stopwatch stopwatchIncludeSort = new Stopwatch();
+
+
+                /*double[] arrayDouble = GenerateRandomArray<double>(countData);
                 int[] arrayInt = GenerateRandomArray<int>(countData);
                 string[] arrayString = GenerateRandomArray<string>(countData);
                 DateTime[] arrayDateTime = GenerateRandomArray<DateTime>(countData);
 
-                if (typeSort == "Сортировка вставкой")
+               if (typeSort == "Сортировка вставкой")
                 {
                     stopwatchDouble.Start();
                     InsertionSort(arrayDouble);
@@ -509,12 +525,51 @@ namespace Sorts
                     stopwatchDateTime.Start();
                     Array.Sort(arrayDateTime);
                     stopwatchDateTime.Stop();
-                }
+                }*/
 
-                chart1.Series[0].Points.AddXY(stopwatchDouble.ElapsedMilliseconds, countData);
-                chart1.Series[1].Points.AddXY(stopwatchInt.ElapsedMilliseconds, countData);
-                chart1.Series[2].Points.AddXY(stopwatchString.ElapsedMilliseconds, countData);
-                chart1.Series[3].Points.AddXY(stopwatchDateTime.ElapsedMilliseconds, countData);
+
+                stopwatchInsertionSort.Start();
+                InsertionSort(array);
+                stopwatchInsertionSort.Stop();
+
+
+                stopwatchBubbleSort.Start();
+                BubbleSort(array);
+                stopwatchBubbleSort.Stop();
+
+                stopwatchSelectionSort.Start();
+                SelectionSort(array);
+                stopwatchSelectionSort.Stop();
+
+                /*stopwatchShellSort.Start();
+                ShellSort(array);
+                stopwatchShellSort.Stop();
+
+                stopwatchQuickSort.Start();
+                QuickSort(array);
+                stopwatchQuickSort.Stop();
+
+                stopwatchMergeSort.Start();
+                MergeSort(array);
+                stopwatchMergeSort.Stop();
+
+                stopwatchHeapSort.Start();
+                HeapSort(array);
+                stopwatchHeapSort.Stop();
+
+                stopwatchIncludeSort.Start();
+                Array.Sort(array);
+                stopwatchIncludeSort.Stop();*/
+
+
+                chart1.Series[0].Points.AddXY(countData, stopwatchInsertionSort.ElapsedMilliseconds);
+                chart1.Series[1].Points.AddXY(countData, stopwatchBubbleSort.ElapsedMilliseconds);
+                chart1.Series[2].Points.AddXY(countData, stopwatchSelectionSort.ElapsedMilliseconds);
+                //chart1.Series[3].Points.AddXY(countData, stopwatchShellSort.ElapsedMilliseconds);
+                //chart1.Series[4].Points.AddXY(countData, stopwatchQuickSort.ElapsedMilliseconds);
+                //chart1.Series[5].Points.AddXY(countData, stopwatchMergeSort.ElapsedMilliseconds);
+                //chart1.Series[6].Points.AddXY(countData, stopwatchHeapSort.ElapsedMilliseconds);
+                //chart1.Series[7].Points.AddXY(countData, stopwatchIncludeSort.ElapsedMilliseconds);
             }
         }
     }

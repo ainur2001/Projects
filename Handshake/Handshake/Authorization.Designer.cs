@@ -31,6 +31,8 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
+            Send_Button = new Button();
+            Chat_TextBox = new TextBox();
             EDS_Button = new Button();
             SignIn_Button = new Button();
             Password_TextBox = new TextBox();
@@ -48,7 +50,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(361, 71);
+            panel1.Size = new Size(996, 71);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -64,6 +66,8 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.AppWorkspace;
+            panel2.Controls.Add(Send_Button);
+            panel2.Controls.Add(Chat_TextBox);
             panel2.Controls.Add(EDS_Button);
             panel2.Controls.Add(SignIn_Button);
             panel2.Controls.Add(Password_TextBox);
@@ -73,8 +77,29 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 71);
             panel2.Name = "panel2";
-            panel2.Size = new Size(361, 242);
+            panel2.Size = new Size(996, 242);
             panel2.TabIndex = 0;
+            // 
+            // Send_Button
+            // 
+            Send_Button.BackColor = SystemColors.ButtonShadow;
+            Send_Button.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            Send_Button.Location = new Point(410, 97);
+            Send_Button.Name = "Send_Button";
+            Send_Button.Size = new Size(81, 58);
+            Send_Button.TabIndex = 8;
+            Send_Button.Text = "Send";
+            Send_Button.UseVisualStyleBackColor = false;
+            Send_Button.Click += Send_Button_Click;
+            // 
+            // Chat_TextBox
+            // 
+            Chat_TextBox.Location = new Point(497, 6);
+            Chat_TextBox.Multiline = true;
+            Chat_TextBox.Name = "Chat_TextBox";
+            Chat_TextBox.ScrollBars = ScrollBars.Vertical;
+            Chat_TextBox.Size = new Size(405, 233);
+            Chat_TextBox.TabIndex = 1;
             // 
             // EDS_Button
             // 
@@ -143,7 +168,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(361, 313);
+            ClientSize = new Size(996, 313);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Authorization";
@@ -166,5 +191,7 @@
         private Label label2;
         private Button SignIn_Button;
         private Button EDS_Button;
+        private TextBox Chat_TextBox;
+        private Button Send_Button;
     }
 }

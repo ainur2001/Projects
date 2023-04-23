@@ -19,6 +19,7 @@ namespace Server
         public static NetworkStream stream;
         public static BigInteger CommonKey = 0;
         Task task;
+        Task task2;
 
         public Server()
         {
@@ -26,11 +27,8 @@ namespace Server
             task = new Task(() => Authentication());
             task.Start();
 
-            //task = new Task(() => EDidS());
-            //task.Start();
-
-            //task = new Task(() => DiffieHellman());
-            //task.Start();
+            //task2 = new Task(() => Chat());
+            //task2.Start();
         }
         private void Registration_Button_Click(object sender, EventArgs e)
         {
@@ -134,8 +132,9 @@ namespace Server
             bytesOut = Encoding.UTF8.GetBytes(answer);
             stream.Write(bytesOut, 0, bytesOut.Length);
             DiffieHellman2();
-            stream.Flush();
-            clientSocket.Close();
+            Chat();
+            //tream.Flush();
+            //clientSocket.Close();
         }
         public void EDidS()
         {
@@ -320,9 +319,6 @@ namespace Server
             }
             return result;
         }
-
-
-
         public void DiffieHellman2()
         {
             var buffer = new byte[1280];
@@ -350,6 +346,98 @@ namespace Server
             CommonKey = BigInteger.ModPow(A, b, p);
         }
 
+        public void Chat()
+        {
+            byte[] bytesIn = new byte[512];
+            byte[] bytesOut = new byte[512];
+
+            try
+            {
+                serverSocket.Start();
+                while (true)
+                {
+                    clientSocket = serverSocket.AcceptTcpClient();
+                    stream = clientSocket.GetStream();
+
+                    int length = stream.Read(bytesIn, 0, bytesIn.Length);
+                    string request = Encoding.UTF8.GetString(bytesIn, 0, length);
+                    string receiveddMessage = request; // получили криптогамму
+                    Chat_TextBox.Text += "Получена криптограмма:\r\n" + receiveddMessage + "\r\n";
+
+                    string BinaryKey = Encode(receiveddMessage, CommonKey).Item2;
+
+                    string BinarySourceText = Decrypt(receiveddMessage, BinaryKey); // получили бинарный код расшифрованного сообщения
+                    string sourcetext = Decode(BinarySourceText); // получили сообщение
+                    Chat_TextBox.Text += "Расшифрованное сообщение:\r\n" + sourcetext + "\r\n\r\n";
+
+
+                    string transmittedMessage = "Hello, Masha!";
+                    Chat_TextBox.Text += "Вы:\r\n" + transmittedMessage + "\r\n";
+                    BinaryKey = Encode(transmittedMessage, CommonKey).Item2;
+                    string BCT = Encode(transmittedMessage, CommonKey).Item1;
+                    string cryptogram = Encrypt(BCT, BinaryKey); // зашифровали наше сообщение
+                    Chat_TextBox.Text += "Криптограмма:\r\n" + cryptogram + "\r\n";
+                    bytesOut = Encoding.UTF8.GetBytes(cryptogram);
+                    stream.Write(bytesOut, 0, bytesOut.Length); // отправили криптограмму
+                }
+            }
+            catch (Exception)
+            {
+                Chat();
+            }
+            Chat();
+            //streamChat.Flush();
+            clientSocket.Close();
+        }
+
+        private void SendMessage_Button_Click(object sender, EventArgs e)
+        {
+            Chat();
+        }
+
+        (string, string) Encode(string message, BigInteger key)
+        {
+            string BinaryCodeText = "";
+            string BinaryKey = "";
+
+            BinaryCodeText = string.Join(separator: "", message.Select(item => string.Join("", Enumerable.Repeat("0", 8 - Convert.ToString((int)item, 2).Length).ToArray()) + Convert.ToString((int)item, 2)).ToArray());
+            BinaryKey = string.Join(separator: "", key.ToString().Select(item => string.Join("", Enumerable.Repeat("0", 8 - Convert.ToString((int)item, 2).Length).ToArray()) + Convert.ToString((int)item, 2)).ToArray());
+
+            if (BinaryCodeText.Length < BinaryKey.Length)
+                BinaryKey = string.Join(separator: "", Enumerable.Repeat(BinaryKey, ((BinaryCodeText.Length - BinaryKey.Length) / BinaryKey.Length) + 1));
+            return (BinaryCodeText, BinaryKey);
+        }
+
+        private string Encrypt(string BinaryCodeText, string BinaryKey)
+        {
+            string result = "";
+
+            for (int i = 0; i < BinaryCodeText.Length; i++)
+            {
+                result += (((int)BinaryCodeText[i] + (int)BinaryKey[i % BinaryKey.Length]) % 2).ToString();
+            }
+            return result;
+        }
+
+        private string Decrypt(string BinaryCodeText, string BinaryKey)
+        {
+            return Encrypt(BinaryCodeText, BinaryKey);
+        }
+
+        string Decode(string BinaryCodeText)
+        {
+            StringBuilder result = new StringBuilder();
+            try
+            {
+                while (true)
+                {
+                    result.Append((char)Convert.ToInt32(BinaryCodeText[0..8], 2));
+                    BinaryCodeText = BinaryCodeText[8..];
+                }
+            }
+            catch (ArgumentOutOfRangeException) { }
+            return result.ToString();
+        }
 
     }
 }
