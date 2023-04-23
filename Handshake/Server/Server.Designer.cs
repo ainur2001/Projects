@@ -37,6 +37,7 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             Chat_TextBox = new TextBox();
             SendMessage_Button = new Button();
+            Message_TextBox = new TextBox();
             SuspendLayout();
             // 
             // label7
@@ -109,7 +110,7 @@
             // 
             // Chat_TextBox
             // 
-            Chat_TextBox.Location = new Point(12, 47);
+            Chat_TextBox.Location = new Point(12, 12);
             Chat_TextBox.Multiline = true;
             Chat_TextBox.Name = "Chat_TextBox";
             Chat_TextBox.ReadOnly = true;
@@ -127,12 +128,22 @@
             SendMessage_Button.UseVisualStyleBackColor = true;
             SendMessage_Button.Click += SendMessage_Button_Click;
             // 
+            // Message_TextBox
+            // 
+            Message_TextBox.Location = new Point(12, 263);
+            Message_TextBox.Multiline = true;
+            Message_TextBox.Name = "Message_TextBox";
+            Message_TextBox.ScrollBars = ScrollBars.Vertical;
+            Message_TextBox.Size = new Size(393, 46);
+            Message_TextBox.TabIndex = 25;
+            // 
             // Server
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(750, 379);
+            Controls.Add(Message_TextBox);
             Controls.Add(SendMessage_Button);
             Controls.Add(Chat_TextBox);
             Controls.Add(flowLayoutPanel1);
@@ -158,5 +169,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private TextBox Chat_TextBox;
         private Button SendMessage_Button;
+        private TextBox Message_TextBox;
     }
 }

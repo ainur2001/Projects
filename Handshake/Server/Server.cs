@@ -19,16 +19,12 @@ namespace Server
         public static NetworkStream stream;
         public static BigInteger CommonKey = 0;
         Task task;
-        Task task2;
 
         public Server()
         {
             InitializeComponent();
             task = new Task(() => Authentication());
             task.Start();
-
-            //task2 = new Task(() => Chat());
-            //task2.Start();
         }
         private void Registration_Button_Click(object sender, EventArgs e)
         {
@@ -131,10 +127,10 @@ namespace Server
             answer = "1";
             bytesOut = Encoding.UTF8.GetBytes(answer);
             stream.Write(bytesOut, 0, bytesOut.Length);
-            DiffieHellman2();
-            Chat();
-            //tream.Flush();
-            //clientSocket.Close();
+            DiffieHellman();
+            Task task2;
+            task2 = new Task(() => Chat());
+            task2.Start();
         }
         public void EDidS()
         {
@@ -212,53 +208,6 @@ namespace Server
             }
         }
 
-        public void DiffieHellman()
-        {
-            try
-            {
-                serverSocket.Start();
-                while (true)
-                {
-                    clientSocket = serverSocket.AcceptTcpClient();
-                    stream = clientSocket.GetStream();
-
-                    var buffer = new byte[1280];
-                    var bytesRead = stream.Read(buffer, 0, buffer.Length);
-                    var json = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-
-                    var data = JsonConvert.DeserializeObject<dynamic>(json);
-
-                    BigInteger p = data.p; // получили генератор группы(g) и модуль(p)
-                    BigInteger g = data.g;
-
-                    BigInteger A = data.A; // получили A 
-
-                    BigInteger b = GenerateNumber(256);
-                    BigInteger B = BigInteger.ModPow(g, b, p);
-
-                    var data2 = new
-                    {
-                        B = B,
-                    };
-                    var json2 = JsonConvert.SerializeObject(data2);
-                    var buffer2 = Encoding.UTF8.GetBytes(json2);
-                    stream.Write(buffer2, 0, buffer2.Length); // отправили В
-
-                    CommonKey = BigInteger.ModPow(A, b, p);
-                    stream.Flush();
-                    clientSocket.Close();
-                    DiffieHellman();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            stream.Flush();
-            clientSocket.Close();
-            DiffieHellman();
-        }
-
         private bool IsRegistered(string login)
         {
             int result;
@@ -319,8 +268,9 @@ namespace Server
             }
             return result;
         }
-        public void DiffieHellman2()
+        public void DiffieHellman()
         {
+
             var buffer = new byte[1280];
             var bytesRead = stream.Read(buffer, 0, buffer.Length);
             var json = Encoding.UTF8.GetString(buffer, 0, bytesRead);
@@ -345,7 +295,6 @@ namespace Server
 
             CommonKey = BigInteger.ModPow(A, b, p);
         }
-
         public void Chat()
         {
             byte[] bytesIn = new byte[512];
@@ -353,12 +302,8 @@ namespace Server
 
             try
             {
-                serverSocket.Start();
                 while (true)
                 {
-                    clientSocket = serverSocket.AcceptTcpClient();
-                    stream = clientSocket.GetStream();
-
                     int length = stream.Read(bytesIn, 0, bytesIn.Length);
                     string request = Encoding.UTF8.GetString(bytesIn, 0, length);
                     string receiveddMessage = request; // получили криптогамму
@@ -369,30 +314,35 @@ namespace Server
                     string BinarySourceText = Decrypt(receiveddMessage, BinaryKey); // получили бинарный код расшифрованного сообщения
                     string sourcetext = Decode(BinarySourceText); // получили сообщение
                     Chat_TextBox.Text += "Расшифрованное сообщение:\r\n" + sourcetext + "\r\n\r\n";
-
-
-                    string transmittedMessage = "Hello, Masha!";
-                    Chat_TextBox.Text += "Вы:\r\n" + transmittedMessage + "\r\n";
-                    BinaryKey = Encode(transmittedMessage, CommonKey).Item2;
-                    string BCT = Encode(transmittedMessage, CommonKey).Item1;
-                    string cryptogram = Encrypt(BCT, BinaryKey); // зашифровали наше сообщение
-                    Chat_TextBox.Text += "Криптограмма:\r\n" + cryptogram + "\r\n";
-                    bytesOut = Encoding.UTF8.GetBytes(cryptogram);
-                    stream.Write(bytesOut, 0, bytesOut.Length); // отправили криптограмму
                 }
             }
             catch (Exception)
             {
-                Chat();
             }
-            Chat();
-            //streamChat.Flush();
-            clientSocket.Close();
         }
-
         private void SendMessage_Button_Click(object sender, EventArgs e)
         {
-            Chat();
+            
+            stream = clientSocket.GetStream();
+            try
+            {
+                byte[] bytesIn = new byte[512];
+                byte[] bytesOut = new byte[512];
+
+                string transmittedMessage = Message_TextBox.Text;
+                Chat_TextBox.Text += "Вы:\r\n" + transmittedMessage + "\r\n";
+
+                string BinaryKey = Encode(transmittedMessage, CommonKey).Item2;
+
+                string BCT = Encode(transmittedMessage, CommonKey).Item1;
+                string cryptogram = Encrypt(BCT, BinaryKey); // зашифровали наше сообщение
+                Chat_TextBox.Text += "Криптограмма:\r\n" + cryptogram + "\r\n\r\n";
+                bytesOut = Encoding.UTF8.GetBytes(cryptogram);
+                stream.Write(bytesOut, 0, bytesOut.Length); // отправили криптограмму
+            }
+            catch (Exception)
+            {
+            }
         }
 
         (string, string) Encode(string message, BigInteger key)

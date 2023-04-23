@@ -6,6 +6,7 @@ using System.Text;
 using XSystem.Security.Cryptography;
 using Newtonsoft.Json;
 using Client;
+using System.Threading.Tasks;
 
 namespace Handshake
 {
@@ -21,6 +22,7 @@ namespace Handshake
         }
         private void SignIn_Button_Click(object sender, EventArgs e)
         {
+            
             stream = client.GetStream();
             string answer = "";
             try
@@ -60,8 +62,11 @@ namespace Handshake
             {
                 MessageBox.Show("Вы успешно авторизовались!");
                 DiffieHellman();
-                stream.Flush();
-                client.Close();
+                Message_TextBox.Enabled = true;
+                Chat_TextBox.Enabled = true;
+                Task task;
+                task = new Task(() => Chat());
+                task.Start();
             }
         }
         public static string ComputeSHA256Hash(string text)
@@ -300,48 +305,32 @@ namespace Handshake
             CommonKey = BigInteger.ModPow(B, a, p);
         }
 
-
         public void Chat()
         {
-
-            TcpClient client = new("127.0.0.1", 7000);
-            NetworkStream stream;
-            stream = client.GetStream();
+            byte[] bytesIn = new byte[512];
+            byte[] bytesOut = new byte[512];
 
             try
             {
-                string answer = "";
+                while (true)
+                {
+                    stream = client.GetStream();
 
-                byte[] bytesIn = new byte[512];
-                byte[] bytesOut = new byte[512];
+                    string answer = "";
+                    int length = stream.Read(bytesIn, 0, bytesIn.Length);
+                    answer = Encoding.UTF8.GetString(bytesIn, 0, length); // получили криптограмму
+                    string receivedMessage = answer;
+                    Chat_TextBox.Text += "Сообщение(критограмма):\r\n" + receivedMessage + "\r\n";
 
-                string message = "Hello, kitty!Hello, kitty,Hello, kitty,Hello, kitty";
-                Chat_TextBox.Text += "Вы:\r\n" + message + "\r\n";
 
-                string BinaryCodeText, BinaryCode;
-                (BinaryCodeText, BinaryCode) = Encode(message, CommonKey);
-                var cryptogram = Encrypt(BinaryCodeText, BinaryCode); // зашифровали сообщение
-                Chat_TextBox.Text += "Криптограмма:\r\n" + cryptogram + "\r\n\r\n";
-
-                bytesOut = Encoding.UTF8.GetBytes(cryptogram);
-                stream.Write(bytesOut, 0, bytesOut.Length); // отправили криптограмму
-
-                int length = stream.Read(bytesIn, 0, bytesIn.Length);
-                answer = Encoding.UTF8.GetString(bytesIn, 0, length); // получили криптограмму
-                string receivedMessage = answer;
-                Chat_TextBox.Text += "Сообщение(критограмма):\r\n" + receivedMessage + "\r\n";
-
-                var BinarySourceText = Decrypt(receivedMessage, BinaryCode); // расшифровали сообщение
-                var sourceText = Decode(BinarySourceText);
-                Chat_TextBox.Text += "Расшифрованное сообщение\r\n" + sourceText + "\r\n\r\n";
-                stream.Flush();
-                client.Close();
+                    var BinaryCode = Encode(receivedMessage, CommonKey).Item2;
+                    var BinarySourceText = Decrypt(receivedMessage, BinaryCode); // расшифровали сообщение
+                    var sourceText = Decode(BinarySourceText);
+                    Chat_TextBox.Text += "Расшифрованное сообщение\r\n" + sourceText + "\r\n\r\n";
+                }
             }
             catch (Exception)
             {
-                stream.Flush();
-                client.Close();
-                throw;
             }
         }
 
@@ -391,7 +380,26 @@ namespace Handshake
 
         private void Send_Button_Click(object sender, EventArgs e)
         {
-            Chat();
+            stream = client.GetStream();
+            try
+            {
+                byte[] bytesIn = new byte[512];
+                byte[] bytesOut = new byte[512];
+
+                string message = Message_TextBox.Text;
+                Chat_TextBox.Text += "Вы:\r\n" + message + "\r\n";
+
+                string BinaryCodeText, BinaryCode;
+                (BinaryCodeText, BinaryCode) = Encode(message, CommonKey);
+                var cryptogram = Encrypt(BinaryCodeText, BinaryCode); // зашифровали сообщение
+                Chat_TextBox.Text += "Криптограмма:\r\n" + cryptogram + "\r\n\r\n";
+
+                bytesOut = Encoding.UTF8.GetBytes(cryptogram);
+                stream.Write(bytesOut, 0, bytesOut.Length); // отправили криптограмму
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }
