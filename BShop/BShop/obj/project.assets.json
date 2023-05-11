@@ -166,6 +166,18 @@
           }
         }
       },
+      "reCAPTCHA.AspNetCore/3.0.10": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/reCAPTCHA.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/reCAPTCHA.AspNetCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -568,6 +580,19 @@
         "packageIcon.png"
       ]
     },
+    "reCAPTCHA.AspNetCore/3.0.10": {
+      "sha512": "MJ3MCMBWr4gd+JZBXyUyT+YOdnMTNlysRrWKne/B/4hSxrpqERxinenvup6hVkQAoPz0DXzzJDujROEQPwohow==",
+      "type": "package",
+      "path": "recaptcha.aspnetcore/3.0.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/netcoreapp3.1/reCAPTCHA.AspNetCore.dll",
+        "recaptcha.aspnetcore.3.0.10.nupkg.sha512",
+        "recaptcha.aspnetcore.nuspec"
+      ]
+    },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "sha512": "9kyFSIdN3T0qjDQ2R0HRXYIhS3l5psBzQi6qqhdLz+SzFyEy4sVxNOke+yyYv8Cu8rPER12c3RDjLT8wF3WBYQ==",
       "type": "package",
@@ -859,7 +884,8 @@
     "net6.0": [
       "AspNetCoreRateLimit >= 5.0.0",
       "System.Data.SqlClient >= 4.8.5",
-      "XAct.Core.PCL >= 0.0.5014"
+      "XAct.Core.PCL >= 0.0.5014",
+      "reCAPTCHA.AspNetCore >= 3.0.10"
     ]
   },
   "packageFolders": {
@@ -912,6 +938,10 @@
           "XAct.Core.PCL": {
             "target": "Package",
             "version": "[0.0.5014, )"
+          },
+          "reCAPTCHA.AspNetCore": {
+            "target": "Package",
+            "version": "[3.0.10, )"
           }
         },
         "imports": [

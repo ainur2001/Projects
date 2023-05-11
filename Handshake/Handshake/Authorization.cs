@@ -20,55 +20,6 @@ namespace Handshake
         {
             InitializeComponent();
         }
-        private void SignIn_Button_Click(object sender, EventArgs e)
-        {
-            
-            stream = client.GetStream();
-            string answer = "";
-            try
-            {
-                string login = Login_TextBox.Text;
-                string password = Password_TextBox.Text;
-                if (login == "" || password == "") throw new Exception("Необходимо заполнить все поля авторизации");
-                if (login.Contains(' ') || password.Contains(' ')) throw new Exception("Логин и пароль не может содержать в себе пробелы");
-
-
-                byte[] bytesIn = new byte[256];
-                byte[] bytesOut = new byte[256];
-
-                bytesOut = Encoding.UTF8.GetBytes(login);
-                stream.Write(bytesOut, 0, bytesOut.Length); // отсылаем логин
-
-                int length = stream.Read(bytesIn, 0, bytesIn.Length);
-                answer = Encoding.UTF8.GetString(bytesIn, 0, length); //получаем хеш соли, если логин найден. получаем 2, если логин не найден
-                string HashSalt = answer;
-
-                if (answer == "2") throw new Exception("Пользователя с таким логином не существует!");
-
-                string T = ComputeSHA256Hash(ComputeSHA256Hash(password) + HashSalt); //высчитываем Т клиента
-
-                bytesOut = Encoding.UTF8.GetBytes(T);
-                stream.Write(bytesOut, 0, bytesOut.Length); //отсылаем Т клиента
-
-                length = stream.Read(bytesIn, 0, bytesIn.Length);
-                answer = Encoding.UTF8.GetString(bytesIn, 0, length); //получаем ответ от сервера: 3 - пароль неверный, 1 - аутентификация успешна
-                if (answer == "3") throw new Exception("Пароль введен неверно!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            if (answer == "1")
-            {
-                MessageBox.Show("Вы успешно авторизовались!");
-                DiffieHellman();
-                Message_TextBox.Enabled = true;
-                Chat_TextBox.Enabled = true;
-                Task task;
-                task = new Task(() => Chat());
-                task.Start();
-            }
-        }
         public static string ComputeSHA256Hash(string text)
         {
             using (var sha256 = new SHA256Managed())
@@ -304,101 +255,63 @@ namespace Handshake
 
             CommonKey = BigInteger.ModPow(B, a, p);
         }
-
-        public void Chat()
-        {
-            byte[] bytesIn = new byte[512];
-            byte[] bytesOut = new byte[512];
-
-            try
-            {
-                while (true)
-                {
-                    stream = client.GetStream();
-
-                    string answer = "";
-                    int length = stream.Read(bytesIn, 0, bytesIn.Length);
-                    answer = Encoding.UTF8.GetString(bytesIn, 0, length); // получили криптограмму
-                    string receivedMessage = answer;
-                    Chat_TextBox.Text += "Сообщение(критограмма):\r\n" + receivedMessage + "\r\n";
-
-
-                    var BinaryCode = Encode(receivedMessage, CommonKey).Item2;
-                    var BinarySourceText = Decrypt(receivedMessage, BinaryCode); // расшифровали сообщение
-                    var sourceText = Decode(BinarySourceText);
-                    Chat_TextBox.Text += "Расшифрованное сообщение\r\n" + sourceText + "\r\n\r\n";
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        (string, string) Encode(string message, BigInteger key)
-        {
-            string BinaryCodeText = "";
-            string BinaryKey = "";
-
-            BinaryCodeText = string.Join(separator: "", message.Select(item => string.Join("", Enumerable.Repeat("0", 8 - Convert.ToString((int)item, 2).Length).ToArray()) + Convert.ToString((int)item, 2)).ToArray());
-            BinaryKey = string.Join(separator: "", key.ToString().Select(item => string.Join("", Enumerable.Repeat("0", 8 - Convert.ToString((int)item, 2).Length).ToArray()) + Convert.ToString((int)item, 2)).ToArray());
-
-            if (BinaryCodeText.Length < BinaryKey.Length)
-                BinaryKey = string.Join(separator: "", Enumerable.Repeat(BinaryKey, ((BinaryCodeText.Length - BinaryKey.Length) / BinaryKey.Length) + 1));
-            return (BinaryCodeText, BinaryKey);
-        }
-
-        private string Encrypt(string BinaryCodeText, string BinaryKey)
-        {
-            string result = "";
-
-            for (int i = 0; i < BinaryCodeText.Length; i++)
-            {
-                result += (((int)BinaryCodeText[i] + (int)BinaryKey[i % BinaryKey.Length]) % 2).ToString();
-            }
-            return result;
-        }
-
-        private string Decrypt(string BinaryCodeText, string BinaryKey)
-        {
-            return Encrypt(BinaryCodeText, BinaryKey);
-        }
-
-        string Decode(string BinaryCodeText)
-        {
-            StringBuilder result = new StringBuilder();
-            try
-            {
-                while (true)
-                {
-                    result.Append((char)Convert.ToInt32(BinaryCodeText[0..8], 2));
-                    BinaryCodeText = BinaryCodeText[8..];
-                }
-            }
-            catch (ArgumentOutOfRangeException) { }
-            return result.ToString();
-        }
-
-        private void Send_Button_Click(object sender, EventArgs e)
+        private void Voiti_Button_Click(object sender, EventArgs e)
         {
             stream = client.GetStream();
+            string code = "1";
+            string answer = "";
             try
             {
-                byte[] bytesIn = new byte[512];
-                byte[] bytesOut = new byte[512];
 
-                string message = Message_TextBox.Text;
-                Chat_TextBox.Text += "Вы:\r\n" + message + "\r\n";
+                string login = Login_TextBox.Text;
+                string password = Password_TextBox.Text;
+                if (login == "" || password == "") throw new Exception("Необходимо заполнить все поля авторизации");
+                if (login.Contains(' ') || password.Contains(' ')) throw new Exception("Логин и пароль не может содержать в себе пробелы");
 
-                string BinaryCodeText, BinaryCode;
-                (BinaryCodeText, BinaryCode) = Encode(message, CommonKey);
-                var cryptogram = Encrypt(BinaryCodeText, BinaryCode); // зашифровали сообщение
-                Chat_TextBox.Text += "Криптограмма:\r\n" + cryptogram + "\r\n\r\n";
 
-                bytesOut = Encoding.UTF8.GetBytes(cryptogram);
-                stream.Write(bytesOut, 0, bytesOut.Length); // отправили криптограмму
+                byte[] bytesIn = new byte[256];
+                byte[] bytesOut = new byte[256];
+
+                var data = new
+                {
+                    code = code,
+                    login = login
+                };
+
+                var json = JsonConvert.SerializeObject(data);
+
+                var buffer = Encoding.UTF8.GetBytes(json);
+                stream.Write(buffer, 0, buffer.Length);
+
+                int length = stream.Read(bytesIn, 0, bytesIn.Length);
+                answer = Encoding.UTF8.GetString(bytesIn, 0, length);
+                string HashSalt = answer;
+
+                if (answer == "2") throw new Exception("Пользователя с таким логином не существует!");
+
+                string T = ComputeSHA256Hash(ComputeSHA256Hash(password) + HashSalt);
+
+                bytesOut = Encoding.UTF8.GetBytes(T);
+                stream.Write(bytesOut, 0, bytesOut.Length);
+
+                length = stream.Read(bytesIn, 0, bytesIn.Length);
+                answer = Encoding.UTF8.GetString(bytesIn, 0, length);
+                if (answer == "3") throw new Exception("Пароль введен неверно!");
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (answer == "1")
+            {
+                DiffieHellman();
+                MessageBox.Show("Вы успешно авторизовались!");
+
+                ChatClientServer chat = new();
+                Hide();
+                chat.Show();
             }
         }
     }

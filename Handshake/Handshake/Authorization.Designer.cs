@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label4 = new Label();
             label1 = new Label();
             panel2 = new Panel();
-            Message_TextBox = new TextBox();
-            Send_Button = new Button();
-            Chat_TextBox = new TextBox();
+            Voiti_Button = new Button();
             EDS_Button = new Button();
-            SignIn_Button = new Button();
             Password_TextBox = new TextBox();
             label3 = new Label();
             Login_TextBox = new TextBox();
@@ -47,12 +45,21 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDarkDark;
+            panel1.Controls.Add(label4);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(996, 71);
+            panel1.Size = new Size(339, 71);
             panel1.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(515, 42);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 15);
+            label4.TabIndex = 1;
             // 
             // label1
             // 
@@ -67,11 +74,8 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.AppWorkspace;
-            panel2.Controls.Add(Message_TextBox);
-            panel2.Controls.Add(Send_Button);
-            panel2.Controls.Add(Chat_TextBox);
+            panel2.Controls.Add(Voiti_Button);
             panel2.Controls.Add(EDS_Button);
-            panel2.Controls.Add(SignIn_Button);
             panel2.Controls.Add(Password_TextBox);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(Login_TextBox);
@@ -79,64 +83,32 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 71);
             panel2.Name = "panel2";
-            panel2.Size = new Size(996, 385);
+            panel2.Size = new Size(339, 250);
             panel2.TabIndex = 0;
             // 
-            // Message_TextBox
+            // Voiti_Button
             // 
-            Message_TextBox.Enabled = false;
-            Message_TextBox.Location = new Point(515, 237);
-            Message_TextBox.Multiline = true;
-            Message_TextBox.Name = "Message_TextBox";
-            Message_TextBox.ScrollBars = ScrollBars.Vertical;
-            Message_TextBox.Size = new Size(405, 58);
-            Message_TextBox.TabIndex = 9;
-            // 
-            // Send_Button
-            // 
-            Send_Button.BackColor = SystemColors.ButtonShadow;
-            Send_Button.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            Send_Button.Location = new Point(515, 301);
-            Send_Button.Name = "Send_Button";
-            Send_Button.Size = new Size(405, 58);
-            Send_Button.TabIndex = 8;
-            Send_Button.Text = "Send";
-            Send_Button.UseVisualStyleBackColor = false;
-            Send_Button.Click += Send_Button_Click;
-            // 
-            // Chat_TextBox
-            // 
-            Chat_TextBox.Enabled = false;
-            Chat_TextBox.Location = new Point(515, 6);
-            Chat_TextBox.Multiline = true;
-            Chat_TextBox.Name = "Chat_TextBox";
-            Chat_TextBox.ScrollBars = ScrollBars.Vertical;
-            Chat_TextBox.Size = new Size(405, 225);
-            Chat_TextBox.TabIndex = 1;
+            Voiti_Button.BackColor = SystemColors.ButtonShadow;
+            Voiti_Button.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            Voiti_Button.Location = new Point(46, 150);
+            Voiti_Button.Name = "Voiti_Button";
+            Voiti_Button.Size = new Size(110, 70);
+            Voiti_Button.TabIndex = 7;
+            Voiti_Button.Text = "Войти";
+            Voiti_Button.UseVisualStyleBackColor = false;
+            Voiti_Button.Click += Voiti_Button_Click;
             // 
             // EDS_Button
             // 
             EDS_Button.BackColor = SystemColors.ButtonShadow;
             EDS_Button.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            EDS_Button.Location = new Point(204, 150);
+            EDS_Button.Location = new Point(183, 150);
             EDS_Button.Name = "EDS_Button";
             EDS_Button.Size = new Size(110, 70);
             EDS_Button.TabIndex = 6;
             EDS_Button.Text = "ЭЦП";
             EDS_Button.UseVisualStyleBackColor = false;
             EDS_Button.Click += EDS_Button_Click;
-            // 
-            // SignIn_Button
-            // 
-            SignIn_Button.BackColor = SystemColors.ButtonShadow;
-            SignIn_Button.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            SignIn_Button.Location = new Point(46, 150);
-            SignIn_Button.Name = "SignIn_Button";
-            SignIn_Button.Size = new Size(110, 70);
-            SignIn_Button.TabIndex = 5;
-            SignIn_Button.Text = "Войти";
-            SignIn_Button.UseVisualStyleBackColor = false;
-            SignIn_Button.Click += SignIn_Button_Click;
             // 
             // Password_TextBox
             // 
@@ -181,7 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(996, 456);
+            ClientSize = new Size(339, 321);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Authorization";
@@ -202,10 +174,8 @@
         private Label label3;
         private TextBox Login_TextBox;
         private Label label2;
-        private Button SignIn_Button;
         private Button EDS_Button;
-        private TextBox Chat_TextBox;
-        private Button Send_Button;
-        private TextBox Message_TextBox;
+        private Label label4;
+        private Button Voiti_Button;
     }
 }

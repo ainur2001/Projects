@@ -51,6 +51,10 @@
             "XAct.Core.PCL": {
               "target": "Package",
               "version": "[0.0.5014, )"
+            },
+            "reCAPTCHA.AspNetCore": {
+              "target": "Package",
+              "version": "[3.0.10, )"
             }
           },
           "imports": [

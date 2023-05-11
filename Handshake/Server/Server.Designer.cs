@@ -38,6 +38,7 @@
             Chat_TextBox = new TextBox();
             SendMessage_Button = new Button();
             Message_TextBox = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // label7
@@ -110,12 +111,12 @@
             // 
             // Chat_TextBox
             // 
-            Chat_TextBox.Location = new Point(12, 12);
+            Chat_TextBox.Location = new Point(12, 32);
             Chat_TextBox.Multiline = true;
             Chat_TextBox.Name = "Chat_TextBox";
             Chat_TextBox.ReadOnly = true;
             Chat_TextBox.ScrollBars = ScrollBars.Vertical;
-            Chat_TextBox.Size = new Size(393, 245);
+            Chat_TextBox.Size = new Size(393, 225);
             Chat_TextBox.TabIndex = 22;
             // 
             // SendMessage_Button
@@ -137,12 +138,21 @@
             Message_TextBox.Size = new Size(393, 46);
             Message_TextBox.TabIndex = 25;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 15);
+            label1.TabIndex = 26;
+            // 
             // Server
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(750, 379);
+            Controls.Add(label1);
             Controls.Add(Message_TextBox);
             Controls.Add(SendMessage_Button);
             Controls.Add(Chat_TextBox);
@@ -170,5 +180,6 @@
         private TextBox Chat_TextBox;
         private Button SendMessage_Button;
         private TextBox Message_TextBox;
+        private Label label1;
     }
 }

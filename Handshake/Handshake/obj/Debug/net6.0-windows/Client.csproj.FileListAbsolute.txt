@@ -40,5 +40,5 @@ C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Handshak
 C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Handshake\bin\Debug\net6.0-windows\class_RSA.dll
 C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Handshake\bin\Debug\net6.0-windows\class_RSA.pdb
 C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Handshake\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
-C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Handshake\obj\Debug\net6.0-windows\Client.Chat.resources
 C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Handshake\obj\Debug\net6.0-windows\Handshake.Authorization.resources
+C:\Users\Администратор\Documents\GitHub\Projects\Handshake\Handshake\obj\Debug\net6.0-windows\Client.ChatClientServer.resources

@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Diagnostics.PerformanceData;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sorts
@@ -75,6 +69,7 @@ namespace Sorts
                 arr[j + 1] = key;
             }
         }
+        
         private static void BubbleSort<T>(T[] array) where T : IComparable
         {
             int n = array.Length;
@@ -295,21 +290,17 @@ namespace Sorts
         {
             int n = arr.Length;
 
-            // Build max heap
             for (int i = n / 2 - 1; i >= 0; i--)
             {
                 Heapify(arr, n, i);
             }
 
-            // Extract elements from heap in sorted order
             for (int i = n - 1; i >= 0; i--)
             {
-                // Swap root and last element
                 T temp = arr[0];
                 arr[0] = arr[i];
                 arr[i] = temp;
 
-                // Heapify reduced heap
                 Heapify(arr, i, 0);
             }
         }
@@ -331,12 +322,10 @@ namespace Sorts
 
             if (largest != i)
             {
-                // Swap elements
                 T temp = arr[i];
                 arr[i] = arr[largest];
                 arr[largest] = temp;
 
-                // Recursively heapify sub-tree
                 Heapify(arr, n, largest);
             }
         }
@@ -352,11 +341,6 @@ namespace Sorts
             chart1.Series[7].Points.Clear();
 
             int begin = int.Parse(Begin_TextBox.Text), end = int.Parse(End_TextBox.Text), step = int.Parse(Step_TextBox.Text);
-            if (begin > end)
-            {
-                MessageBox.Show("Данные не корректны!");
-                return;
-            }
             for (int countData = begin; countData <= end; countData+=step)
             {
                 string typeData = TypeData_ComboBox.Text;
@@ -377,157 +361,6 @@ namespace Sorts
                 Stopwatch stopwatchIncludeSort = new Stopwatch();
 
 
-                /*double[] arrayDouble = GenerateRandomArray<double>(countData);
-                int[] arrayInt = GenerateRandomArray<int>(countData);
-                string[] arrayString = GenerateRandomArray<string>(countData);
-                DateTime[] arrayDateTime = GenerateRandomArray<DateTime>(countData);
-
-               if (typeSort == "Сортировка вставкой")
-                {
-                    stopwatchDouble.Start();
-                    InsertionSort(arrayDouble);
-                    stopwatchDouble.Stop();
-
-                    stopwatchInt.Start();
-                    InsertionSort(arrayInt);
-                    stopwatchInt.Stop();
-
-                    stopwatchString.Start();
-                    InsertionSort(arrayString);
-                    stopwatchString.Stop();
-
-                    stopwatchDateTime.Start();
-                    InsertionSort(arrayDateTime);
-                    stopwatchDateTime.Stop();
-                }
-                else if (typeSort == "Сортировка выбором")
-                {
-                    stopwatchDouble.Start();
-                    SelectionSort(arrayDouble);
-                    stopwatchDouble.Stop();
-
-                    stopwatchInt.Start();
-                    SelectionSort(arrayInt);
-                    stopwatchInt.Stop();
-
-                    stopwatchString.Start();
-                    SelectionSort(arrayString);
-                    stopwatchString.Stop();
-
-                    stopwatchDateTime.Start();
-                    SelectionSort(arrayDateTime);
-                    stopwatchDateTime.Stop();
-                }
-                else if (typeSort == "Сортировка пузырьком")
-                {
-                    stopwatchDouble.Start();
-                    BubbleSort(arrayDouble);
-                    stopwatchDouble.Stop();
-
-                    stopwatchInt.Start();
-                    BubbleSort(arrayInt);
-                    stopwatchInt.Stop();
-
-                    stopwatchString.Start();
-                    BubbleSort(arrayString);
-                    stopwatchString.Stop();
-
-                    stopwatchDateTime.Start();
-                    BubbleSort(arrayDateTime);
-                    stopwatchDateTime.Stop();
-                }
-                else if (typeSort == "Сортировка Шелла")
-                {
-                    stopwatchDouble.Start();
-                    ShellSort(arrayDouble);
-                    stopwatchDouble.Stop();
-
-                    stopwatchInt.Start();
-                    ShellSort(arrayInt);
-                    stopwatchInt.Stop();
-
-                    stopwatchString.Start();
-                    ShellSort(arrayString);
-                    stopwatchString.Stop();
-
-                    stopwatchDateTime.Start();
-                    ShellSort(arrayDateTime);
-                    stopwatchDateTime.Stop();
-                }
-                else if (typeSort == "Быстрая сортировка")
-                {
-                    stopwatchDouble.Start();
-                    QuickSort(arrayDouble);
-                    stopwatchDouble.Stop();
-
-                    stopwatchInt.Start();
-                    QuickSort(arrayInt);
-                    stopwatchInt.Stop();
-
-                    stopwatchString.Start();
-                    QuickSort(arrayString);
-                    stopwatchString.Stop();
-
-                    stopwatchDateTime.Start();
-                    QuickSort(arrayDateTime);
-                    stopwatchDateTime.Stop();
-                }
-                else if (typeSort == "Сортировка слиянием")
-                {
-                    stopwatchDouble.Start();
-                    MergeSort(arrayDouble);
-                    stopwatchDouble.Stop();
-
-                    stopwatchInt.Start();
-                    MergeSort(arrayInt);
-                    stopwatchInt.Stop();
-
-                    stopwatchString.Start();
-                    MergeSort(arrayString);
-                    stopwatchString.Stop();
-
-                    stopwatchDateTime.Start();
-                    MergeSort(arrayDateTime);
-                    stopwatchDateTime.Stop();
-                }
-                else if (typeSort == "Сортировка кучей")
-                {
-                    stopwatchDouble.Start();
-                    HeapSort(arrayDouble);
-                    stopwatchDouble.Stop();
-
-                    stopwatchInt.Start();
-                    HeapSort(arrayInt);
-                    stopwatchInt.Stop();
-
-                    stopwatchString.Start();
-                    HeapSort(arrayString);
-                    stopwatchString.Stop();
-
-                    stopwatchDateTime.Start();
-                    HeapSort(arrayDateTime);
-                    stopwatchDateTime.Stop();
-                }
-                else if (typeSort == "Встроенная сортировка")
-                {
-                    stopwatchDouble.Start();
-                    Array.Sort(arrayDouble);
-                    stopwatchDouble.Stop();
-
-                    stopwatchInt.Start();
-                    Array.Sort(arrayInt);
-                    stopwatchInt.Stop();
-
-                    stopwatchString.Start();
-                    Array.Sort(arrayString);
-                    stopwatchString.Stop();
-
-                    stopwatchDateTime.Start();
-                    Array.Sort(arrayDateTime);
-                    stopwatchDateTime.Stop();
-                }*/
-
-
                 stopwatchInsertionSort.Start();
                 InsertionSort(array);
                 stopwatchInsertionSort.Stop();
@@ -541,7 +374,7 @@ namespace Sorts
                 SelectionSort(array);
                 stopwatchSelectionSort.Stop();
 
-                /*stopwatchShellSort.Start();
+                stopwatchShellSort.Start();
                 ShellSort(array);
                 stopwatchShellSort.Stop();
 
@@ -559,17 +392,17 @@ namespace Sorts
 
                 stopwatchIncludeSort.Start();
                 Array.Sort(array);
-                stopwatchIncludeSort.Stop();*/
+                stopwatchIncludeSort.Stop();
 
 
                 chart1.Series[0].Points.AddXY(countData, stopwatchInsertionSort.ElapsedMilliseconds);
                 chart1.Series[1].Points.AddXY(countData, stopwatchBubbleSort.ElapsedMilliseconds);
                 chart1.Series[2].Points.AddXY(countData, stopwatchSelectionSort.ElapsedMilliseconds);
-                //chart1.Series[3].Points.AddXY(countData, stopwatchShellSort.ElapsedMilliseconds);
-                //chart1.Series[4].Points.AddXY(countData, stopwatchQuickSort.ElapsedMilliseconds);
-                //chart1.Series[5].Points.AddXY(countData, stopwatchMergeSort.ElapsedMilliseconds);
-                //chart1.Series[6].Points.AddXY(countData, stopwatchHeapSort.ElapsedMilliseconds);
-                //chart1.Series[7].Points.AddXY(countData, stopwatchIncludeSort.ElapsedMilliseconds);
+                chart1.Series[3].Points.AddXY(countData, stopwatchShellSort.ElapsedMilliseconds);
+                chart1.Series[4].Points.AddXY(countData, stopwatchQuickSort.ElapsedMilliseconds);
+                chart1.Series[5].Points.AddXY(countData, stopwatchMergeSort.ElapsedMilliseconds);
+                chart1.Series[6].Points.AddXY(countData, stopwatchHeapSort.ElapsedMilliseconds);
+                chart1.Series[7].Points.AddXY(countData, stopwatchIncludeSort.ElapsedMilliseconds);
             }
         }
     }

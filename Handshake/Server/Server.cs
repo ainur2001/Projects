@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Security.Policy;
 using Newtonsoft.Json;
 using class_RSA;
+using System.Reflection.Emit;
 
 namespace Server
 {
@@ -18,13 +19,14 @@ namespace Server
         public static TcpClient clientSocket = new();
         public static NetworkStream stream;
         public static BigInteger CommonKey = 0;
-        Task task;
 
         public Server()
         {
             InitializeComponent();
-            task = new Task(() => Authentication());
-            task.Start();
+
+            Task serverWork;
+            serverWork = new Task(() => WorkServer());
+            serverWork.Start();
         }
         private void Registration_Button_Click(object sender, EventArgs e)
         {
@@ -63,75 +65,6 @@ namespace Server
                 return BitConverter.ToString(sha256.ComputeHash(Encoding.UTF8.GetBytes(text))).Replace("-", "");
             }
         }
-
-        public void Authentication()
-        {
-            string answer = "";
-            byte[] bytesIn = new byte[256];
-            byte[] bytesOut = new byte[256];
-            try
-            {
-                serverSocket.Start();
-                while (true)
-                {
-                    clientSocket = serverSocket.AcceptTcpClient();
-                    stream = clientSocket.GetStream();
-
-                    int length = stream.Read(bytesIn, 0, bytesIn.Length);
-                    string request = Encoding.UTF8.GetString(bytesIn, 0, length); //получаем логин
-                    string login = request;
-
-
-                    if (!IsRegistered(login)) //если пользователь не зарегистрирован
-                    {
-                        answer = "2";
-                        bytesOut = Encoding.UTF8.GetBytes(answer); // отсылаем ошибку 2(Логин не найден)
-                        stream.Write(bytesOut, 0, bytesOut.Length);
-                        stream.Flush();
-                        clientSocket.Close();
-                        Authentication();
-                    }
-                    string HashPassword, Salt;
-                    (HashPassword, Salt) = GetRegistrationData(login);
-
-                    string CW = DateTime.Now.ToString();
-
-
-                    bytesOut = Encoding.UTF8.GetBytes(CW);
-                    stream.Write(bytesOut, 0, bytesOut.Length); // отсылаем хеш соли
-
-                    length = stream.Read(bytesIn, 0, bytesIn.Length);
-                    request = Encoding.UTF8.GetString(bytesIn, 0, length); // получаем Т клиента
-
-                    string T_c = request;
-                    string T_s = ComputeSHA256Hash(HashPassword + CW);
-
-
-                    if (T_c != T_s) // если Т клиента != Т сервера
-                    {
-                        answer = "3"; // отсылаем ошибку 3(Пароль введен неверно)
-                        bytesOut = Encoding.UTF8.GetBytes(answer);
-                        stream.Write(bytesOut, 0, bytesOut.Length);
-                        stream.Flush();
-                        clientSocket.Close();
-                        Authentication();
-                    }
-                    else break;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                Authentication();
-            }
-            answer = "1";
-            bytesOut = Encoding.UTF8.GetBytes(answer);
-            stream.Write(bytesOut, 0, bytesOut.Length);
-            DiffieHellman();
-            Task task2;
-            task2 = new Task(() => Chat());
-            task2.Start();
-        }
         public void EDidS()
         {
             try
@@ -168,7 +101,7 @@ namespace Server
 
                         string hashNonce2 = ComputeSHA256Hash(nonce2.ToString());
                         var temp2 = hashNonce2.Select(item => ((int)item).ToString()).ToArray();
-                        BigInteger T2 = BigInteger.Parse(string.Join("", temp2)); // T = sha256(nonce)
+                        BigInteger T2 = BigInteger.Parse(string.Join("", temp2));
 
                         BigInteger d2 = rsa.par.d;
                         BigInteger n2 = rsa.par.n;
@@ -207,7 +140,6 @@ namespace Server
                 EDidS();
             }
         }
-
         private bool IsRegistered(string login)
         {
             int result;
@@ -295,34 +227,8 @@ namespace Server
 
             CommonKey = BigInteger.ModPow(A, b, p);
         }
-        public void Chat()
-        {
-            byte[] bytesIn = new byte[512];
-            byte[] bytesOut = new byte[512];
-
-            try
-            {
-                while (true)
-                {
-                    int length = stream.Read(bytesIn, 0, bytesIn.Length);
-                    string request = Encoding.UTF8.GetString(bytesIn, 0, length);
-                    string receiveddMessage = request; // получили криптогамму
-                    Chat_TextBox.Text += "Получена криптограмма:\r\n" + receiveddMessage + "\r\n";
-
-                    string BinaryKey = Encode(receiveddMessage, CommonKey).Item2;
-
-                    string BinarySourceText = Decrypt(receiveddMessage, BinaryKey); // получили бинарный код расшифрованного сообщения
-                    string sourcetext = Decode(BinarySourceText); // получили сообщение
-                    Chat_TextBox.Text += "Расшифрованное сообщение:\r\n" + sourcetext + "\r\n\r\n";
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
         private void SendMessage_Button_Click(object sender, EventArgs e)
         {
-            
             stream = clientSocket.GetStream();
             try
             {
@@ -374,7 +280,7 @@ namespace Server
             return Encrypt(BinaryCodeText, BinaryKey);
         }
 
-        string Decode(string BinaryCodeText)
+        private string Decode(string BinaryCodeText)
         {
             StringBuilder result = new StringBuilder();
             try
@@ -389,5 +295,139 @@ namespace Server
             return result.ToString();
         }
 
+        private void WorkServer()
+        {
+            serverSocket.Start();
+            while (true)
+            {
+                clientSocket = serverSocket.AcceptTcpClient();
+                stream = clientSocket.GetStream();
+                var buffer = new byte[1280];
+
+                var bytesRead = stream.Read(buffer, 0, buffer.Length);
+                var json = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                var data = JsonConvert.DeserializeObject<dynamic>(json);
+                string code = data.code;
+
+
+                // прием сообщений
+                if (code == "2")
+                {
+                    string receiveddMessage = data.cryptogram;
+                    Chat_TextBox.Text += "Сообщение(криптограмма):\r\n" + receiveddMessage + "\r\n";
+
+                    string BinaryKey = Encode(receiveddMessage, CommonKey).Item2;
+
+                    string BinarySourceText = Decrypt(receiveddMessage, BinaryKey);
+                    string sourcetext = Decode(BinarySourceText);
+                    Chat_TextBox.Text += "Расшифрованное сообщение:\r\n" + sourcetext + "\r\n\r\n";
+                        
+                }
+
+                // авторизация + Диффи-Хелман
+                if (code == "1")
+                {
+                    string answer = "";
+                    byte[] bytesIn = new byte[256];
+                    byte[] bytesOut = new byte[256];
+                    try
+                    {
+                        int length;
+                        string request;
+
+                        string login = data.login;
+
+                        if (!IsRegistered(login)) //если пользователь не зарегистрирован
+                        {
+                            answer = "2";
+                            bytesOut = Encoding.UTF8.GetBytes(answer); // отсылаем ошибку 2(Логин не найден)
+                            stream.Write(bytesOut, 0, bytesOut.Length);
+                            break;
+                        }
+                        string HashPassword, Salt;
+                        (HashPassword, Salt) = GetRegistrationData(login);
+
+                        string CW = DateTime.Now.ToString();
+
+                        bytesOut = Encoding.UTF8.GetBytes(CW);
+                        stream.Write(bytesOut, 0, bytesOut.Length); // отсылаем хеш соли
+
+                        length = stream.Read(bytesIn, 0, bytesIn.Length);
+                        request = Encoding.UTF8.GetString(bytesIn, 0, length); // получаем Т клиента
+
+                        string T_c = request;
+                        string T_s = ComputeSHA256Hash(HashPassword + CW);
+
+
+                        if (T_c != T_s) // если Т клиента != Т сервера
+                        {
+                            answer = "3"; // отсылаем ошибку 3(Пароль введен неверно)
+                            bytesOut = Encoding.UTF8.GetBytes(answer);
+                            stream.Write(bytesOut, 0, bytesOut.Length);
+                        }
+                        else
+                        {
+                            answer = "1";
+                            bytesOut = Encoding.UTF8.GetBytes(answer);
+                            stream.Write(bytesOut, 0, bytesOut.Length);
+
+                            DiffieHellman();
+                            label1.Text += "Общий ключ: " + CommonKey.ToString();
+                        }
+                    }
+                    catch (Exception)
+                    { }
+                }
+
+                // ЭЦП
+                if (code == "3")
+                {
+                    BigInteger S1 = data.S1;
+                    BigInteger nonce1 = data.nonce1;
+                    BigInteger e1 = data.e1;
+                    BigInteger n1 = data.n1;
+
+
+                    string hashNonce = ComputeSHA256Hash(nonce1.ToString());
+                    var temp = hashNonce.Select(item => ((int)item).ToString()).ToArray();
+
+                    BigInteger T = BigInteger.Parse(string.Join("", temp));
+                    BigInteger T_strih = BigInteger.ModPow(S1, e1, n1);
+
+                    if (T == T_strih)
+                    {
+                        MessageBox.Show("Ok");
+                        RSA rsa = new();
+                        BigInteger nonce2 = GenerateNumber(256);
+
+                        string hashNonce2 = ComputeSHA256Hash(nonce2.ToString());
+                        var temp2 = hashNonce2.Select(item => ((int)item).ToString()).ToArray();
+                        BigInteger T2 = BigInteger.Parse(string.Join("", temp2));
+
+                        BigInteger d2 = rsa.par.d;
+                        BigInteger n2 = rsa.par.n;
+                        BigInteger e2 = rsa.par.e_;
+
+                        BigInteger S2 = BigInteger.ModPow(T2, d2, n2);
+
+                        var data2 = new
+                        {
+                            S2 = S2,
+                            nonce2 = nonce2,
+                            e2 = e2,
+                            n2 = n2,
+                        };
+
+                        var json2 = JsonConvert.SerializeObject(data2);
+
+                        var buffer2 = Encoding.UTF8.GetBytes(json2);
+                        stream.Write(buffer2, 0, buffer2.Length);
+                    }
+                    else MessageBox.Show("Not ok");
+                }
+
+            }
+                
+        }
     }
 }
