@@ -1,6 +1,7 @@
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
+import math
 
 
 def get_grayscale_image(image_np):
@@ -121,44 +122,71 @@ def hysteresis_thresholding(image, T_low, T_high):
     return visited
 
 
+def hough_transform(edges_image, rho_resolution=1, theta_resolution=np.deg2rad(1), threshold=100):
+    # Вычисление максимальной длины ро (на основе размеров изображения)
+    height, width = edges_image.shape
+    max_rho = int(math.hypot(height, width))
 
-def hough_transform(image, threshold, theta_res):
-    height, width = image.shape
-    diagonal = int(np.sqrt(height**2 + width**2))
-    max_rho = diagonal
-    min_rho = -diagonal
-    num_thetas = int(180 / theta_res)
-    accumulator = np.zeros((num_thetas, 2 * diagonal), dtype=int)
+    # Вычисление диапазонов для ро и тета
+    rhos = np.arange(-max_rho, max_rho, rho_resolution)
+    thetas = np.arange(-np.pi/2, np.pi/2, theta_resolution)
 
-    thetas = np.deg2rad(np.arange(-90.0, 90.0, theta_res))
-    cos_thetas = np.cos(thetas)
-    sin_thetas = np.sin(thetas)
+    # Инициализация кумулятивного массива
+    accumulator = np.zeros((len(rhos), len(thetas)), dtype=int)
 
-    edge_points = np.argwhere(image > threshold)
+    # Нахождение ненулевых пикселей на изображении и обработка каждого пикселя
+    for y in range(height):
+        for x in range(width):
+            if edges_image[y, x] > 0:
+                for t_idx, theta in enumerate(thetas):
+                    rho = int(x * np.cos(theta) + y * np.sin(theta))
+                    rho_idx = np.argmin(np.abs(rhos - rho))
+                    accumulator[rho_idx, t_idx] += 1
 
-    for y, x in edge_points:
-        for theta_idx in range(num_thetas):
-            rho = int(x * cos_thetas[theta_idx] + y * sin_thetas[theta_idx])
-            accumulator[theta_idx, rho + diagonal] += 1
+    # Применение порога для определения значимых линий
+    significant_pixels = np.where(accumulator > threshold)
 
-    smoothed_accumulator = get_blurred_image(accumulator)
+    return accumulator, rhos, thetas, significant_pixels
 
-    peak_threshold = 0.4 * np.max(smoothed_accumulator)
-    peak_points = np.argwhere(smoothed_accumulator > peak_threshold)
+def plot_hough_lines(image, significant_pixels, rhos, thetas):
+    output_image = image.copy()
 
-    return smoothed_accumulator, peak_points, thetas
+    for rho_idx, theta_idx in zip(significant_pixels[0], significant_pixels[1]):
+        rho = rhos[rho_idx]
+        theta = thetas[theta_idx]
+        a = np.cos(theta)
+        b = np.sin(theta)
+        x0 = a * rho
+        y0 = b * rho
+        x1 = int(x0 + 1000 * (-b))
+        y1 = int(y0 + 1000 * (a))
+        x2 = int(x0 - 1000 * (-b))
+        y2 = int(y0 - 1000 * (a))
 
+        # Рисуем линию на изображении
+        plt.plot([x1, x2], [y1, y2], color=(1, 0, 0), linewidth=2)
 
-def draw_line(image, rho, theta):
-    a = np.cos(theta)
-    b = np.sin(theta)
-    x0 = a * rho
-    y0 = b * rho
-    x1 = int(x0 + 1000 * (-b))
-    y1 = int(y0 + 1000 * (a))
-    x2 = int(x0 - 1000 * (-b))
-    y2 = int(y0 - 1000 * (a))
-    plt.plot([x1, x2], [y1, y2], color='red', linewidth=2)
+    plt.imshow(output_image, cmap='gray')
+    plt.title("Исходное изображение с найденными линиями")
+    plt.show()
+
+def plot_hough_steps(image_np, edges_image, accumulator, rhos, thetas):
+    plt.subplot(131)
+    plt.imshow(image_np, cmap='gray')
+    plt.title("Исходное изображение")
+
+    # Отображение бинарного изображения с границами
+    plt.subplot(132)
+    plt.imshow(edges_image, cmap='gray')
+    plt.title("Бинарное изображение с границами")
+
+    # Отображение кумулятивного массива
+    plt.subplot(133)
+    plt.imshow(accumulator, cmap='gray', extent=[np.rad2deg(thetas[0]), np.rad2deg(thetas[-1]), rhos[-1], rhos[0]], aspect='auto')
+    plt.title("Кумулятивный массив")
+
+    plt.show()
+
 
 
 if __name__ == "__main__":
@@ -171,24 +199,7 @@ if __name__ == "__main__":
     suppressed = non_maximum_suppression(gradient_magnitude, quantized_direction)
     edges = hysteresis_thresholding(suppressed, T_low=40, T_high=100)
 
-
-    smoothed_accumulator, peak_points, thetas = hough_transform(edges, threshold=0.5, theta_res=1)
-
-    image_with_lines = plt.imread('0.jpg')
-    
-    for rho_idx, theta_idx in peak_points:
-        rho = rho_idx - len(smoothed_accumulator[0]) // 2
-        theta = thetas[theta_idx]
-        draw_line(image_with_lines, rho, theta)
-
-    plt.figure(figsize=(12, 4))
-    plt.subplot(131)
-    plt.imshow(edges, cmap='gray')
-    plt.title('Binary Image with Edges')
-    plt.subplot(132)
-    plt.imshow(smoothed_accumulator, cmap='gray')
-    plt.title('Hough Transform')
-    plt.subplot(133)
-    plt.imshow(image_with_lines)
-    plt.title('Image with Detected Lines')
-    plt.show()
+    canny_image = edges
+    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image)
+    plot_hough_steps(image_np, canny_image, accumulator, rhos, thetas)
+    plot_hough_lines(canny_image, significant_pixels, rhos, thetas)
