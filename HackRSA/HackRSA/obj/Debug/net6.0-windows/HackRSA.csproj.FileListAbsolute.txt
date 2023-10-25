@@ -1,0 +1,17 @@
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\bin\Debug\net6.0-windows\HackRSA.exe
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\bin\Debug\net6.0-windows\HackRSA.deps.json
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\bin\Debug\net6.0-windows\HackRSA.runtimeconfig.json
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\bin\Debug\net6.0-windows\HackRSA.dll
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\bin\Debug\net6.0-windows\HackRSA.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.csproj.AssemblyReference.cache
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.Form1.resources
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.csproj.GenerateResource.cache
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.AssemblyInfoInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.AssemblyInfo.cs
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.dll
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\refint\HackRSA.dll
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\HackRSA.genruntimeconfig.cache
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\HackRSA\obj\Debug\net6.0-windows\ref\HackRSA.dll

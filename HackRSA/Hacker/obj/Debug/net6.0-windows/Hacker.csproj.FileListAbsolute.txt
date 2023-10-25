@@ -1,0 +1,7 @@
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\Hacker\obj\Debug\net6.0-windows\Hacker.csproj.AssemblyReference.cache
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\Hacker\obj\Debug\net6.0-windows\Hacker.Form1.resources
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\Hacker\obj\Debug\net6.0-windows\Hacker.csproj.GenerateResource.cache
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\Hacker\obj\Debug\net6.0-windows\Hacker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\Hacker\obj\Debug\net6.0-windows\Hacker.AssemblyInfoInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\Hacker\obj\Debug\net6.0-windows\Hacker.AssemblyInfo.cs
+C:\Users\Администратор\Documents\GitHub\Projects\HackRSA\Hacker\obj\Debug\net6.0-windows\Hacker.csproj.CoreCompileInputs.cache

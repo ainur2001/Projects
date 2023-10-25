@@ -1,0 +1,17 @@
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\bin\Debug\net6.0-windows\Reed_Solomon.exe
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\bin\Debug\net6.0-windows\Reed_Solomon.deps.json
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\bin\Debug\net6.0-windows\Reed_Solomon.runtimeconfig.json
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\bin\Debug\net6.0-windows\Reed_Solomon.dll
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\bin\Debug\net6.0-windows\Reed_Solomon.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.csproj.AssemblyReference.cache
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.Form1.resources
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.csproj.GenerateResource.cache
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.AssemblyInfoInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.AssemblyInfo.cs
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.dll
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\refint\Reed_Solomon.dll
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\Reed_Solomon.genruntimeconfig.cache
+C:\Users\Администратор\Documents\GitHub\Projects\Reed_Solomon\Reed_Solomon\obj\Debug\net6.0-windows\ref\Reed_Solomon.dll
