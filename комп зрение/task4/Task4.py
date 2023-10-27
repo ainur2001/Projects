@@ -122,19 +122,16 @@ def hysteresis_thresholding(image, T_low, T_high):
     return visited
 
 
-def hough_transform(edges_image, rho_resolution=1, theta_resolution=np.deg2rad(1), threshold=100):
-    # Вычисление максимальной длины ро (на основе размеров изображения)
-    height, width = edges_image.shape
-    max_rho = int(math.hypot(height, width))
 
-    # Вычисление диапазонов для ро и тета
+
+def hough_transform(edges_image, threshold):
+    height, width = edges_image.shape
+    rho_resolution = 1
+    theta_resolution = np.deg2rad(1)
+    max_rho = int(math.hypot(height, width))
+    accumulator = np.zeros((2 * max_rho, len(np.arange(-np.pi/2, np.pi/2, theta_resolution))), dtype=int)
     rhos = np.arange(-max_rho, max_rho, rho_resolution)
     thetas = np.arange(-np.pi/2, np.pi/2, theta_resolution)
-
-    # Инициализация кумулятивного массива
-    accumulator = np.zeros((len(rhos), len(thetas)), dtype=int)
-
-    # Нахождение ненулевых пикселей на изображении и обработка каждого пикселя
     for y in range(height):
         for x in range(width):
             if edges_image[y, x] > 0:
@@ -143,14 +140,12 @@ def hough_transform(edges_image, rho_resolution=1, theta_resolution=np.deg2rad(1
                     rho_idx = np.argmin(np.abs(rhos - rho))
                     accumulator[rho_idx, t_idx] += 1
 
-    # Применение порога для определения значимых линий
     significant_pixels = np.where(accumulator > threshold)
 
     return accumulator, rhos, thetas, significant_pixels
 
-def plot_hough_lines(image, significant_pixels, rhos, thetas):
-    output_image = image.copy()
 
+def draw_lines(image, significant_pixels, rhos, thetas):
     for rho_idx, theta_idx in zip(significant_pixels[0], significant_pixels[1]):
         rho = rhos[rho_idx]
         theta = thetas[theta_idx]
@@ -163,28 +158,10 @@ def plot_hough_lines(image, significant_pixels, rhos, thetas):
         x2 = int(x0 - 1000 * (-b))
         y2 = int(y0 - 1000 * (a))
 
-        # Рисуем линию на изображении
         plt.plot([x1, x2], [y1, y2], color=(1, 0, 0), linewidth=2)
 
-    plt.imshow(output_image, cmap='gray')
+    plt.imshow(image)
     plt.title("Исходное изображение с найденными линиями")
-    plt.show()
-
-def plot_hough_steps(image_np, edges_image, accumulator, rhos, thetas):
-    plt.subplot(131)
-    plt.imshow(image_np, cmap='gray')
-    plt.title("Исходное изображение")
-
-    # Отображение бинарного изображения с границами
-    plt.subplot(132)
-    plt.imshow(edges_image, cmap='gray')
-    plt.title("Бинарное изображение с границами")
-
-    # Отображение кумулятивного массива
-    plt.subplot(133)
-    plt.imshow(accumulator, cmap='gray', extent=[np.rad2deg(thetas[0]), np.rad2deg(thetas[-1]), rhos[-1], rhos[0]], aspect='auto')
-    plt.title("Кумулятивный массив")
-
     plt.show()
 
 
@@ -197,9 +174,21 @@ if __name__ == "__main__":
     gradient_magnitude, gradient_direction = sobel_filter(blurred_image)
     quantized_direction = round_direction_to_8_angles(gradient_direction)
     suppressed = non_maximum_suppression(gradient_magnitude, quantized_direction)
-    edges = hysteresis_thresholding(suppressed, T_low=40, T_high=100)
+    canny_image = hysteresis_thresholding(suppressed, T_low=40, T_high=100)
 
-    canny_image = edges
-    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image)
-    plot_hough_steps(image_np, canny_image, accumulator, rhos, thetas)
-    plot_hough_lines(canny_image, significant_pixels, rhos, thetas)
+    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=90)
+
+    plt.imshow(image_np)
+    plt.title("Исходное изображение")
+    plt.show()
+    
+    plt.imshow(canny_image, cmap='gray')
+    plt.title("Бинарное изображение с границами")
+    plt.show()
+    
+    plt.imshow(accumulator, cmap='gray', extent=[np.rad2deg(thetas[0]), np.rad2deg(thetas[-1]), rhos[-1], rhos[0]], aspect='auto')
+    plt.scatter(np.rad2deg(thetas[significant_pixels[1]]), rhos[significant_pixels[0]], color='red', s=5)
+    plt.title("Кумулятивный массив с точками максимумов")
+    plt.show()
+
+    draw_lines(image, significant_pixels, rhos, thetas)
