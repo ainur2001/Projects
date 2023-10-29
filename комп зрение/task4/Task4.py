@@ -140,6 +140,7 @@ def hough_transform(edges_image, threshold):
                     rho_idx = np.argmin(np.abs(rhos - rho))
                     accumulator[rho_idx, t_idx] += 1
 
+    accumulator = get_blurred_image(accumulator)
     significant_pixels = np.where(accumulator > threshold)
 
     return accumulator, rhos, thetas, significant_pixels
@@ -178,6 +179,8 @@ if __name__ == "__main__":
 
     accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=90)
 
+    
+
     plt.imshow(image_np)
     plt.title("Исходное изображение")
     plt.show()
@@ -186,9 +189,11 @@ if __name__ == "__main__":
     plt.title("Бинарное изображение с границами")
     plt.show()
     
+
     plt.imshow(accumulator, cmap='gray', extent=[np.rad2deg(thetas[0]), np.rad2deg(thetas[-1]), rhos[-1], rhos[0]], aspect='auto')
     plt.scatter(np.rad2deg(thetas[significant_pixels[1]]), rhos[significant_pixels[0]], color='red', s=5)
     plt.title("Кумулятивный массив с точками максимумов")
     plt.show()
+
 
     draw_lines(image, significant_pixels, rhos, thetas)
