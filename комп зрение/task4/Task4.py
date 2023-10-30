@@ -1,7 +1,6 @@
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
-import math
 
 
 def get_grayscale_image(image_np):
@@ -126,21 +125,20 @@ def hysteresis_thresholding(image, T_low, T_high):
 
 def hough_transform(edges_image, threshold):
     height, width = edges_image.shape
-    rho_resolution = 1
     theta_resolution = np.deg2rad(1)
-    max_rho = int(math.hypot(height, width))
-    accumulator = np.zeros((2 * max_rho, len(np.arange(-np.pi/2, np.pi/2, theta_resolution))), dtype=int)
-    rhos = np.arange(-max_rho, max_rho, rho_resolution)
-    thetas = np.arange(-np.pi/2, np.pi/2, theta_resolution)
+    max_rho = int(np.sqrt(height**2 + width**2))
+    accumulator = np.zeros((max_rho, len(np.arange(-np.pi/2, np.pi, theta_resolution))), dtype=int)
+    rhos = np.arange(0, max_rho)
+    thetas = np.arange(-np.pi/2, np.pi, theta_resolution)
     for y in range(height):
         for x in range(width):
             if edges_image[y, x] > 0:
                 for t_idx, theta in enumerate(thetas):
                     rho = int(x * np.cos(theta) + y * np.sin(theta))
-                    rho_idx = np.argmin(np.abs(rhos - rho))
+                    rho_idx = rho
                     accumulator[rho_idx, t_idx] += 1
 
-    accumulator = get_blurred_image(accumulator)
+    #accumulator = get_blurred_image(accumulator)
     significant_pixels = np.where(accumulator > threshold)
 
     return accumulator, rhos, thetas, significant_pixels
@@ -159,7 +157,7 @@ def draw_lines(image, significant_pixels, rhos, thetas):
         x2 = int(x0 - 1000 * (-b))
         y2 = int(y0 - 1000 * (a))
 
-        plt.plot([x1, x2], [y1, y2], color=(1, 0, 0), linewidth=2)
+        plt.plot([x1, x2], [y1, y2], color="lime", linewidth=2)
 
     plt.imshow(image)
     plt.title("Исходное изображение с найденными линиями")
@@ -168,7 +166,7 @@ def draw_lines(image, significant_pixels, rhos, thetas):
 
 
 if __name__ == "__main__":
-    image = Image.open('0.jpg')
+    image = Image.open('doroga.png')
     image_np = np.array(image)
     grayscale_image = get_grayscale_image(image_np)
     blurred_image = get_blurred_image(grayscale_image)
@@ -177,14 +175,14 @@ if __name__ == "__main__":
     suppressed = non_maximum_suppression(gradient_magnitude, quantized_direction)
     canny_image = hysteresis_thresholding(suppressed, T_low=40, T_high=100)
 
-    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=90)
 
-    
+    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=115)
 
     plt.imshow(image_np)
     plt.title("Исходное изображение")
     plt.show()
     
+
     plt.imshow(canny_image, cmap='gray')
     plt.title("Бинарное изображение с границами")
     plt.show()
