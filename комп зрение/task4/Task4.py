@@ -133,10 +133,10 @@ def hough_transform(edges_image, threshold):
     for y in range(height):
         for x in range(width):
             if edges_image[y, x] > 0:
-                for t_idx, theta in enumerate(thetas):
+                for theta_index, theta in enumerate(thetas):
                     rho = int(x * np.cos(theta) + y * np.sin(theta))
-                    rho_idx = rho
-                    accumulator[rho_idx, t_idx] += 1
+                    rho_index = rho
+                    accumulator[rho_index, theta_index] += 1
 
     #accumulator = get_blurred_image(accumulator)
     significant_pixels = np.where(accumulator > threshold)
@@ -145,8 +145,8 @@ def hough_transform(edges_image, threshold):
 
 
 def draw_lines(image, significant_pixels, rhos, thetas):
-    for rho_idx, theta_idx in zip(significant_pixels[0], significant_pixels[1]):
-        rho = rhos[rho_idx]
+    for rho_index, theta_idx in zip(significant_pixels[0], significant_pixels[1]):
+        rho = rhos[rho_index]
         theta = thetas[theta_idx]
         a = np.cos(theta)
         b = np.sin(theta)
@@ -166,7 +166,7 @@ def draw_lines(image, significant_pixels, rhos, thetas):
 
 
 if __name__ == "__main__":
-    image = Image.open('doroga.png')
+    image = Image.open('0.jpg')
     image_np = np.array(image)
     grayscale_image = get_grayscale_image(image_np)
     blurred_image = get_blurred_image(grayscale_image)
@@ -176,7 +176,7 @@ if __name__ == "__main__":
     canny_image = hysteresis_thresholding(suppressed, T_low=40, T_high=100)
 
 
-    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=115)
+    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=80)
 
     plt.imshow(image_np)
     plt.title("Исходное изображение")
