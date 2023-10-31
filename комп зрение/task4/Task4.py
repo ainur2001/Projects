@@ -177,6 +177,7 @@ if __name__ == "__main__":
 
 
     accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=80)
+    
 
     plt.imshow(image_np)
     plt.title("Исходное изображение")
