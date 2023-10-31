@@ -166,7 +166,7 @@ def draw_lines(image, significant_pixels, rhos, thetas):
 
 
 if __name__ == "__main__":
-    image = Image.open('0.jpg')
+    image = Image.open('doroga.png')
     image_np = np.array(image)
     grayscale_image = get_grayscale_image(image_np)
     blurred_image = get_blurred_image(grayscale_image)
@@ -176,7 +176,7 @@ if __name__ == "__main__":
     canny_image = hysteresis_thresholding(suppressed, T_low=40, T_high=100)
 
 
-    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=80)
+    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=115)
 
     plt.imshow(image_np)
     plt.title("Исходное изображение")
