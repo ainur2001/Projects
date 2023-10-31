@@ -127,7 +127,7 @@ def hough_transform(edges_image, threshold):
     height, width = edges_image.shape
     theta_resolution = np.deg2rad(1)
     max_rho = int(np.sqrt(height**2 + width**2))
-    accumulator = np.zeros((max_rho, len(np.arange(-np.pi/2, np.pi, theta_resolution))), dtype=int)
+    hafa_array = np.zeros((max_rho, len(np.arange(-np.pi/2, np.pi, theta_resolution))), dtype=int)
     rhos = np.arange(0, max_rho)
     thetas = np.arange(-np.pi/2, np.pi, theta_resolution)
     for y in range(height):
@@ -136,18 +136,18 @@ def hough_transform(edges_image, threshold):
                 for theta_index, theta in enumerate(thetas):
                     rho = int(x * np.cos(theta) + y * np.sin(theta))
                     rho_index = rho
-                    accumulator[rho_index, theta_index] += 1
+                    hafa_array[rho_index, theta_index] += 1
 
-    #accumulator = get_blurred_image(accumulator)
-    significant_pixels = np.where(accumulator > threshold)
+    #hafa_array = get_blurred_image(hafa_array)
+    significant_pixels = np.where(hafa_array > threshold)
 
-    return accumulator, rhos, thetas, significant_pixels
+    return hafa_array, rhos, thetas, significant_pixels
 
 
 def draw_lines(image, significant_pixels, rhos, thetas):
-    for rho_index, theta_idx in zip(significant_pixels[0], significant_pixels[1]):
+    for rho_index, theta_index in zip(significant_pixels[0], significant_pixels[1]):
         rho = rhos[rho_index]
-        theta = thetas[theta_idx]
+        theta = thetas[theta_index]
         a = np.cos(theta)
         b = np.sin(theta)
         x0 = a * rho
@@ -176,7 +176,7 @@ if __name__ == "__main__":
     canny_image = hysteresis_thresholding(suppressed, T_low=40, T_high=100)
 
 
-    accumulator, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=115)
+    hafa_array, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=115)
 
     plt.imshow(image_np)
     plt.title("Исходное изображение")
@@ -188,7 +188,7 @@ if __name__ == "__main__":
     plt.show()
     
 
-    plt.imshow(accumulator, cmap='gray', extent=[np.rad2deg(thetas[0]), np.rad2deg(thetas[-1]), rhos[-1], rhos[0]], aspect='auto')
+    plt.imshow(hafa_array, cmap='gray', extent=[np.rad2deg(thetas[0]), np.rad2deg(thetas[-1]), rhos[-1], rhos[0]], aspect='auto')
     plt.scatter(np.rad2deg(thetas[significant_pixels[1]]), rhos[significant_pixels[0]], color='red', s=5)
     plt.title("Кумулятивный массив с точками максимумов")
     plt.show()
