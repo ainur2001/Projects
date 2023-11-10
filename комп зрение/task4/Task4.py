@@ -175,8 +175,8 @@ if __name__ == "__main__":
     suppressed = non_maximum_suppression(gradient_magnitude, quantized_direction)
     canny_image = hysteresis_thresholding(suppressed, T_low=40, T_high=100)
 
-
     hafa_array, rhos, thetas, significant_pixels = hough_transform(canny_image, threshold=115)
+
 
     plt.imshow(image_np)
     plt.title("Исходное изображение")
