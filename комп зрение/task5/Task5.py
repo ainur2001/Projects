@@ -126,28 +126,29 @@ def visualize_orientations(image, keypoints, orientations):
     plt.show()
 
 
-image = np.array(Image.open('photo.png'))
-image = get_grayscale_image(image)
-threshold = 100
-t = 20
+if __name__ == "__main__":
+    image = np.array(Image.open('photo.png'))
+    image = get_grayscale_image(image)
+    threshold = 100
+    t = 20
 
-keypoints = fast_detector(image, t)
-plt.imshow(image, cmap='gray')
-plt.scatter(keypoints[:, 1], keypoints[:, 0], c='r', marker='o', s=5)
-plt.title(f'FAST (t={t})')
-plt.show()
+    keypoints = fast_detector(image, t)
+    plt.imshow(image, cmap='gray')
+    plt.scatter(keypoints[:, 1], keypoints[:, 0], c='r', marker='o', s=5)
+    plt.title(f'FAST (t={t})')
+    plt.show()
 
-harris_values = harris_corner_detector(image, keypoints, threshold)
-plt.imshow(image, cmap='gray')
-plt.scatter(harris_values[:, 1], harris_values[:, 0], c='r', marker='o', s=5)
-plt.title(f'Harris (threshold={threshold})')
-plt.show()
+    harris_values = harris_corner_detector(image, keypoints, threshold)
+    plt.imshow(image, cmap='gray')
+    plt.scatter(harris_values[:, 1], harris_values[:, 0], c='r', marker='o', s=5)
+    plt.title(f'Harris (threshold={threshold})')
+    plt.show()
 
-orientations = compute_orientation(image, harris_values)
-visualize_orientations(image, harris_values, orientations)
+    orientations = compute_orientation(image, harris_values)
+    visualize_orientations(image, harris_values, orientations)
 
-descriptors = brief_descriptor(image, harris_values, orientations)
-np.savetxt('descriptors.txt', descriptors, fmt='%d')
+    descriptors = brief_descriptor(image, harris_values, orientations)
+    np.savetxt('descriptors.txt', descriptors, fmt='%d')
 
 
 
