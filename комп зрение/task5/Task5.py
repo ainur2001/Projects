@@ -1,8 +1,8 @@
-from scipy.ndimage import gaussian_filter
 from scipy.ndimage import sobel
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
+
 
 def get_grayscale_image(image_np):
     red_channel = image_np[:, :, 0]
@@ -10,6 +10,24 @@ def get_grayscale_image(image_np):
     blue_channel = image_np[:, :, 2]
     grayscale_image = (red_channel // 3) + (green_channel // 3) + (blue_channel // 3)
     return grayscale_image
+
+
+def gauss_filter(grayscale_image, sigma):
+    kernel_size = 7
+    kernel = np.fromfunction(
+        lambda x, y: (1 / (2 * np.pi * sigma**2)) * np.exp(-((x - (kernel_size - 1) / 2)**2 + (y - (kernel_size - 1) / 2)**2) / (2 * sigma**2)), (kernel_size, kernel_size))
+    kernel /= np.sum(kernel)
+
+    height, width = grayscale_image.shape
+    extended_image = np.pad(grayscale_image, ((kernel_size // 2, kernel_size // 2), (kernel_size // 2, kernel_size // 2)), mode='reflect')
+    blurred_image = np.zeros_like(grayscale_image, dtype=float)
+
+    for i in range(height):
+        for j in range(width):
+            square = extended_image[i:i + kernel_size, j:j + kernel_size]
+            blurred_image[i, j] = np.sum(square * kernel)
+
+    return blurred_image.astype(np.uint8)
 
 
 def fast_detector(image, t):
@@ -70,9 +88,9 @@ def harris_corner_detector(image, keypoints, threshold):
     I_x = sobel(image, axis=1)
     I_y = sobel(image, axis=0)
 
-    I_x_squared = gaussian_filter(I_x**2, sigma=1)
-    I_y_squared = gaussian_filter(I_y**2, sigma=1)
-    I_xy = gaussian_filter(I_x * I_y, sigma=1)
+    I_x_squared = gauss_filter(I_x**2, sigma=1)
+    I_y_squared = gauss_filter(I_y**2, sigma=1)
+    I_xy = gauss_filter(I_x * I_y, sigma=1)
 
     det_M = I_x_squared * I_y_squared - I_xy**2
     trace_M = I_x_squared + I_y_squared
@@ -80,7 +98,6 @@ def harris_corner_detector(image, keypoints, threshold):
     harris_values = det_M - k * (trace_M**2)
     selected_keypoints = keypoints[harris_values[keypoints[:, 0], keypoints[:, 1]] > threshold]
     return selected_keypoints
-
 
 
 def compute_orientation(image, keypoints):
@@ -114,7 +131,7 @@ def brief_descriptor(image, keypoints, orientations, patch_size=31, n=256):
 
 
 def visualize_orientations(image, keypoints, orientations):
-    fig, ax = plt.subplots(figsize=(10, 10))
+    _, ax = plt.subplots(figsize=(10, 10))
     ax.imshow(image, cmap='gray')
 
     for i, j, angle in zip(keypoints[:, 0], keypoints[:, 1], orientations):
@@ -145,7 +162,7 @@ if __name__ == "__main__":
     plt.show()
 
     orientations = compute_orientation(image, harris_values)
-    visualize_orientations(image, harris_values, orientations)
+    # visualize_orientations(image, harris_values, orientations)
 
     descriptors = brief_descriptor(image, harris_values, orientations)
     np.savetxt('descriptors.txt', descriptors, fmt='%d')
