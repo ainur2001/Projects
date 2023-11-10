@@ -108,14 +108,15 @@ def compute_orientation(image, keypoints):
 
 def brief_descriptor(image, keypoints, orientations, patch_size=31, n=256):
     descriptors = np.zeros((len(keypoints), n), dtype=np.uint8)
+    orientation_set = int((angle + np.pi) / (2 * np.pi / 30)) % 30 # 30 направлений должно быть читай ТЗ
 
     for i, (x, y) in enumerate(keypoints):
         angle = orientations[i]
 
         pairs = np.random.randn(n, 2) * (patch_size**2 / 25)
         pairs = np.clip(pairs, -patch_size, patch_size)
-
-        orientation_set = int((angle + np.pi) / (2 * np.pi / 30)) % 30
+        # генерация должна происходить не одинаково при помощи seed
+        
         pairs += np.array([[x, y]])
         pairs = np.clip(pairs, 0, image.shape[0] - 1)
         pairs = pairs.astype(int)
@@ -147,7 +148,7 @@ if __name__ == "__main__":
     image = np.array(Image.open('photo.png'))
     image = get_grayscale_image(image)
     threshold = 100
-    t = 20
+    t = 10
 
     keypoints = fast_detector(image, t)
     plt.imshow(image, cmap='gray')
