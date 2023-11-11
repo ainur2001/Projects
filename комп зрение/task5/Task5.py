@@ -108,15 +108,14 @@ def compute_orientation(image, keypoints):
 
 def brief_descriptor(image, keypoints, orientations, patch_size=31, n=256):
     descriptors = np.zeros((len(keypoints), n), dtype=np.uint8)
-    orientation_set = int((angle + np.pi) / (2 * np.pi / 30)) % 30 # 30 направлений должно быть читай ТЗ
 
     for i, (x, y) in enumerate(keypoints):
         angle = orientations[i]
+        orientation_set = int((angle + np.pi) / (2 * np.pi / 30)) % 30  # 30 направлений должно быть читай ТЗ
 
         pairs = np.random.randn(n, 2) * (patch_size**2 / 25)
         pairs = np.clip(pairs, -patch_size, patch_size)
         # генерация должна происходить не одинаково при помощи seed
-        
         pairs += np.array([[x, y]])
         pairs = np.clip(pairs, 0, image.shape[0] - 1)
         pairs = pairs.astype(int)
@@ -131,24 +130,11 @@ def brief_descriptor(image, keypoints, orientations, patch_size=31, n=256):
     return descriptors
 
 
-def visualize_orientations(image, keypoints, orientations):
-    _, ax = plt.subplots(figsize=(10, 10))
-    ax.imshow(image, cmap='gray')
-
-    for i, j, angle in zip(keypoints[:, 0], keypoints[:, 1], orientations):
-        dx = 8 * np.cos(angle)
-        dy = 8 * np.sin(angle)
-        ax.arrow(j, i, dx, dy, color='r', head_width=5, head_length=5)
-
-    ax.set_title('Визуализация ориентаций')
-    plt.show()
-
-
 if __name__ == "__main__":
     image = np.array(Image.open('photo.png'))
     image = get_grayscale_image(image)
-    threshold = 100
-    t = 10
+    threshold = 170
+    t = 20
 
     keypoints = fast_detector(image, t)
     plt.imshow(image, cmap='gray')
@@ -163,10 +149,6 @@ if __name__ == "__main__":
     plt.show()
 
     orientations = compute_orientation(image, harris_values)
-    # visualize_orientations(image, harris_values, orientations)
 
     descriptors = brief_descriptor(image, harris_values, orientations)
     np.savetxt('descriptors.txt', descriptors, fmt='%d')
-
-
-
