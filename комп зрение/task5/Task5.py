@@ -100,29 +100,60 @@ def harris_corner_detector(image, keypoints, threshold):
     return selected_keypoints
 
 
-def compute_orientation(image, keypoints):
-    orientations = np.arctan2(sobel(image, axis=0)[keypoints[:, 0], keypoints[:, 1]],
-                              sobel(image, axis=1)[keypoints[:, 0], keypoints[:, 1]])
-    return orientations
+def generate_brief_pairs(n, p, seed=0):
+    np.random.seed(seed) 
+    pairs = np.random.normal(0, (p**2)/25, (n, 2, 2))
+    return pairs
 
 
-def brief_descriptor(image, keypoints, orientations, patch_size=31, n=256):
+def generate_pairs_oriented(angle, n_pairs, p):
+    pairs = []
+    for _ in range(n_pairs):
+        offset1 = np.random.normal(0, p / 5, 2)
+        offset2 = np.random.normal(0, p / 5, 2)
+        rotated_offset1 = rotate(offset1, angle)
+        rotated_offset2 = rotate(offset2, angle)
+        point1 = (rotated_offset1[0], rotated_offset1[1])
+        point2 = (rotated_offset2[0], rotated_offset2[1])
+        pairs.append((point1, point2))
+    return pairs
+
+
+def rotate(vector, angle):
+    x, y = vector
+    new_x = x * np.cos(angle) - y * np.sin(angle)
+    new_y = x * np.sin(angle) + y * np.cos(angle)
+    return (new_x, new_y)
+
+
+def generate_orientation_pairs(num_orientations=30):
+    orientation_pairs = []
+    for i in range(num_orientations):
+        angle = i * (2 * np.pi / num_orientations)
+        pairs = generate_pairs_oriented(angle, 256, 31)
+        orientation_pairs.append(pairs)
+    return orientation_pairs
+
+
+def select_orientation_pair(orientation, orientation_pairs):
+    num = len(orientation_pairs)
+    ind = int(orientation / (2 * np.pi) * num) % num
+    selected_pair = orientation_pairs[ind]
+    return selected_pair
+
+
+def brief_descriptor(image, keypoints, patch_size=31, n=256):
     descriptors = np.zeros((len(keypoints), n), dtype=np.uint8)
-
     for i, (x, y) in enumerate(keypoints):
-        angle = orientations[i]
-        orientation_set = int((angle + np.pi) / (2 * np.pi / 30)) % 30  # 30 направлений должно быть читай ТЗ
 
-        pairs = np.random.randn(n, 2) * (patch_size**2 / 25)
-        pairs = np.clip(pairs, -patch_size, patch_size)
-        # генерация должна происходить не одинаково при помощи seed
+        pairs = generate_brief_pairs(n, patch_size)
         pairs += np.array([[x, y]])
         pairs = np.clip(pairs, 0, image.shape[0] - 1)
         pairs = pairs.astype(int)
 
         for j in range(n):
-            x1, y1 = pairs[j]
-            x2, y2 = pairs[(j + 1) % n]
+            x1, y1 = pairs[j, 0]
+            x2, y2 = pairs[j, 1]
 
             if image[x1, y1] < image[x2, y2]:
                 descriptors[i, j] = 1
@@ -130,11 +161,14 @@ def brief_descriptor(image, keypoints, orientations, patch_size=31, n=256):
     return descriptors
 
 
+
 if __name__ == "__main__":
     image = np.array(Image.open('photo.png'))
     image = get_grayscale_image(image)
     threshold = 170
     t = 20
+    patch_size = 31
+    n_pairs = 256
 
     keypoints = fast_detector(image, t)
     plt.imshow(image, cmap='gray')
@@ -148,7 +182,6 @@ if __name__ == "__main__":
     plt.title(f'Harris (threshold={threshold})')
     plt.show()
 
-    orientations = compute_orientation(image, harris_values)
-
-    descriptors = brief_descriptor(image, harris_values, orientations)
+    orientation_pairs = generate_orientation_pairs()
+    descriptors = brief_descriptor(image, harris_values, patch_size, n_pairs)
     np.savetxt('descriptors.txt', descriptors, fmt='%d')
