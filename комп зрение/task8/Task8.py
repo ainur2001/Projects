@@ -14,6 +14,7 @@ scaler = MinMaxScaler()
 data_normalized = scaler.fit_transform(digits.data)
 
 
+<<<<<<< HEAD
 # инициализация KMeans
 kmeans = KMeans(n_clusters=10, n_init=10, random_state=0)
 
@@ -23,6 +24,16 @@ clusters = kmeans.fit_predict(data_normalized)
 
 
 # поиск доминирующих меток в каждом кластере
+=======
+# Инициализация KMeans
+kmeans = KMeans(n_clusters=10)
+
+
+# Назначение кластеров
+clusters = kmeans.fit_predict(data_normalized)
+
+# Поиск доминирующих меток в каждом кластере
+>>>>>>> 6965bb2bd475de63965b8509851b832d178b6ad7
 labels = np.zeros_like(clusters)
 for i in range(10):
     mask = (clusters == i)
