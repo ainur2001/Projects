@@ -348,6 +348,7 @@ if __name__ == "__main__":
     plt.imshow(img_copy)
     plt.show()
 
+    # не-выбросы
     max_inliers = 0
     inliers = None
     inliers_ind = None
@@ -365,6 +366,7 @@ if __name__ == "__main__":
         before = np.array(before)
         after = np.array(after)
         b = after.flatten()
+        # матрица для СЛАУ
         A = np.zeros((9, 9))
         for i in range(3):
             offset = 0
@@ -375,6 +377,8 @@ if __name__ == "__main__":
         if np.linalg.det(A) == 0:
             continue
         x = np.linalg.solve(A, b)
+        
+        # матрица перспективного преобразования 
         H = x.reshape((3, 3))
         after2 = (H @ match2.T).T
         dist = np.sqrt(np.sum((after2 - match_scene2)**2, axis=1))

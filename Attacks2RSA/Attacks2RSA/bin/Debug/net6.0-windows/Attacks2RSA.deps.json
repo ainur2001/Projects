@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Attacks2RSA/1.0.0": {
+        "dependencies": {
+          "class_RSA": "1.0.0"
+        },
+        "runtime": {
+          "Attacks2RSA.dll": {}
+        }
+      },
+      "class_RSA/1.0.0": {
+        "runtime": {
+          "class_RSA.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Attacks2RSA/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "class_RSA/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

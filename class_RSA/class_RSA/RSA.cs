@@ -1,10 +1,16 @@
 ﻿using System.Numerics;
+using System.Text;
 
 namespace class_RSA
 {
     public class RSA
     {
-        public Parameters par = GenerateParam();
+        public Parameters par;
+        private string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyz ";
+        public RSA(int bitNumber) 
+        {
+            par = GenerateParam(bitNumber);
+        }    
         private static bool TestMR(BigInteger number, int bitNumber)
         {
             bool result = true;
@@ -136,9 +142,9 @@ namespace class_RSA
             }
             return q;
         }
-        private static Parameters GenerateParam()
+        private static Parameters GenerateParam(int bitNumber)
         {
-            int _bitNumber = 512;
+            int _bitNumber = bitNumber;
             BigInteger p = 0;
             BigInteger q = 0;
             BigInteger n = 0;
@@ -172,7 +178,27 @@ namespace class_RSA
         {
             public BigInteger p, q, n, pfi, e_, d;
         }
-
+        public string EncryptText(string text)
+        {
+            StringBuilder result = new();
+            for (int i = 0; i < text.Length; i++)
+            {
+                BigInteger index = ModPow(alphabet.IndexOf(text[i]), par.e_, par.n);
+                result.Append(index);
+                result.Append(' ');
+            }
+            return result.ToString();
+        }
+        public string DecryptText(string text)
+        {
+            StringBuilder result = new();
+            List<BigInteger> cryptogram = text.Trim().Split(" ").Select(item => BigInteger.Parse(item)).ToList();
+            for (int i = 0; i < cryptogram.Count; i++)
+            {
+                BigInteger index = ModPow(cryptogram[i], par.d, par.n) % alphabet.Length;
+                result.Append(alphabet[int.Parse(index.ToString())].ToString());
+            }
+            return result.ToString();
+        }
     }
-
 }
