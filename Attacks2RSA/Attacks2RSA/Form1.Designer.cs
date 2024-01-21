@@ -36,6 +36,23 @@
             EncryptedText_TextBox = new TextBox();
             label3 = new Label();
             DecryptedText_TextBox = new TextBox();
+            Attack_Button = new Button();
+            SelectAttack_ComboBox = new ComboBox();
+            ConutBits_TextBox = new TextBox();
+            label4 = new Label();
+            InitializationRSA_Button = new Button();
+            label5 = new Label();
+            p_TextBox = new TextBox();
+            q_TextBox = new TextBox();
+            label6 = new Label();
+            n_TextBox = new TextBox();
+            label7 = new Label();
+            pfi_TextBox = new TextBox();
+            label8 = new Label();
+            e_TextBox = new TextBox();
+            label9 = new Label();
+            d_TextBox = new TextBox();
+            label10 = new Label();
             SuspendLayout();
             // 
             // SourceText_TextBox
@@ -81,7 +98,7 @@
             // 
             Decrypt_Button.Location = new Point(360, 288);
             Decrypt_Button.Name = "Decrypt_Button";
-            Decrypt_Button.Size = new Size(212, 50);
+            Decrypt_Button.Size = new Size(118, 50);
             Decrypt_Button.TabIndex = 6;
             Decrypt_Button.Text = "Расшифровать";
             Decrypt_Button.UseVisualStyleBackColor = true;
@@ -115,11 +132,189 @@
             DecryptedText_TextBox.Size = new Size(212, 191);
             DecryptedText_TextBox.TabIndex = 8;
             // 
+            // Attack_Button
+            // 
+            Attack_Button.Location = new Point(484, 288);
+            Attack_Button.Name = "Attack_Button";
+            Attack_Button.Size = new Size(88, 50);
+            Attack_Button.TabIndex = 13;
+            Attack_Button.Text = "Декод.";
+            Attack_Button.UseVisualStyleBackColor = true;
+            // 
+            // SelectAttack_ComboBox
+            // 
+            SelectAttack_ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            SelectAttack_ComboBox.FormattingEnabled = true;
+            SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда" });
+            SelectAttack_ComboBox.Location = new Point(360, 344);
+            SelectAttack_ComboBox.Name = "SelectAttack_ComboBox";
+            SelectAttack_ComboBox.Size = new Size(212, 23);
+            SelectAttack_ComboBox.TabIndex = 14;
+            // 
+            // ConutBits_TextBox
+            // 
+            ConutBits_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            ConutBits_TextBox.Location = new Point(152, 23);
+            ConutBits_TextBox.Multiline = true;
+            ConutBits_TextBox.Name = "ConutBits_TextBox";
+            ConutBits_TextBox.Size = new Size(63, 34);
+            ConutBits_TextBox.TabIndex = 15;
+            ConutBits_TextBox.Text = "20";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(37, 23);
+            label4.Name = "label4";
+            label4.Size = new Size(119, 28);
+            label4.TabIndex = 16;
+            label4.Text = "Кол-во бит:";
+            // 
+            // InitializationRSA_Button
+            // 
+            InitializationRSA_Button.Location = new Point(221, 23);
+            InitializationRSA_Button.Name = "InitializationRSA_Button";
+            InitializationRSA_Button.Size = new Size(75, 34);
+            InitializationRSA_Button.TabIndex = 17;
+            InitializationRSA_Button.Text = "OK";
+            InitializationRSA_Button.UseVisualStyleBackColor = true;
+            InitializationRSA_Button.Click += InitializationRSA_Button_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(57, 376);
+            label5.Name = "label5";
+            label5.Size = new Size(45, 25);
+            label5.TabIndex = 18;
+            label5.Text = "p = ";
+            // 
+            // p_TextBox
+            // 
+            p_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            p_TextBox.Location = new Point(93, 371);
+            p_TextBox.Multiline = true;
+            p_TextBox.Name = "p_TextBox";
+            p_TextBox.Size = new Size(790, 34);
+            p_TextBox.TabIndex = 19;
+            // 
+            // q_TextBox
+            // 
+            q_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            q_TextBox.Location = new Point(93, 404);
+            q_TextBox.Multiline = true;
+            q_TextBox.Name = "q_TextBox";
+            q_TextBox.Size = new Size(790, 34);
+            q_TextBox.TabIndex = 21;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(57, 409);
+            label6.Name = "label6";
+            label6.Size = new Size(45, 25);
+            label6.TabIndex = 20;
+            label6.Text = "q = ";
+            // 
+            // n_TextBox
+            // 
+            n_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            n_TextBox.Location = new Point(93, 437);
+            n_TextBox.Multiline = true;
+            n_TextBox.Name = "n_TextBox";
+            n_TextBox.Size = new Size(790, 34);
+            n_TextBox.TabIndex = 23;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(57, 442);
+            label7.Name = "label7";
+            label7.Size = new Size(44, 25);
+            label7.TabIndex = 22;
+            label7.Text = "n = ";
+            // 
+            // pfi_TextBox
+            // 
+            pfi_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            pfi_TextBox.Location = new Point(93, 470);
+            pfi_TextBox.Multiline = true;
+            pfi_TextBox.Name = "pfi_TextBox";
+            pfi_TextBox.Size = new Size(790, 34);
+            pfi_TextBox.TabIndex = 25;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(57, 475);
+            label8.Name = "label8";
+            label8.Size = new Size(47, 25);
+            label8.TabIndex = 24;
+            label8.Text = "φ = ";
+            // 
+            // e_TextBox
+            // 
+            e_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            e_TextBox.Location = new Point(93, 503);
+            e_TextBox.Multiline = true;
+            e_TextBox.Name = "e_TextBox";
+            e_TextBox.Size = new Size(790, 34);
+            e_TextBox.TabIndex = 27;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(57, 508);
+            label9.Name = "label9";
+            label9.Size = new Size(48, 25);
+            label9.TabIndex = 26;
+            label9.Text = "e =  ";
+            // 
+            // d_TextBox
+            // 
+            d_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            d_TextBox.Location = new Point(93, 536);
+            d_TextBox.Multiline = true;
+            d_TextBox.Name = "d_TextBox";
+            d_TextBox.Size = new Size(790, 34);
+            d_TextBox.TabIndex = 29;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(57, 541);
+            label10.Name = "label10";
+            label10.Size = new Size(45, 25);
+            label10.TabIndex = 28;
+            label10.Text = "d = ";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(955, 450);
+            ClientSize = new Size(925, 607);
+            Controls.Add(d_TextBox);
+            Controls.Add(label10);
+            Controls.Add(e_TextBox);
+            Controls.Add(pfi_TextBox);
+            Controls.Add(label8);
+            Controls.Add(n_TextBox);
+            Controls.Add(label7);
+            Controls.Add(q_TextBox);
+            Controls.Add(label6);
+            Controls.Add(p_TextBox);
+            Controls.Add(label5);
+            Controls.Add(InitializationRSA_Button);
+            Controls.Add(ConutBits_TextBox);
+            Controls.Add(SelectAttack_ComboBox);
+            Controls.Add(Attack_Button);
             Controls.Add(label3);
             Controls.Add(DecryptedText_TextBox);
             Controls.Add(label2);
@@ -128,8 +323,10 @@
             Controls.Add(label1);
             Controls.Add(Encrypt_Button);
             Controls.Add(SourceText_TextBox);
+            Controls.Add(label4);
+            Controls.Add(label9);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Attacks2RSA";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -144,5 +341,22 @@
         private TextBox EncryptedText_TextBox;
         private Label label3;
         private TextBox DecryptedText_TextBox;
+        private Button Attack_Button;
+        private ComboBox SelectAttack_ComboBox;
+        private TextBox ConutBits_TextBox;
+        private Label label4;
+        private Button InitializationRSA_Button;
+        private Label label5;
+        private TextBox p_TextBox;
+        private TextBox q_TextBox;
+        private Label label6;
+        private TextBox n_TextBox;
+        private Label label7;
+        private TextBox pfi_TextBox;
+        private Label label8;
+        private TextBox e_TextBox;
+        private Label label9;
+        private TextBox d_TextBox;
+        private Label label10;
     }
 }

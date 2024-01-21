@@ -8,7 +8,7 @@ namespace Attacks2RSA
         public Form1()
         {
             InitializeComponent();
-            rsa = new(20);
+            SelectAttack_ComboBox.SelectedIndex = 0;
         }
 
         private void Encrypt_Button_Click(object sender, EventArgs e)
@@ -20,6 +20,18 @@ namespace Attacks2RSA
         {
             string encyptedText = EncryptedText_TextBox.Text;
             DecryptedText_TextBox.Text = rsa.DecryptText(encyptedText);
+        }
+
+        private void InitializationRSA_Button_Click(object sender, EventArgs e)
+        {
+            int countBits = int.Parse(ConutBits_TextBox.Text);
+            rsa = new(countBits);
+            p_TextBox.Text = rsa.par.p.ToString();
+            q_TextBox.Text = rsa.par.q.ToString();
+            n_TextBox.Text = rsa.par.n.ToString();
+            pfi_TextBox.Text = rsa.par.pfi.ToString();
+            e_TextBox.Text = rsa.par.e_.ToString();
+            d_TextBox.Text = rsa.par.d.ToString();
         }
     }
 }

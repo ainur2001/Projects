@@ -260,11 +260,11 @@ def test_lowe(vector, vectors1, vectors2):
 
 
 if __name__ == "__main__":
-    image = np.array(Image.open('box.png').convert("RGB"))
-    scene = np.array(Image.open('box_in_scene.png').convert("RGB"))
+    image = np.array(Image.open('lion.jpg').convert("RGB"))
+    scene = np.array(Image.open('scrn.jpg').convert("RGB"))
 
-    image_arr = Image.open('box.png').convert("RGB")
-    scene_arr = Image.open('box_in_scene.png').convert("RGB")
+    image_arr = Image.open('lion.jpg').convert("RGB")
+    scene_arr = Image.open('scrn.jpg').convert("RGB")
 
     
     p = []
