@@ -53,6 +53,7 @@
             label9 = new Label();
             d_TextBox = new TextBox();
             label10 = new Label();
+            Time_Label = new Label();
             SuspendLayout();
             // 
             // SourceText_TextBox
@@ -140,12 +141,13 @@
             Attack_Button.TabIndex = 13;
             Attack_Button.Text = "Декод.";
             Attack_Button.UseVisualStyleBackColor = true;
+            Attack_Button.Click += Attack_Button_Click;
             // 
             // SelectAttack_ComboBox
             // 
             SelectAttack_ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             SelectAttack_ComboBox.FormattingEnabled = true;
-            SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда" });
+            SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда", "Полное возведение в степень" });
             SelectAttack_ComboBox.Location = new Point(360, 344);
             SelectAttack_ComboBox.Name = "SelectAttack_ComboBox";
             SelectAttack_ComboBox.Size = new Size(212, 23);
@@ -159,7 +161,6 @@
             ConutBits_TextBox.Name = "ConutBits_TextBox";
             ConutBits_TextBox.Size = new Size(63, 34);
             ConutBits_TextBox.TabIndex = 15;
-            ConutBits_TextBox.Text = "20";
             // 
             // label4
             // 
@@ -193,6 +194,7 @@
             // 
             // p_TextBox
             // 
+            p_TextBox.BackColor = SystemColors.ControlLightLight;
             p_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             p_TextBox.Location = new Point(93, 371);
             p_TextBox.Multiline = true;
@@ -202,6 +204,7 @@
             // 
             // q_TextBox
             // 
+            q_TextBox.BackColor = SystemColors.ControlLightLight;
             q_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             q_TextBox.Location = new Point(93, 404);
             q_TextBox.Multiline = true;
@@ -221,6 +224,7 @@
             // 
             // n_TextBox
             // 
+            n_TextBox.BackColor = SystemColors.ControlLightLight;
             n_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             n_TextBox.Location = new Point(93, 437);
             n_TextBox.Multiline = true;
@@ -240,6 +244,7 @@
             // 
             // pfi_TextBox
             // 
+            pfi_TextBox.BackColor = SystemColors.ControlLightLight;
             pfi_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             pfi_TextBox.Location = new Point(93, 470);
             pfi_TextBox.Multiline = true;
@@ -259,6 +264,7 @@
             // 
             // e_TextBox
             // 
+            e_TextBox.BackColor = SystemColors.ControlLightLight;
             e_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             e_TextBox.Location = new Point(93, 503);
             e_TextBox.Multiline = true;
@@ -278,6 +284,7 @@
             // 
             // d_TextBox
             // 
+            d_TextBox.BackColor = SystemColors.ControlLightLight;
             d_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             d_TextBox.Location = new Point(93, 536);
             d_TextBox.Multiline = true;
@@ -295,11 +302,20 @@
             label10.TabIndex = 28;
             label10.Text = "d = ";
             // 
+            // Time_Label
+            // 
+            Time_Label.AutoSize = true;
+            Time_Label.Location = new Point(671, 288);
+            Time_Label.Name = "Time_Label";
+            Time_Label.Size = new Size(0, 15);
+            Time_Label.TabIndex = 30;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(925, 607);
+            ClientSize = new Size(925, 609);
+            Controls.Add(Time_Label);
             Controls.Add(d_TextBox);
             Controls.Add(label10);
             Controls.Add(e_TextBox);
@@ -358,5 +374,6 @@
         private Label label9;
         private TextBox d_TextBox;
         private Label label10;
+        private Label Time_Label;
     }
 }

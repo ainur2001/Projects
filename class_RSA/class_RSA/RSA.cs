@@ -6,7 +6,7 @@ namespace class_RSA
     public class RSA
     {
         public Parameters par;
-        private string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyz ";
+        public string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyz0123456789 ";
         public RSA(int bitNumber) 
         {
             par = GenerateParam(bitNumber);
@@ -124,21 +124,21 @@ namespace class_RSA
         }
         private static BigInteger pf(int bitNumber)
         {
-            BigInteger p = 16384;
+            BigInteger p = 1024;
             while (!TestMR(p, bitNumber))
             {
                 p = GenerateNumber(bitNumber);
-                while (p <= 16384) p += 1;
+                while (p <= 1024) p += 1;
             }
             return p;
         }
         private static BigInteger qf(int bitNumber)
         {
-            BigInteger q = 16384;
+            BigInteger q = 1024;
             while (!TestMR(q, bitNumber))
             {
                 q = GenerateNumber(bitNumber);
-                while (q <= 16384) q += 1;
+                while (q <= 1024) q += 1;
             }
             return q;
         }

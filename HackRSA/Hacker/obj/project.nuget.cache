@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "15u9IIRvjWtruu4G8qMJ69IhP38J+m3NQXqlWaSVHQyxpSJ3hhENB/rvhcKhe+ZLbYnB5t58oJvA4AbUKJ1XMQ==",
+  "dgSpecHash": "H3iUpKhFLtjdPecaJDIiDXLrszxn3Va1Qrba5s6qIEW1ot5SeDevTQT81NBRpbK8Q7GW738X+vljO/LFYYhIbg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\HackRSA\\Hacker\\Hacker.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Администратор\\.nuget\\packages\\packetdotnet\\1.4.7\\packetdotnet.1.4.7.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\sharppcap\\6.2.5\\sharppcap.6.2.5.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,0 +1,17 @@
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\bin\Debug\net6.0-windows\MethodFermaFactorization.exe
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\bin\Debug\net6.0-windows\MethodFermaFactorization.deps.json
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\bin\Debug\net6.0-windows\MethodFermaFactorization.runtimeconfig.json
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\bin\Debug\net6.0-windows\MethodFermaFactorization.dll
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\bin\Debug\net6.0-windows\MethodFermaFactorization.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.csproj.AssemblyReference.cache
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.Form1.resources
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.csproj.GenerateResource.cache
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.AssemblyInfoInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.AssemblyInfo.cs
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.dll
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\refint\MethodFermaFactorization.dll
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\MethodFermaFactorization.genruntimeconfig.cache
+C:\Users\Администратор\Documents\GitHub\Projects\MethodFermaFactorization\MethodFermaFactorization\obj\Debug\net6.0-windows\ref\MethodFermaFactorization.dll
