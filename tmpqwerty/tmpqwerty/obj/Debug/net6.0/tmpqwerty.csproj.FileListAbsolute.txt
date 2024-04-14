@@ -1,0 +1,15 @@
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\bin\Debug\net6.0\tmpqwerty.exe
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\bin\Debug\net6.0\tmpqwerty.deps.json
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\bin\Debug\net6.0\tmpqwerty.runtimeconfig.json
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\bin\Debug\net6.0\tmpqwerty.dll
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\bin\Debug\net6.0\tmpqwerty.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\tmpqwerty.csproj.AssemblyReference.cache
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\tmpqwerty.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\tmpqwerty.AssemblyInfoInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\tmpqwerty.AssemblyInfo.cs
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\tmpqwerty.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\tmpqwerty.dll
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\refint\tmpqwerty.dll
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\tmpqwerty.pdb
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\tmpqwerty.genruntimeconfig.cache
+C:\Users\Администратор\Documents\GitHub\Projects\tmpqwerty\tmpqwerty\obj\Debug\net6.0\ref\tmpqwerty.dll

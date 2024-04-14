@@ -56,6 +56,15 @@ namespace Attacks2RSA
                     Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
                     DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
                     break;
+
+                case "Диксона":
+                    stopwatch.Start();
+                    DixonFactor();
+                    Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
+                    DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
+                    stopwatch.Stop();
+                    break;
+
                 case "Полное возведение в степень":
                     stopwatch.Start();
                     FullExponentiation();
@@ -93,7 +102,7 @@ namespace Attacks2RSA
             BigInteger n = BigInteger.Parse(n_TextBox.Text);
             BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
             BigInteger p;
-            List<BigInteger> B = ReshetoEratosphena((int)Sqrt(n));
+            List<BigInteger> B = ReshetoEratosphena((int)NewtonSqrt(n));
             Random rnd = new();
             BigInteger b = B[rnd.Next(0, B.Count)];
             while (true)
@@ -108,7 +117,7 @@ namespace Attacks2RSA
                     else break;
                 }
                 Random rnd2 = new();
-                int a = rnd2.Next(2, (int)Sqrt(Sqrt(n)));
+                int a = rnd2.Next(2, (int)NewtonSqrt(NewtonSqrt(n)));
                 BigInteger g = BigInteger.GreatestCommonDivisor(BigInteger.ModPow(a, m, n) - 1, n);
                 if (1 < g && g < n)
                 {
@@ -131,7 +140,10 @@ namespace Attacks2RSA
                         p = 1;
                         break;
                     }
-                    else b = B[B.IndexOf(b) - 100];
+                    else if (B.IndexOf(b) >= 100)
+                    {
+                        b = B[B.IndexOf(b) - 100];
+                    }
                 }
             }
             p_TextBox.Text = p.ToString();
@@ -142,24 +154,23 @@ namespace Attacks2RSA
             BigInteger d = ModInverse(e_, pfi);
             d_TextBox.Text = d.ToString();
         }
-        private static BigInteger Sqrt(BigInteger n)
+        public static BigInteger NewtonSqrt(BigInteger n)
         {
-            if (n == 0) return 0;
-            if (n > 0)
+            if (n <= 0) return 0;
+
+            BigInteger x = n;
+            BigInteger prevX = BigInteger.Zero;
+
+            while (true)
             {
-                int bitLength = Convert.ToInt32(Math.Ceiling(BigInteger.Log(n, 2)));
-                BigInteger root = BigInteger.One << (bitLength / 2);
+                prevX = x;
+                x = (x + n / x) / 2;
 
-                while (!isSqrt(n, root))
-                {
-                    root += n / root;
-                    root /= 2;
-                }
-
-                return root;
+                if (x >= prevX)
+                    break;
             }
 
-            throw new ArithmeticException("NaN");
+            return x;
         }
         private static bool isSqrt(BigInteger n, BigInteger root)
         {
@@ -280,6 +291,62 @@ namespace Attacks2RSA
                 decrypted.Add(tmp1 % rsa.alphabet.Length);
             }
             foreach (BigInteger dec in decrypted) DecryptedText_TextBox.Text += rsa.alphabet[(int)dec];
+        }
+        static BigInteger gcd(BigInteger num1, BigInteger num2)
+        {
+            BigInteger a = BigInteger.Abs(num1);
+            BigInteger b = BigInteger.Abs(num2);
+            while ((a != 0) && (b != 0) && (a != b))
+            {
+                if (a > b)
+                {
+                    a -= b;
+                }
+                else
+                {
+                    b -= a;
+                }
+            }
+            return BigInteger.Max(a, b);
+        }
+        public void DixonFactor()
+        {
+            BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
+            BigInteger n = BigInteger.Parse(n_TextBox.Text);
+            int[] base1 = { 2, 3, 5, 7 };
+            BigInteger start = NewtonSqrt(n);
+            List<(BigInteger, BigInteger)> pairs = new List<(BigInteger, BigInteger)>();
+            foreach (int baseNumber in base1)
+            {
+                for (BigInteger i = start; i < n; i++)
+                {
+                    BigInteger lhs = BigInteger.ModPow(i, 2, n);
+                    BigInteger rhs = BigInteger.ModPow(baseNumber, 2, n);
+                    if (lhs == rhs)
+                    {
+                        pairs.Add((i, baseNumber));
+                    }
+                }
+            }
+
+            List<BigInteger> factors = new List<BigInteger>();
+            foreach (var pair in pairs)
+            {
+                BigInteger factor = gcd(pair.Item1 - pair.Item2, n);
+                if (factor != 1)
+                    factors.Add(factor);
+            }
+
+            HashSet<BigInteger> uniqueFactors = new HashSet<BigInteger>(factors);
+            BigInteger[] uniqueFactorsArray = new BigInteger[uniqueFactors.Count];
+            uniqueFactors.CopyTo(uniqueFactorsArray);
+            BigInteger p = uniqueFactorsArray[0], q = uniqueFactorsArray[1];
+            p_TextBox.Text = p.ToString();
+            q_TextBox.Text = q.ToString();
+            BigInteger pfi = (p - 1) * (q - 1);
+            pfi_TextBox.Text = pfi.ToString();
+            BigInteger d = ModInverse(e_, pfi);
+            d_TextBox.Text = d.ToString();
         }
     }
 }
