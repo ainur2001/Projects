@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MethodFermaFactorization")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43f89eb21304eaebe24964f5e4a2e3aab580650c")]
 [assembly: System.Reflection.AssemblyProductAttribute("MethodFermaFactorization")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MethodFermaFactorization")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
