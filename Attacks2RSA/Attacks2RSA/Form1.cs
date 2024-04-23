@@ -47,7 +47,7 @@ namespace Attacks2RSA
                     stopwatch.Stop();
                     Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
                     DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
-                    break;
+                break;
 
                 case "Ро-1 - метод Полларда":
                     stopwatch.Start();
@@ -55,22 +55,30 @@ namespace Attacks2RSA
                     stopwatch.Stop();
                     Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
                     DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
-                    break;
+                break;
 
-                case "Диксона":
+                case "Факторизация Диксона":
                     stopwatch.Start();
                     DixonFactor();
                     Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
                     DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
                     stopwatch.Stop();
-                    break;
+                break;
 
                 case "Полное возведение в степень":
                     stopwatch.Start();
                     FullExponentiation();
                     stopwatch.Stop();
                     Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
-                    break;
+                break;
+
+                case "Атака Винера":
+                    stopwatch.Start();
+                    d_TextBox.Text = VinerAttackMethod().ToString();
+                    stopwatch.Stop();
+                    Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
+                    //DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
+                break;
             }
         }
         private void RoMethodPollarda()
@@ -348,6 +356,34 @@ namespace Attacks2RSA
             BigInteger d = ModInverse(e_, pfi);
             d_TextBox.Text = d.ToString();
         }
+        public  BigInteger VinerAttackMethod()
+        {
+            BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
+            BigInteger n = BigInteger.Parse(n_TextBox.Text);
+            double l = BigInteger.Log(n, 2);
+            BigInteger numerator = e_;
+            BigInteger denominator = n;
+            BigInteger[] Q = { 0, 1 };
+            for (int i = 0; i < (int)l; i++)
+            {
+                BigInteger buf = denominator;
+                denominator = numerator;
+                numerator = buf;
+                BigInteger a = numerator / denominator;
+                BigInteger Q_i = a * Q[1] + Q[0];
+                Random rand = new Random();
+                BigInteger m = rand.Next(1000, 1000000);
+                if (BigInteger.ModPow(m, e_ * Q_i, n) == m % n)
+                    return Q_i;
+                if (denominator == 1)
+                    return 0;
+                numerator %= denominator;
+                Q[0] = Q[1];
+                Q[1] = Q_i;
+            }
+            return 0;
+        }
+
         private void OpenSecondForm_Button_Click(object sender, EventArgs e)
         {
             Form2 form2 = new();

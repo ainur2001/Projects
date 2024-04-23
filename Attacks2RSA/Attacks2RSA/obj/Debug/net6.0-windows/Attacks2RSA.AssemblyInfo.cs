@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Attacks2RSA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa8645a04d5fc6866519dab9eccbdde88850e16c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1dc73109aa4957fd805621acf77f1039e52ae337")]
 [assembly: System.Reflection.AssemblyProductAttribute("Attacks2RSA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Attacks2RSA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

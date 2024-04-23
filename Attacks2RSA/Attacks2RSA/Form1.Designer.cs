@@ -157,7 +157,7 @@
             // 
             SelectAttack_ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             SelectAttack_ComboBox.FormattingEnabled = true;
-            SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда", "Диксона", "Полное возведение в степень" });
+            SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда", "Факторизация Диксона", "Полное возведение в степень", "Атака Винера" });
             SelectAttack_ComboBox.Location = new Point(514, 573);
             SelectAttack_ComboBox.Margin = new Padding(4, 5, 4, 5);
             SelectAttack_ComboBox.Name = "SelectAttack_ComboBox";
