@@ -10,3 +10,15 @@ C:\Users\Администратор\Documents\GitHub\Projects\class_RSA\class_RS
 C:\Users\Администратор\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\refint\class_RSA.dll
 C:\Users\Администратор\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\class_RSA.pdb
 C:\Users\Администратор\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\ref\class_RSA.dll
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\bin\Debug\net6.0\class_RSA.deps.json
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\bin\Debug\net6.0\class_RSA.dll
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\bin\Debug\net6.0\class_RSA.pdb
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\class_RSA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\class_RSA.AssemblyInfoInputs.cache
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\class_RSA.AssemblyInfo.cs
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\class_RSA.csproj.CoreCompileInputs.cache
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\class_RSA.sourcelink.json
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\class_RSA.dll
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\refint\class_RSA.dll
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\class_RSA.pdb
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\class_RSA\class_RSA\obj\Debug\net6.0\ref\class_RSA.dll

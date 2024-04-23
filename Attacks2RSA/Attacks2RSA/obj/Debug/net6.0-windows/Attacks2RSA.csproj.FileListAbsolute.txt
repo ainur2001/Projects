@@ -18,4 +18,28 @@ C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attack
 C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.pdb
 C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.genruntimeconfig.cache
 C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\ref\Attacks2RSA.dll
+<<<<<<< HEAD
 C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.Form2.resources
+=======
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\bin\Debug\net6.0-windows\Attacks2RSA.exe
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\bin\Debug\net6.0-windows\Attacks2RSA.deps.json
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\bin\Debug\net6.0-windows\Attacks2RSA.runtimeconfig.json
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\bin\Debug\net6.0-windows\Attacks2RSA.dll
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\bin\Debug\net6.0-windows\Attacks2RSA.pdb
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\bin\Debug\net6.0-windows\class_RSA.dll
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\bin\Debug\net6.0-windows\class_RSA.pdb
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.csproj.AssemblyReference.cache
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.Form1.resources
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.csproj.GenerateResource.cache
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.AssemblyInfoInputs.cache
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.AssemblyInfo.cs
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.csproj.CoreCompileInputs.cache
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.sourcelink.json
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2.A0863E79.Up2Date
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.dll
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\refint\Attacks2RSA.dll
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.pdb
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.genruntimeconfig.cache
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\ref\Attacks2RSA.dll
+>>>>>>> fe373e95b47ba73ae1b6667ecddd633093d0781d
