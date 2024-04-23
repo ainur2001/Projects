@@ -54,6 +54,7 @@
             d_TextBox = new TextBox();
             label10 = new Label();
             Time_Label = new Label();
+            OpenSecondForm_Button = new Button();
             SuspendLayout();
             // 
             // SourceText_TextBox
@@ -310,11 +311,22 @@
             Time_Label.Size = new Size(0, 15);
             Time_Label.TabIndex = 30;
             // 
+            // OpenSecondForm_Button
+            // 
+            OpenSecondForm_Button.Location = new Point(795, 589);
+            OpenSecondForm_Button.Name = "OpenSecondForm_Button";
+            OpenSecondForm_Button.Size = new Size(88, 50);
+            OpenSecondForm_Button.TabIndex = 31;
+            OpenSecondForm_Button.Text = "След. форма";
+            OpenSecondForm_Button.UseVisualStyleBackColor = true;
+            OpenSecondForm_Button.Click += OpenSecondForm_Button_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(925, 609);
+            ClientSize = new Size(925, 651);
+            Controls.Add(OpenSecondForm_Button);
             Controls.Add(Time_Label);
             Controls.Add(d_TextBox);
             Controls.Add(label10);
@@ -375,5 +387,6 @@
         private TextBox d_TextBox;
         private Label label10;
         private Label Time_Label;
+        private Button OpenSecondForm_Button;
     }
 }

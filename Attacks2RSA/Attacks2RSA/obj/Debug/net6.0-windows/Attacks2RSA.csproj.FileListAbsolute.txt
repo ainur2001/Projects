@@ -18,3 +18,4 @@ C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attack
 C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.pdb
 C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.genruntimeconfig.cache
 C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\ref\Attacks2RSA.dll
+C:\Users\Администратор\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.Form2.resources

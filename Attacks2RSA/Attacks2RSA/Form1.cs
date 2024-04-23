@@ -348,5 +348,10 @@ namespace Attacks2RSA
             BigInteger d = ModInverse(e_, pfi);
             d_TextBox.Text = d.ToString();
         }
+        private void OpenSecondForm_Button_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new();
+            form2.Show();
+        }
     }
 }
