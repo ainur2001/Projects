@@ -27,19 +27,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Администратор\\.nuget\\packages\\": {}
+    "C:\\Users\\Aynur.Latypov\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Attacks2RSA.csproj",
+      "projectUniqueName": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Attacks2RSA.csproj",
       "projectName": "Attacks2RSA",
-      "projectPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Attacks2RSA.csproj",
-      "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\obj\\",
+      "projectPath": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Attacks2RSA.csproj",
+      "packagesPath": "C:\\Users\\Aynur.Latypov\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Администратор\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Aynur.Latypov\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -53,8 +53,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\class_RSA\\class_RSA\\class_RSA.csproj": {
-              "projectPath": "C:\\Users\\Администратор\\Documents\\GitHub\\Projects\\class_RSA\\class_RSA\\class_RSA.csproj"
+            "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\class_RSA\\class_RSA\\class_RSA.csproj": {
+              "projectPath": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\class_RSA\\class_RSA\\class_RSA.csproj"
             }
           }
         }
@@ -63,6 +63,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -87,7 +92,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

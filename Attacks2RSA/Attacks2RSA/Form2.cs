@@ -14,6 +14,9 @@ namespace Attacks2RSA
             n1_TextBox.Text = 119.ToString();
             n2_TextBox.Text = 221.ToString();
             n3_TextBox.Text = 323.ToString();
+
+
+
         }
 
         private void Encrypt_Button_Click(object sender, EventArgs e)
