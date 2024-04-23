@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Windows.Forms;
 
 namespace Attacks2RSA
 {
@@ -30,9 +31,6 @@ namespace Attacks2RSA
             C1_TextBox.Text = C[0].ToString();
             C2_TextBox.Text = C[1].ToString();
             C3_TextBox.Text = C[2].ToString();
-
-            BigInteger result = Solve(C, n);
-            Decrypted_TextBox.Text = result.ToString();
         }
 
         private static BigInteger ModInverse(BigInteger a, BigInteger m)
@@ -64,6 +62,15 @@ namespace Attacks2RSA
             }
 
             return result % prod;
+        }
+
+        private void Decrypt_Button_Click(object sender, EventArgs e)
+        {
+            BigInteger[] C = { BigInteger.Parse(C1_TextBox.Text), BigInteger.Parse(C2_TextBox.Text), BigInteger.Parse(C3_TextBox.Text) };
+            BigInteger[] n = { BigInteger.Parse(n1_TextBox.Text), BigInteger.Parse(n2_TextBox.Text), BigInteger.Parse(n3_TextBox.Text) };
+
+            BigInteger result = Solve(C, n);
+            Decrypted_TextBox.Text = result.ToString();
         }
     }
 }

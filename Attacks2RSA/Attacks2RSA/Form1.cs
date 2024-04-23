@@ -313,7 +313,7 @@ namespace Attacks2RSA
         {
             BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
             BigInteger n = BigInteger.Parse(n_TextBox.Text);
-            int[] base1 = { 2, 3, 5, 7 };
+            List<BigInteger> base1 = ReshetoEratosphena(500);
             BigInteger start = NewtonSqrt(n);
             List<(BigInteger, BigInteger)> pairs = new List<(BigInteger, BigInteger)>();
             foreach (int baseNumber in base1)
