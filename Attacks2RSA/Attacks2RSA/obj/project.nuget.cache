@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fIntCWN2lTn8Pvg+fV++bnWuMmJZaHBMIXB9/Kr3fplNDuS9P5//8cnUf3WFSL8I4uvXuz4oxwSr288UL2bOxw==",
+  "dgSpecHash": "4SeIU41HXxJvT64tWQ1kSL+1GHZuCmjOyTPVDBZF41nlgu7AYSKN2qrd9r0oPZbHE8SaAyv5o+O7oi6hEmTpxg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Attacks2RSA.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Aynur.Latypov\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

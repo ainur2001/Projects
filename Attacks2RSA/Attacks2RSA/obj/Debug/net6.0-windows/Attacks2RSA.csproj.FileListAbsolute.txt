@@ -44,3 +44,5 @@ C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Deb
 C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\ref\Attacks2RSA.dll
 >>>>>>> fe373e95b47ba73ae1b6667ecddd633093d0781d
 C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.Form2.resources
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\obj\Debug\net6.0-windows\Attacks2RSA.Form3.resources
+C:\Users\Aynur.Latypov\Documents\GitHub\Projects\Attacks2RSA\Attacks2RSA\bin\Debug\net6.0-windows\MathNet.Numerics.dll

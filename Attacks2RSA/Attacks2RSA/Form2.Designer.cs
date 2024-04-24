@@ -51,11 +51,14 @@
             Encrypt_Button = new Button();
             Decrypted_TextBox = new TextBox();
             Decrypt_Button = new Button();
+            label11 = new Label();
+            label12 = new Label();
+            GenerateOpenKeys_Button = new Button();
             SuspendLayout();
             // 
             // Message_TextBox
             // 
-            Message_TextBox.Location = new Point(84, 62);
+            Message_TextBox.Location = new Point(68, 219);
             Message_TextBox.Margin = new Padding(4, 5, 4, 5);
             Message_TextBox.Multiline = true;
             Message_TextBox.Name = "Message_TextBox";
@@ -65,7 +68,7 @@
             // e1_TextBox
             // 
             e1_TextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            e1_TextBox.Location = new Point(149, 243);
+            e1_TextBox.Location = new Point(446, 65);
             e1_TextBox.Margin = new Padding(4, 5, 4, 5);
             e1_TextBox.Multiline = true;
             e1_TextBox.Name = "e1_TextBox";
@@ -75,7 +78,7 @@
             // n1_TextBox
             // 
             n1_TextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            n1_TextBox.Location = new Point(149, 315);
+            n1_TextBox.Location = new Point(446, 137);
             n1_TextBox.Margin = new Padding(4, 5, 4, 5);
             n1_TextBox.Multiline = true;
             n1_TextBox.Name = "n1_TextBox";
@@ -85,7 +88,7 @@
             // e2_TextBox
             // 
             e2_TextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            e2_TextBox.Location = new Point(149, 418);
+            e2_TextBox.Location = new Point(446, 240);
             e2_TextBox.Margin = new Padding(4, 5, 4, 5);
             e2_TextBox.Multiline = true;
             e2_TextBox.Name = "e2_TextBox";
@@ -95,7 +98,7 @@
             // n2_TextBox
             // 
             n2_TextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            n2_TextBox.Location = new Point(149, 490);
+            n2_TextBox.Location = new Point(446, 312);
             n2_TextBox.Margin = new Padding(4, 5, 4, 5);
             n2_TextBox.Multiline = true;
             n2_TextBox.Name = "n2_TextBox";
@@ -105,7 +108,7 @@
             // e3_TextBox
             // 
             e3_TextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            e3_TextBox.Location = new Point(149, 587);
+            e3_TextBox.Location = new Point(446, 409);
             e3_TextBox.Margin = new Padding(4, 5, 4, 5);
             e3_TextBox.Multiline = true;
             e3_TextBox.Name = "e3_TextBox";
@@ -115,7 +118,7 @@
             // n3_TextBox
             // 
             n3_TextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            n3_TextBox.Location = new Point(149, 658);
+            n3_TextBox.Location = new Point(446, 480);
             n3_TextBox.Margin = new Padding(4, 5, 4, 5);
             n3_TextBox.Multiline = true;
             n3_TextBox.Name = "n3_TextBox";
@@ -126,7 +129,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(86, 248);
+            label1.Location = new Point(383, 70);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(68, 36);
@@ -137,7 +140,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(86, 320);
+            label2.Location = new Point(383, 142);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(69, 36);
@@ -148,7 +151,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(86, 437);
+            label4.Location = new Point(383, 259);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(68, 36);
@@ -159,7 +162,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(86, 508);
+            label5.Location = new Point(383, 330);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(69, 36);
@@ -170,7 +173,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(86, 592);
+            label6.Location = new Point(383, 414);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(68, 36);
@@ -181,7 +184,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(86, 663);
+            label7.Location = new Point(383, 485);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(69, 36);
@@ -191,7 +194,7 @@
             // C1_TextBox
             // 
             C1_TextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            C1_TextBox.Location = new Point(334, 277);
+            C1_TextBox.Location = new Point(631, 99);
             C1_TextBox.Margin = new Padding(4, 5, 4, 5);
             C1_TextBox.Multiline = true;
             C1_TextBox.Name = "C1_TextBox";
@@ -202,7 +205,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(277, 282);
+            label3.Location = new Point(574, 104);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(70, 36);
@@ -212,7 +215,7 @@
             // C2_TextBox
             // 
             C2_TextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            C2_TextBox.Location = new Point(334, 455);
+            C2_TextBox.Location = new Point(631, 277);
             C2_TextBox.Margin = new Padding(4, 5, 4, 5);
             C2_TextBox.Multiline = true;
             C2_TextBox.Name = "C2_TextBox";
@@ -223,7 +226,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(277, 460);
+            label8.Location = new Point(574, 282);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(70, 36);
@@ -233,7 +236,7 @@
             // C3_TextBox
             // 
             C3_TextBox.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            C3_TextBox.Location = new Point(334, 623);
+            C3_TextBox.Location = new Point(631, 445);
             C3_TextBox.Margin = new Padding(4, 5, 4, 5);
             C3_TextBox.Multiline = true;
             C3_TextBox.Name = "C3_TextBox";
@@ -244,7 +247,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(277, 628);
+            label9.Location = new Point(574, 450);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(70, 36);
@@ -255,7 +258,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(119, 15);
+            label10.Location = new Point(103, 172);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
             label10.Size = new Size(155, 36);
@@ -264,10 +267,10 @@
             // 
             // Encrypt_Button
             // 
-            Encrypt_Button.Location = new Point(86, 165);
+            Encrypt_Button.Location = new Point(68, 322);
             Encrypt_Button.Margin = new Padding(4, 5, 4, 5);
             Encrypt_Button.Name = "Encrypt_Button";
-            Encrypt_Button.Size = new Size(241, 60);
+            Encrypt_Button.Size = new Size(243, 60);
             Encrypt_Button.TabIndex = 21;
             Encrypt_Button.Text = "Зашифровать";
             Encrypt_Button.UseVisualStyleBackColor = true;
@@ -275,29 +278,63 @@
             // 
             // Decrypted_TextBox
             // 
-            Decrypted_TextBox.Location = new Point(637, 397);
+            Decrypted_TextBox.Location = new Point(841, 219);
             Decrypted_TextBox.Margin = new Padding(4, 5, 4, 5);
             Decrypted_TextBox.Multiline = true;
             Decrypted_TextBox.Name = "Decrypted_TextBox";
-            Decrypted_TextBox.Size = new Size(241, 99);
+            Decrypted_TextBox.Size = new Size(317, 99);
             Decrypted_TextBox.TabIndex = 22;
             // 
             // Decrypt_Button
             // 
-            Decrypt_Button.Location = new Point(477, 277);
+            Decrypt_Button.Location = new Point(383, 566);
             Decrypt_Button.Margin = new Padding(4, 5, 4, 5);
             Decrypt_Button.Name = "Decrypt_Button";
-            Decrypt_Button.Size = new Size(241, 60);
+            Decrypt_Button.Size = new Size(346, 60);
             Decrypt_Button.TabIndex = 23;
             Decrypt_Button.Text = "Дешифровать";
             Decrypt_Button.UseVisualStyleBackColor = true;
             Decrypt_Button.Click += Decrypt_Button_Click;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(818, 178);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(360, 36);
+            label11.TabIndex = 24;
+            label11.Text = "Дешифрованное сообщение";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(841, 339);
+            label12.Name = "label12";
+            label12.Size = new Size(243, 25);
+            label12.TabIndex = 45;
+            label12.Text = "Дешифровка произошла за:";
+            // 
+            // GenerateOpenKeys_Button
+            // 
+            GenerateOpenKeys_Button.Location = new Point(70, 59);
+            GenerateOpenKeys_Button.Margin = new Padding(4, 5, 4, 5);
+            GenerateOpenKeys_Button.Name = "GenerateOpenKeys_Button";
+            GenerateOpenKeys_Button.Size = new Size(241, 60);
+            GenerateOpenKeys_Button.TabIndex = 46;
+            GenerateOpenKeys_Button.Text = "Сгенерировать открытые ключи";
+            GenerateOpenKeys_Button.UseVisualStyleBackColor = true;
+            GenerateOpenKeys_Button.Click += GenerateOpenKeys_Button_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 750);
+            ClientSize = new Size(1239, 676);
+            Controls.Add(GenerateOpenKeys_Button);
+            Controls.Add(label12);
+            Controls.Add(label11);
             Controls.Add(Decrypt_Button);
             Controls.Add(Decrypted_TextBox);
             Controls.Add(Encrypt_Button);
@@ -353,5 +390,8 @@
         private Button Encrypt_Button;
         private TextBox Decrypted_TextBox;
         private Button Decrypt_Button;
+        private Label label11;
+        private Label label12;
+        private Button GenerateOpenKeys_Button;
     }
 }

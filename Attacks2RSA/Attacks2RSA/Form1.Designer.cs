@@ -54,7 +54,8 @@
             d_TextBox = new TextBox();
             label10 = new Label();
             Time_Label = new Label();
-            OpenSecondForm_Button = new Button();
+            OpenHastad_Button = new Button();
+            OpenViner_Button = new Button();
             SuspendLayout();
             // 
             // SourceText_TextBox
@@ -157,7 +158,7 @@
             // 
             SelectAttack_ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             SelectAttack_ComboBox.FormattingEnabled = true;
-            SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда", "Факторизация Диксона", "Полное возведение в степень", "Атака Винера" });
+            SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда", "Факторизация Диксона", "Полное возведение в степень" });
             SelectAttack_ComboBox.Location = new Point(514, 573);
             SelectAttack_ComboBox.Margin = new Padding(4, 5, 4, 5);
             SelectAttack_ComboBox.Name = "SelectAttack_ComboBox";
@@ -337,23 +338,35 @@
             Time_Label.Size = new Size(0, 25);
             Time_Label.TabIndex = 30;
             // 
-            // OpenSecondForm_Button
+            // OpenHastad_Button
             // 
-            OpenSecondForm_Button.Location = new Point(1136, 982);
-            OpenSecondForm_Button.Margin = new Padding(4, 5, 4, 5);
-            OpenSecondForm_Button.Name = "OpenSecondForm_Button";
-            OpenSecondForm_Button.Size = new Size(126, 83);
-            OpenSecondForm_Button.TabIndex = 31;
-            OpenSecondForm_Button.Text = "След. форма";
-            OpenSecondForm_Button.UseVisualStyleBackColor = true;
-            OpenSecondForm_Button.Click += OpenSecondForm_Button_Click;
+            OpenHastad_Button.Location = new Point(1134, 988);
+            OpenHastad_Button.Margin = new Padding(4, 5, 4, 5);
+            OpenHastad_Button.Name = "OpenHastad_Button";
+            OpenHastad_Button.Size = new Size(126, 83);
+            OpenHastad_Button.TabIndex = 31;
+            OpenHastad_Button.Text = "Хастеда";
+            OpenHastad_Button.UseVisualStyleBackColor = true;
+            OpenHastad_Button.Click += OpenHastad_Button_Click;
+            // 
+            // OpenViner_Button
+            // 
+            OpenViner_Button.Location = new Point(1000, 988);
+            OpenViner_Button.Margin = new Padding(4, 5, 4, 5);
+            OpenViner_Button.Name = "OpenViner_Button";
+            OpenViner_Button.Size = new Size(126, 83);
+            OpenViner_Button.TabIndex = 32;
+            OpenViner_Button.Text = "Винера";
+            OpenViner_Button.UseVisualStyleBackColor = true;
+            OpenViner_Button.Click += OpenViner_Button_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1357, 1085);
-            Controls.Add(OpenSecondForm_Button);
+            Controls.Add(OpenViner_Button);
+            Controls.Add(OpenHastad_Button);
             Controls.Add(Time_Label);
             Controls.Add(d_TextBox);
             Controls.Add(label10);
@@ -415,6 +428,7 @@
         private TextBox d_TextBox;
         private Label label10;
         private Label Time_Label;
-        private Button OpenSecondForm_Button;
+        private Button OpenHastad_Button;
+        private Button OpenViner_Button;
     }
 }

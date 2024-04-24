@@ -1,77 +1,47 @@
 ﻿using System.Diagnostics;
 using System.Numerics;
-using MathNet.Numerics;
 
 namespace Attacks2RSA
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
-        public Form2()
+        public Form3()
         {
             InitializeComponent();
         }
 
-        private void Encrypt_Button_Click(object sender, EventArgs e)
+        private void GenerateOpenAndCloseKeys_Button_Click(object sender, EventArgs e)
         {
-            BigInteger message = BigInteger.Parse(Message_TextBox.Text);
-            BigInteger[] e_ = { BigInteger.Parse(e1_TextBox.Text), BigInteger.Parse(e2_TextBox.Text), BigInteger.Parse(e3_TextBox.Text) };
-            BigInteger[] n = { BigInteger.Parse(n1_TextBox.Text), BigInteger.Parse(n2_TextBox.Text), BigInteger.Parse(n3_TextBox.Text) };
-
-            BigInteger[] C = { BigInteger.ModPow(message, e_[0], n[0]), BigInteger.ModPow(message, e_[1], n[1]), BigInteger.ModPow(message, e_[2], n[2]) };
-
-            C1_TextBox.Text = C[0].ToString();
-            C2_TextBox.Text = C[1].ToString();
-            C3_TextBox.Text = C[2].ToString();
+            (BigInteger e_, BigInteger d, BigInteger n) = GenerateOpenAndCloseKeys();
+            e_TextBox.Text = e_.ToString();
+            n_TextBox.Text = n.ToString();
         }
-        public static BigInteger Solve(BigInteger[] remainders, BigInteger[] moduli)
+        public BigInteger VinerAttackMethod()
         {
-            BigInteger prod = 1;
-            for (int i = 0; i < moduli.Length; i++)
+            BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
+            BigInteger n = BigInteger.Parse(n_TextBox.Text);
+            double l = BigInteger.Log(n, 2);
+            BigInteger numerator = e_;
+            BigInteger denominator = n;
+            BigInteger[] Q = { 0, 1 };
+            for (BigInteger i = 0; i < (BigInteger)l; i++)
             {
-                prod *= moduli[i];
+                BigInteger buf = denominator;
+                denominator = numerator;
+                numerator = buf;
+                BigInteger a = numerator / denominator;
+                BigInteger Q_i = a * Q[1] + Q[0];
+                Random rand = new();
+                BigInteger m = rand.Next(1000, 1000000);
+                if (BigInteger.ModPow(m, e_ * Q_i, n) == m % n)
+                    return Q_i;
+                if (denominator == 1)
+                    return 0;
+                numerator %= denominator;
+                Q[0] = Q[1];
+                Q[1] = Q_i;
             }
-
-            BigInteger result = 0;
-            for (int i = 0; i < moduli.Length; i++)
-            {
-                BigInteger pp = prod / moduli[i];
-                BigInteger inv = ModInverse(pp, moduli[i]);
-                result += remainders[i] * pp * inv;
-            }
-
-            return result % prod;
-        }
-        private void Decrypt_Button_Click(object sender, EventArgs e)
-        {
-            BigInteger[] C = { BigInteger.Parse(C1_TextBox.Text), BigInteger.Parse(C2_TextBox.Text), BigInteger.Parse(C3_TextBox.Text) };
-            BigInteger[] n = { BigInteger.Parse(n1_TextBox.Text), BigInteger.Parse(n2_TextBox.Text), BigInteger.Parse(n3_TextBox.Text) };
-            Stopwatch stopwatch = new();
-            stopwatch.Start();
-            BigInteger result = Solve(C, n);
-            stopwatch.Stop();
-            Decrypted_TextBox.Text = result.ToString();
-            label12.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
-        }
-        private void GenerateOpenKeys_Button_Click(object sender, EventArgs e)
-        {
-            (BigInteger e1, BigInteger d1, BigInteger n1) = GenerateOpenAndCloseKeys();
-            (BigInteger e2, BigInteger d2, BigInteger n2) = GenerateOpenAndCloseKeys();
-            (BigInteger e3, BigInteger d3, BigInteger n3) = GenerateOpenAndCloseKeys();
-
-            while(BigInteger.GreatestCommonDivisor(n1,n2) == 1 && BigInteger.GreatestCommonDivisor(n1, n3) == 1 && BigInteger.GreatestCommonDivisor(n2, n3) == 1)
-            {
-                (e1, d1, n1) = GenerateOpenAndCloseKeys();
-                (e2, d2, n2) = GenerateOpenAndCloseKeys();
-                (e3, d3, n3) = GenerateOpenAndCloseKeys();
-            }
-            e1_TextBox.Text = e1.ToString();
-            n1_TextBox.Text = n1.ToString();
-
-            e2_TextBox.Text = e2.ToString();
-            n2_TextBox.Text = n2.ToString();
-
-            e3_TextBox.Text = e3.ToString();
-            n3_TextBox.Text = n3.ToString();
+            return 0;
         }
         public (BigInteger, BigInteger, BigInteger) GenerateOpenAndCloseKeys()
         {
@@ -80,13 +50,13 @@ namespace Attacks2RSA
             {
                 while (true)
                 {
-                    e = 17;
-                    p = GeneratePrimeNumber(13);
-                    q = GeneratePrimeNumber(13);
+                    d = GeneratePrimeNumber(13);
+                    p = GeneratePrimeNumber(100);
+                    q = GeneratePrimeNumber(100);
                     n = p * q;
                     phi = (p - 1) * (q - 1);
-                    d = ModInverse(e, phi);
-                    if (d != 0) break;
+                    e = ModInverse(d, phi);
+                    if (e != 0) break;
                 }
             }
             catch (Exception)
@@ -200,28 +170,50 @@ namespace Attacks2RSA
         private static BigInteger ModInverse(BigInteger a, BigInteger m)
         {
             BigInteger m0 = m;
-            BigInteger y = 0, x = 1;
+            BigInteger x0 = 0;
+            BigInteger x1 = 1;
 
             if (m == 1)
                 return 0;
-            
+
             while (a > 1)
             {
+                // q - частное
                 BigInteger q = a / m;
+
                 BigInteger t = m;
 
+                // m - остаток
                 m = a % m;
                 a = t;
-                t = y;
+                t = x0;
 
-                y = x - q * y;
-                x = t;
+                x0 = x1 - q * x0;
+                x1 = t;
             }
 
-            if (x < 0)
-                x += m0;
+            // Убеждаемся, что x1 положительное
+            if (x1 < 0)
+                x1 += m0;
 
-            return x;
+            return x1;
+        }
+        private void Encrypt_Button_Click(object sender, EventArgs e)
+        {
+            BigInteger message = BigInteger.Parse(Message_TextBox.Text);
+            BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
+            BigInteger n = BigInteger.Parse(n_TextBox.Text);
+            EncryptedText_TextBox.Text = BigInteger.ModPow(message, e_, n).ToString();
+        }
+        private void Decrypt_Button_Click(object sender, EventArgs e)
+        {
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
+            BigInteger d = VinerAttackMethod();
+            stopwatch.Stop();
+            d_TextBox.Text = d.ToString();
+            DecryptedText_TextBox.Text = BigInteger.ModPow(BigInteger.Parse(EncryptedText_TextBox.Text), d, BigInteger.Parse(n_TextBox.Text)).ToString();
+            label5.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
         }
     }
 }
