@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Numerics;
-using MathNet.Numerics;
 
 namespace Attacks2RSA
 {
@@ -23,20 +22,20 @@ namespace Attacks2RSA
             C2_TextBox.Text = C[1].ToString();
             C3_TextBox.Text = C[2].ToString();
         }
-        public static BigInteger Solve(BigInteger[] remainders, BigInteger[] moduli)
+        public static BigInteger Solve(BigInteger[] cryptogramms, BigInteger[] moduls)
         {
             BigInteger prod = 1;
-            for (int i = 0; i < moduli.Length; i++)
+            for (int i = 0; i < moduls.Length; i++)
             {
-                prod *= moduli[i];
+                prod *= moduls[i];
             }
 
             BigInteger result = 0;
-            for (int i = 0; i < moduli.Length; i++)
+            for (int i = 0; i < moduls.Length; i++)
             {
-                BigInteger pp = prod / moduli[i];
-                BigInteger inv = ModInverse(pp, moduli[i]);
-                result += remainders[i] * pp * inv;
+                BigInteger pp = prod / moduls[i];
+                BigInteger inv = ModInverse(pp, moduls[i]);
+                result += cryptogramms[i] * pp * inv;
             }
 
             return result % prod;
@@ -197,7 +196,39 @@ namespace Attacks2RSA
             }
             return D;
         }
+        private static BigInteger ExtendedEuclidean(BigInteger a, BigInteger b, out BigInteger x, out BigInteger y)
+        {
+            if (a == 0)
+            {
+                x = 0;
+                y = 1;
+                return b;
+            }
+
+            BigInteger x1, y1;
+            BigInteger gcd = ExtendedEuclidean(b % a, a, out x1, out y1);
+
+            x = y1 - (b / a) * x1;
+            y = x1;
+
+            return gcd;
+        }
         private static BigInteger ModInverse(BigInteger a, BigInteger m)
+        {
+            BigInteger x, y;
+            BigInteger gcd = ExtendedEuclidean(a, m, out x, out y);
+
+            if (gcd != 1)
+                throw new ArithmeticException("Обратный элемент не существует.");
+
+            // Делаем x положительным, если он отрицательный
+            if (x < 0)
+                x += m;
+
+            return x;
+        }
+
+        /*private static BigInteger ModInverse(BigInteger a, BigInteger m)
         {
             BigInteger m0 = m;
             BigInteger y = 0, x = 1;
@@ -222,6 +253,7 @@ namespace Attacks2RSA
                 x += m0;
 
             return x;
-        }
+        }*/
+
     }
 }

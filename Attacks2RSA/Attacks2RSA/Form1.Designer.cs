@@ -61,19 +61,17 @@
             // SourceText_TextBox
             // 
             SourceText_TextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            SourceText_TextBox.Location = new Point(81, 152);
-            SourceText_TextBox.Margin = new Padding(4, 5, 4, 5);
+            SourceText_TextBox.Location = new Point(57, 91);
             SourceText_TextBox.Multiline = true;
             SourceText_TextBox.Name = "SourceText_TextBox";
-            SourceText_TextBox.Size = new Size(301, 316);
+            SourceText_TextBox.Size = new Size(212, 191);
             SourceText_TextBox.TabIndex = 0;
             // 
             // Encrypt_Button
             // 
-            Encrypt_Button.Location = new Point(81, 480);
-            Encrypt_Button.Margin = new Padding(4, 5, 4, 5);
+            Encrypt_Button.Location = new Point(57, 288);
             Encrypt_Button.Name = "Encrypt_Button";
-            Encrypt_Button.Size = new Size(303, 83);
+            Encrypt_Button.Size = new Size(212, 50);
             Encrypt_Button.TabIndex = 3;
             Encrypt_Button.Text = "Зашифровать";
             Encrypt_Button.UseVisualStyleBackColor = true;
@@ -83,10 +81,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(81, 100);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(57, 60);
             label1.Name = "label1";
-            label1.Size = new Size(319, 41);
+            label1.Size = new Size(212, 28);
             label1.TabIndex = 4;
             label1.Text = "Исходное сообщение";
             // 
@@ -94,19 +91,17 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(471, 100);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(330, 60);
             label2.Name = "label2";
-            label2.Size = new Size(412, 41);
+            label2.Size = new Size(276, 28);
             label2.TabIndex = 7;
             label2.Text = "Зашифрованное сообщение";
             // 
             // Decrypt_Button
             // 
-            Decrypt_Button.Location = new Point(514, 480);
-            Decrypt_Button.Margin = new Padding(4, 5, 4, 5);
+            Decrypt_Button.Location = new Point(360, 288);
             Decrypt_Button.Name = "Decrypt_Button";
-            Decrypt_Button.Size = new Size(169, 83);
+            Decrypt_Button.Size = new Size(118, 50);
             Decrypt_Button.TabIndex = 6;
             Decrypt_Button.Text = "Расшифровать";
             Decrypt_Button.UseVisualStyleBackColor = true;
@@ -115,40 +110,36 @@
             // EncryptedText_TextBox
             // 
             EncryptedText_TextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            EncryptedText_TextBox.Location = new Point(514, 152);
-            EncryptedText_TextBox.Margin = new Padding(4, 5, 4, 5);
+            EncryptedText_TextBox.Location = new Point(360, 91);
             EncryptedText_TextBox.Multiline = true;
             EncryptedText_TextBox.Name = "EncryptedText_TextBox";
-            EncryptedText_TextBox.Size = new Size(301, 316);
+            EncryptedText_TextBox.Size = new Size(212, 191);
             EncryptedText_TextBox.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(901, 100);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(631, 60);
             label3.Name = "label3";
-            label3.Size = new Size(427, 41);
+            label3.Size = new Size(285, 28);
             label3.TabIndex = 10;
             label3.Text = "Расшифрованное сообщение";
             // 
             // DecryptedText_TextBox
             // 
             DecryptedText_TextBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            DecryptedText_TextBox.Location = new Point(959, 152);
-            DecryptedText_TextBox.Margin = new Padding(4, 5, 4, 5);
+            DecryptedText_TextBox.Location = new Point(671, 91);
             DecryptedText_TextBox.Multiline = true;
             DecryptedText_TextBox.Name = "DecryptedText_TextBox";
-            DecryptedText_TextBox.Size = new Size(301, 316);
+            DecryptedText_TextBox.Size = new Size(212, 191);
             DecryptedText_TextBox.TabIndex = 8;
             // 
             // Attack_Button
             // 
-            Attack_Button.Location = new Point(691, 480);
-            Attack_Button.Margin = new Padding(4, 5, 4, 5);
+            Attack_Button.Location = new Point(484, 288);
             Attack_Button.Name = "Attack_Button";
-            Attack_Button.Size = new Size(126, 83);
+            Attack_Button.Size = new Size(88, 50);
             Attack_Button.TabIndex = 13;
             Attack_Button.Text = "Декод.";
             Attack_Button.UseVisualStyleBackColor = true;
@@ -159,39 +150,35 @@
             SelectAttack_ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             SelectAttack_ComboBox.FormattingEnabled = true;
             SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда", "Факторизация Диксона", "Полное возведение в степень" });
-            SelectAttack_ComboBox.Location = new Point(514, 573);
-            SelectAttack_ComboBox.Margin = new Padding(4, 5, 4, 5);
+            SelectAttack_ComboBox.Location = new Point(360, 344);
             SelectAttack_ComboBox.Name = "SelectAttack_ComboBox";
-            SelectAttack_ComboBox.Size = new Size(301, 33);
+            SelectAttack_ComboBox.Size = new Size(212, 23);
             SelectAttack_ComboBox.TabIndex = 14;
             // 
             // ConutBits_TextBox
             // 
             ConutBits_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            ConutBits_TextBox.Location = new Point(217, 38);
-            ConutBits_TextBox.Margin = new Padding(4, 5, 4, 5);
+            ConutBits_TextBox.Location = new Point(152, 23);
             ConutBits_TextBox.Multiline = true;
             ConutBits_TextBox.Name = "ConutBits_TextBox";
-            ConutBits_TextBox.Size = new Size(88, 54);
+            ConutBits_TextBox.Size = new Size(63, 34);
             ConutBits_TextBox.TabIndex = 15;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(53, 38);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(37, 23);
             label4.Name = "label4";
-            label4.Size = new Size(176, 41);
+            label4.Size = new Size(119, 28);
             label4.TabIndex = 16;
             label4.Text = "Кол-во бит:";
             // 
             // InitializationRSA_Button
             // 
-            InitializationRSA_Button.Location = new Point(316, 38);
-            InitializationRSA_Button.Margin = new Padding(4, 5, 4, 5);
+            InitializationRSA_Button.Location = new Point(221, 23);
             InitializationRSA_Button.Name = "InitializationRSA_Button";
-            InitializationRSA_Button.Size = new Size(107, 57);
+            InitializationRSA_Button.Size = new Size(75, 34);
             InitializationRSA_Button.TabIndex = 17;
             InitializationRSA_Button.Text = "OK";
             InitializationRSA_Button.UseVisualStyleBackColor = true;
@@ -201,10 +188,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(81, 627);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(57, 376);
             label5.Name = "label5";
-            label5.Size = new Size(62, 36);
+            label5.Size = new Size(45, 25);
             label5.TabIndex = 18;
             label5.Text = "p = ";
             // 
@@ -212,32 +198,29 @@
             // 
             p_TextBox.BackColor = SystemColors.ControlLightLight;
             p_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            p_TextBox.Location = new Point(133, 618);
-            p_TextBox.Margin = new Padding(4, 5, 4, 5);
+            p_TextBox.Location = new Point(93, 371);
             p_TextBox.Multiline = true;
             p_TextBox.Name = "p_TextBox";
-            p_TextBox.Size = new Size(1127, 54);
+            p_TextBox.Size = new Size(790, 34);
             p_TextBox.TabIndex = 19;
             // 
             // q_TextBox
             // 
             q_TextBox.BackColor = SystemColors.ControlLightLight;
             q_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            q_TextBox.Location = new Point(133, 673);
-            q_TextBox.Margin = new Padding(4, 5, 4, 5);
+            q_TextBox.Location = new Point(93, 404);
             q_TextBox.Multiline = true;
             q_TextBox.Name = "q_TextBox";
-            q_TextBox.Size = new Size(1127, 54);
+            q_TextBox.Size = new Size(790, 34);
             q_TextBox.TabIndex = 21;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(81, 682);
-            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Location = new Point(57, 409);
             label6.Name = "label6";
-            label6.Size = new Size(62, 36);
+            label6.Size = new Size(45, 25);
             label6.TabIndex = 20;
             label6.Text = "q = ";
             // 
@@ -245,21 +228,19 @@
             // 
             n_TextBox.BackColor = SystemColors.ControlLightLight;
             n_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            n_TextBox.Location = new Point(133, 728);
-            n_TextBox.Margin = new Padding(4, 5, 4, 5);
+            n_TextBox.Location = new Point(93, 437);
             n_TextBox.Multiline = true;
             n_TextBox.Name = "n_TextBox";
-            n_TextBox.Size = new Size(1127, 54);
+            n_TextBox.Size = new Size(790, 34);
             n_TextBox.TabIndex = 23;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(81, 737);
-            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Location = new Point(57, 442);
             label7.Name = "label7";
-            label7.Size = new Size(62, 36);
+            label7.Size = new Size(44, 25);
             label7.TabIndex = 22;
             label7.Text = "n = ";
             // 
@@ -267,21 +248,19 @@
             // 
             pfi_TextBox.BackColor = SystemColors.ControlLightLight;
             pfi_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            pfi_TextBox.Location = new Point(133, 783);
-            pfi_TextBox.Margin = new Padding(4, 5, 4, 5);
+            pfi_TextBox.Location = new Point(93, 470);
             pfi_TextBox.Multiline = true;
             pfi_TextBox.Name = "pfi_TextBox";
-            pfi_TextBox.Size = new Size(1127, 54);
+            pfi_TextBox.Size = new Size(790, 34);
             pfi_TextBox.TabIndex = 25;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(81, 792);
-            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Location = new Point(57, 475);
             label8.Name = "label8";
-            label8.Size = new Size(65, 36);
+            label8.Size = new Size(47, 25);
             label8.TabIndex = 24;
             label8.Text = "φ = ";
             // 
@@ -289,21 +268,19 @@
             // 
             e_TextBox.BackColor = SystemColors.ControlLightLight;
             e_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            e_TextBox.Location = new Point(133, 838);
-            e_TextBox.Margin = new Padding(4, 5, 4, 5);
+            e_TextBox.Location = new Point(93, 503);
             e_TextBox.Multiline = true;
             e_TextBox.Name = "e_TextBox";
-            e_TextBox.Size = new Size(1127, 54);
+            e_TextBox.Size = new Size(790, 34);
             e_TextBox.TabIndex = 27;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(81, 847);
-            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Location = new Point(57, 508);
             label9.Name = "label9";
-            label9.Size = new Size(68, 36);
+            label9.Size = new Size(48, 25);
             label9.TabIndex = 26;
             label9.Text = "e =  ";
             // 
@@ -311,39 +288,35 @@
             // 
             d_TextBox.BackColor = SystemColors.ControlLightLight;
             d_TextBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            d_TextBox.Location = new Point(133, 893);
-            d_TextBox.Margin = new Padding(4, 5, 4, 5);
+            d_TextBox.Location = new Point(93, 536);
             d_TextBox.Multiline = true;
             d_TextBox.Name = "d_TextBox";
-            d_TextBox.Size = new Size(1127, 54);
+            d_TextBox.Size = new Size(790, 34);
             d_TextBox.TabIndex = 29;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(81, 902);
-            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Location = new Point(57, 541);
             label10.Name = "label10";
-            label10.Size = new Size(62, 36);
+            label10.Size = new Size(45, 25);
             label10.TabIndex = 28;
             label10.Text = "d = ";
             // 
             // Time_Label
             // 
             Time_Label.AutoSize = true;
-            Time_Label.Location = new Point(959, 480);
-            Time_Label.Margin = new Padding(4, 0, 4, 0);
+            Time_Label.Location = new Point(671, 288);
             Time_Label.Name = "Time_Label";
-            Time_Label.Size = new Size(0, 25);
+            Time_Label.Size = new Size(0, 15);
             Time_Label.TabIndex = 30;
             // 
             // OpenHastad_Button
             // 
-            OpenHastad_Button.Location = new Point(1134, 988);
-            OpenHastad_Button.Margin = new Padding(4, 5, 4, 5);
+            OpenHastad_Button.Location = new Point(794, 593);
             OpenHastad_Button.Name = "OpenHastad_Button";
-            OpenHastad_Button.Size = new Size(126, 83);
+            OpenHastad_Button.Size = new Size(88, 50);
             OpenHastad_Button.TabIndex = 31;
             OpenHastad_Button.Text = "Хастеда";
             OpenHastad_Button.UseVisualStyleBackColor = true;
@@ -351,10 +324,9 @@
             // 
             // OpenViner_Button
             // 
-            OpenViner_Button.Location = new Point(1000, 988);
-            OpenViner_Button.Margin = new Padding(4, 5, 4, 5);
+            OpenViner_Button.Location = new Point(700, 593);
             OpenViner_Button.Name = "OpenViner_Button";
-            OpenViner_Button.Size = new Size(126, 83);
+            OpenViner_Button.Size = new Size(88, 50);
             OpenViner_Button.TabIndex = 32;
             OpenViner_Button.Text = "Винера";
             OpenViner_Button.UseVisualStyleBackColor = true;
@@ -362,9 +334,9 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1357, 1085);
+            ClientSize = new Size(950, 665);
             Controls.Add(OpenViner_Button);
             Controls.Add(OpenHastad_Button);
             Controls.Add(Time_Label);
@@ -393,7 +365,6 @@
             Controls.Add(SourceText_TextBox);
             Controls.Add(label4);
             Controls.Add(label9);
-            Margin = new Padding(4, 5, 4, 5);
             Name = "Form1";
             Text = "Attacks2RSA";
             ResumeLayout(false);

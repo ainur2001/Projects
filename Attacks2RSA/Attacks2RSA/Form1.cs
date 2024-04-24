@@ -341,8 +341,8 @@ namespace Attacks2RSA
             BigInteger d = ModInverse(e_, pfi);
             d_TextBox.Text = d.ToString();
         }
-        
-        
+
+
         private void OpenHastad_Button_Click(object sender, EventArgs e)
         {
             Form2 form2 = new();
