@@ -50,10 +50,11 @@ namespace Attacks2RSA
             {
                 while (true)
                 {
-                    d = GeneratePrimeNumber(13);
-                    p = GeneratePrimeNumber(100);
-                    q = GeneratePrimeNumber(100);
+                    int countBit = 100;
+                    p = GeneratePrimeNumber(countBit);
+                    q = GeneratePrimeNumber(countBit);
                     n = p * q;
+                    d = GeneratePrimeNumber(countBit/2); // Зависимость d от n. Необходимо: d < n^25
                     phi = (p - 1) * (q - 1);
                     e = ModInverse(d, phi);
                     if (e != 0) break;
