@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|c:\\users\\aynur.latypov\\documents\\github\\projects\\attacks2rsa\\attacks2rsa\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|solutionrelative:attacks2rsa\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\attacks2rsa\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|solutionrelative:attacks2rsa\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|c:\\users\\aynur.latypov\\documents\\github\\projects\\attacks2rsa\\attacks2rsa\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|solutionrelative:attacks2rsa\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\attacks2rsa\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|solutionrelative:attacks2rsa\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|c:\\users\\aynur.latypov\\documents\\github\\projects\\attacks2rsa\\attacks2rsa\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8114E4F-FBE3-400D-9F6A-F97137CACFEF}|Attacks2RSA\\Attacks2RSA.csproj|solutionrelative:attacks2rsa\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,37 +22,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form3.cs",
-              "DocumentMoniker": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Form3.cs",
-              "RelativeDocumentMoniker": "Attacks2RSA\\Form3.cs",
-              "ToolTip": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Form3.cs",
-              "RelativeToolTip": "Attacks2RSA\\Form3.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAzwDwAAAARAAAA",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Form1.cs",
+              "RelativeDocumentMoniker": "Attacks2RSA\\Form1.cs",
+              "ToolTip": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Form1.cs",
+              "RelativeToolTip": "Attacks2RSA\\Form1.cs",
+              "ViewState": "AQIAAIgAAAAAAAAAAAAwwKQAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T11:23:27.867Z",
+              "WhenOpened": "2024-04-26T12:14:44.94Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Form2.cs",
               "DocumentMoniker": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Form2.cs",
               "RelativeDocumentMoniker": "Attacks2RSA\\Form2.cs",
               "ToolTip": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Form2.cs",
               "RelativeToolTip": "Attacks2RSA\\Form2.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJEAAAAJAAAA",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAnwFcAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-23T07:40:50.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
               "DocumentMoniker": "C:\\Users\\Aynur.Latypov\\Documents\\GitHub\\Projects\\Attacks2RSA\\Attacks2RSA\\Form2.cs",
               "RelativeDocumentMoniker": "Attacks2RSA\\Form2.cs",

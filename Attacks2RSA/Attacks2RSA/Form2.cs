@@ -46,7 +46,8 @@ namespace Attacks2RSA
             BigInteger[] n = { BigInteger.Parse(n1_TextBox.Text), BigInteger.Parse(n2_TextBox.Text), BigInteger.Parse(n3_TextBox.Text) };
             Stopwatch stopwatch = new();
             stopwatch.Start();
-            BigInteger result = Solve(C, n);
+            BigInteger tmp = Solve(C, n);
+            BigInteger result = NthRoot(tmp, int.Parse(e1_TextBox.Text));
             stopwatch.Stop();
             Decrypted_TextBox.Text = result.ToString();
             label12.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
@@ -54,15 +55,20 @@ namespace Attacks2RSA
         private void GenerateOpenKeys_Button_Click(object sender, EventArgs e)
         {
             (BigInteger e1, BigInteger d1, BigInteger n1) = GenerateOpenAndCloseKeys();
-            (BigInteger e2, BigInteger d2, BigInteger n2) = GenerateOpenAndCloseKeys();
-            (BigInteger e3, BigInteger d3, BigInteger n3) = GenerateOpenAndCloseKeys();
+            BigInteger e2, d2, n2;
+            BigInteger e3, d3, n3;
 
-            while(BigInteger.GreatestCommonDivisor(n1,n2) == 1 && BigInteger.GreatestCommonDivisor(n1, n3) == 1 && BigInteger.GreatestCommonDivisor(n2, n3) == 1)
+            do
             {
-                (e1, d1, n1) = GenerateOpenAndCloseKeys();
-                (e2, d2, n2) = GenerateOpenAndCloseKeys();
+                (e2,d2,n2) = GenerateOpenAndCloseKeys();
+            } while (BigInteger.GreatestCommonDivisor(n1, n2) != 1);
+
+            do
+            {
                 (e3, d3, n3) = GenerateOpenAndCloseKeys();
-            }
+            } while (BigInteger.GreatestCommonDivisor(n1, n3) != 1 && BigInteger.GreatestCommonDivisor(n2, n3) != 1);
+
+
             e1_TextBox.Text = e1.ToString();
             n1_TextBox.Text = n1.ToString();
 
@@ -79,9 +85,9 @@ namespace Attacks2RSA
             {
                 while (true)
                 {
-                    e = 17;
-                    p = GeneratePrimeNumber(13);
-                    q = GeneratePrimeNumber(13);
+                    e = 101;
+                    p = GeneratePrimeNumber(128);
+                    q = GeneratePrimeNumber(128);
                     n = p * q;
                     phi = (p - 1) * (q - 1);
                     d = ModInverse(e, phi);
@@ -90,7 +96,7 @@ namespace Attacks2RSA
             }
             catch (Exception)
             {
-                GenerateOpenAndCloseKeys();
+                (e, d, n) = GenerateOpenAndCloseKeys();
             }
             return (e, d, n);
         }
@@ -226,5 +232,34 @@ namespace Attacks2RSA
 
             return x;
         }
+
+        public static BigInteger NthRoot(BigInteger number, int root)
+        {
+            if (number == 0 || root == 0)
+                return 0;
+
+            BigInteger lowerBound = 0;
+            BigInteger upperBound = number;
+
+            while (true)
+            {
+                BigInteger mid = (lowerBound + upperBound) / 2;
+                BigInteger midToPower = BigInteger.Pow(mid, root);
+
+                if (midToPower == number || lowerBound == mid)
+                {
+                    return mid;
+                }
+                else if (midToPower < number)
+                {
+                    lowerBound = mid;
+                }
+                else
+                {
+                    upperBound = mid;
+                }
+            }
+        }
+
     }
 }
