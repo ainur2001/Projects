@@ -54,7 +54,7 @@ namespace Attacks2RSA
                     p = GeneratePrimeNumber(countBit);
                     q = GeneratePrimeNumber(countBit);
                     n = p * q;
-                    d = GeneratePrimeNumber(countBit/2); // Зависимость d от n. Необходимо: d < n^25
+                    d = GeneratePrimeNumber(countBit/2); // Зависимость d от n. Необходимо: d < n^0.25
                     phi = (p - 1) * (q - 1);
                     e = ModInverse(d, phi);
                     if (e != 0) break;
