@@ -149,7 +149,7 @@
             // 
             SelectAttack_ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             SelectAttack_ComboBox.FormattingEnabled = true;
-            SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда", "Факторизация Диксона", "Полное возведение в степень" });
+            SelectAttack_ComboBox.Items.AddRange(new object[] { "Ро - метод Полларда", "Ро-1 - метод Полларда", "Полное возведение в степень" });
             SelectAttack_ComboBox.Location = new Point(360, 344);
             SelectAttack_ComboBox.Name = "SelectAttack_ComboBox";
             SelectAttack_ComboBox.Size = new Size(212, 23);
@@ -314,7 +314,7 @@
             // 
             // OpenHastad_Button
             // 
-            OpenHastad_Button.Location = new Point(794, 593);
+            OpenHastad_Button.Location = new Point(850, 299);
             OpenHastad_Button.Name = "OpenHastad_Button";
             OpenHastad_Button.Size = new Size(88, 50);
             OpenHastad_Button.TabIndex = 31;
@@ -324,7 +324,7 @@
             // 
             // OpenViner_Button
             // 
-            OpenViner_Button.Location = new Point(700, 593);
+            OpenViner_Button.Location = new Point(767, 299);
             OpenViner_Button.Name = "OpenViner_Button";
             OpenViner_Button.Size = new Size(88, 50);
             OpenViner_Button.TabIndex = 32;
@@ -336,7 +336,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(950, 665);
+            ClientSize = new Size(950, 591);
             Controls.Add(OpenViner_Button);
             Controls.Add(OpenHastad_Button);
             Controls.Add(Time_Label);

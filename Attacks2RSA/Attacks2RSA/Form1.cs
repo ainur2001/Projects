@@ -57,13 +57,13 @@ namespace Attacks2RSA
                     DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
                     break;
 
-                case "Факторизация Диксона":
+                /*case "Факторизация Диксона":
                     stopwatch.Start();
                     DixonFactor();
                     Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
                     DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
                     stopwatch.Stop();
-                    break;
+                    break;*/
 
                 case "Полное возведение в степень":
                     stopwatch.Start();
@@ -302,7 +302,17 @@ namespace Attacks2RSA
             }
             return BigInteger.Max(a, b);
         }
-        public void DixonFactor()
+        private void OpenHastad_Button_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new();
+            form2.Show();
+        }
+        private void OpenViner_Button_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new();
+            form3.Show();
+        }
+        /*public void DixonFactor()
         {
             BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
             BigInteger n = BigInteger.Parse(n_TextBox.Text);
@@ -340,18 +350,6 @@ namespace Attacks2RSA
             pfi_TextBox.Text = pfi.ToString();
             BigInteger d = ModInverse(e_, pfi);
             d_TextBox.Text = d.ToString();
-        }
-
-
-        private void OpenHastad_Button_Click(object sender, EventArgs e)
-        {
-            Form2 form2 = new();
-            form2.Show();
-        }
-        private void OpenViner_Button_Click(object sender, EventArgs e)
-        {
-            Form3 form3 = new();
-            form3.Show();
-        }
+        }*/
     }
 }
