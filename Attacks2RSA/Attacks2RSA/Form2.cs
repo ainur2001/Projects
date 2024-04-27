@@ -49,7 +49,7 @@ namespace Attacks2RSA
             BigInteger tmp = Solve(C, n);
             BigInteger result = NthRoot(tmp, int.Parse(e1_TextBox.Text));
             stopwatch.Stop();
-            Decrypted_TextBox.Text = result.ToString() + "\r\n" + tmp;
+            Decrypted_TextBox.Text = result.ToString();
             label12.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
         }
         private void GenerateOpenKeys_Button_Click(object sender, EventArgs e)
