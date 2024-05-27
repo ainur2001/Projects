@@ -2,6 +2,8 @@ using class_RSA;
 using System.Numerics;
 using System.Diagnostics;
 using System.Text;
+using static class_RSA.RSA;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Attacks2RSA
 {
@@ -12,29 +14,111 @@ namespace Attacks2RSA
         {
             InitializeComponent();
             SelectAttack_ComboBox.SelectedIndex = 0;
-            ConutBits_TextBox.Text = "16";
+            ConutBits_TextBox.Text = "25";
+            ConutBitsQ_TextBox.Text = "25";
         }
         private void Encrypt_Button_Click(object sender, EventArgs e)
         {
             string sourceText = SourceText_TextBox.Text;
-            EncryptedText_TextBox.Text = rsa.EncryptText(sourceText);
+            //EncryptedText_TextBox.Text = rsa.EncryptText(sourceText);
+            EncryptedText_TextBox.Text = BigInteger.ModPow(BigInteger.Parse(SourceText_TextBox.Text), BigInteger.Parse(e_TextBox.Text), BigInteger.Parse(n_TextBox.Text)).ToString();
         }
         private void Decrypt_Button_Click(object sender, EventArgs e)
         {
             string encyptedText = EncryptedText_TextBox.Text;
-            DecryptedText_TextBox.Text = rsa.DecryptText(encyptedText);
+            //DecryptedText_TextBox.Text = rsa.DecryptText(encyptedText);
+            DecryptedText_TextBox.Text = BigInteger.ModPow(BigInteger.Parse(EncryptedText_TextBox.Text), BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text)).ToString();
         }
         private void InitializationRSA_Button_Click(object sender, EventArgs e)
         {
             int countBits = int.Parse(ConutBits_TextBox.Text);
-            rsa = new(countBits);
+            /*rsa = new(countBits);
             p_TextBox.Text = rsa.par.p.ToString();
             q_TextBox.Text = rsa.par.q.ToString();
             n_TextBox.Text = rsa.par.n.ToString();
             pfi_TextBox.Text = rsa.par.pfi.ToString();
             e_TextBox.Text = rsa.par.e_.ToString();
-            d_TextBox.Text = rsa.par.d.ToString();
+            d_TextBox.Text = rsa.par.d.ToString();*/
+            List<BigInteger> param = GenerateParam(int.Parse(ConutBits_TextBox.Text), int.Parse(ConutBitsQ_TextBox.Text));
+            p_TextBox.Text = param[0].ToString();
+            q_TextBox.Text = param[1].ToString();
+            n_TextBox.Text = param[2].ToString();
+            pfi_TextBox.Text = param[3].ToString();
+            e_TextBox.Text = param[4].ToString();
+            d_TextBox.Text = param[5].ToString();
         }
+
+        private static bool TestMR(BigInteger number, int bitNumber)
+        {
+            bool result = true;
+            BigInteger t = number - 1;
+            int s = 0;
+            try
+            {
+                if (bitNumber == 0) bitNumber = CountBits(number);
+                while (t % 2 == 0)
+                {
+                    t /= 2;
+                    s += 1;
+                }
+                for (int i = 0; i <= bitNumber; i++)
+                {
+                    BigInteger a = GenerateNumberWithLimits(2, number - 2);
+                    BigInteger x = ModPow(a, t, number);
+                    if (x == 1 || x == number - 1)
+                        continue;
+                    for (int r = 1; r < s; r++)
+                    {
+                        x = ModPow(x, 2, number);
+                        if (x == 1)
+                        {
+                            result = false;
+                            return result;
+                        }
+                        if (x == number - 1)
+                            break;
+                    }
+                    if (x != number - 1)
+                    {
+                        result = false;
+                        return result;
+                    }
+                }
+            }
+            catch (Exception) { }
+            return result;
+        }
+        private static int CountBits(BigInteger number)
+        {
+            int count = 0;
+            while (number != 0)
+            {
+                number >>= 1;
+                count++;
+            }
+            return count;
+        }
+        private static BigInteger BinToDec(List<char> number)
+        {
+            BigInteger result = 0;
+            for (int i = 0; number.Count > 0; ++i)
+            {
+                result += BigInteger.Pow(2, i) * (number.Last() - '0');
+                number.RemoveAt(number.Count - 1);
+            }
+            return result;
+        }
+        private static BigInteger GenerateNumber(int bitNumber)
+        {
+            Random random = new();
+            List<char> bits = new();
+            for (int i = 0; i < bitNumber; ++i)
+            {
+                bits.Add((char)(random.Next(2) + '0'));
+            }
+            return BinToDec(bits);
+        }
+        private static BigInteger GenerateNumberWithLimits(BigInteger min, BigInteger max) => GenerateNumber(CountBits(max - min)) % (max - min) + min;
         private void Attack_Button_Click(object sender, EventArgs e)
         {
             string typeAttack = SelectAttack_ComboBox.Text;
@@ -45,38 +129,55 @@ namespace Attacks2RSA
                     stopwatch.Start();
                     RoMethodPollarda();
                     stopwatch.Stop();
-                    Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
-                    DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
+                    Time_Label.Text = "Дешифровка произошла за: " + stopwatch.Elapsed.TotalMilliseconds.ToString() + "ms.";
+                    //DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
+                    DecryptedText_TextBox.Text = BigInteger.ModPow(BigInteger.Parse(EncryptedText_TextBox.Text), BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text)).ToString();
                     break;
 
                 case "Ро-1 - метод Полларда":
                     stopwatch.Start();
                     RoMinusOneMethodPollarda();
                     stopwatch.Stop();
-                    Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
-                    DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
+                    Time_Label.Text = "Дешифровка произошла за: " + stopwatch.Elapsed.TotalMilliseconds.ToString() + "ms.";
+                    //DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
+                    DecryptedText_TextBox.Text = BigInteger.ModPow(BigInteger.Parse(EncryptedText_TextBox.Text), BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text)).ToString();
                     break;
 
-                /*case "Факторизация Диксона":
-                    stopwatch.Start();
-                    DixonFactor();
-                    Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
-                    DecryptedText_TextBox.Text = DecryptText(EncryptedText_TextBox.Text, BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text));
-                    stopwatch.Stop();
-                    break;*/
+                    /*case "Факторизация Диксона":
+                        stopwatch.Start();
+                        DixonFactor();
+                        Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
+                        DecryptedText_TextBox.Text = BigInteger.ModPow(BigInteger.Parse(EncryptedText_TextBox.Text), BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text)).ToString();
+                        stopwatch.Stop();
+                        break;
 
-                case "Полное возведение в степень":
-                    stopwatch.Start();
-                    FullExponentiation();
-                    stopwatch.Stop();
-                    Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
-                    break;
+                    case "Факторизация Ленстры":
+                        stopwatch.Start();
+                        List<BigInteger> pq = FactorizeEllipticCurve(BigInteger.Parse(n_TextBox.Text));
+                        BigInteger p = pq[0], q = pq[1];
+                        p_TextBox.Text = p.ToString();
+                        q_TextBox.Text = q.ToString();
+                        BigInteger pfi = (p - 1) * (q - 1);
+                        pfi_TextBox.Text = pfi.ToString();
+                        BigInteger d = ModInverse(BigInteger.Parse(e_TextBox.Text), pfi);
+                        d_TextBox.Text = d.ToString();
+                        Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
+                        DecryptedText_TextBox.Text = BigInteger.ModPow(BigInteger.Parse(EncryptedText_TextBox.Text), BigInteger.Parse(d_TextBox.Text), BigInteger.Parse(n_TextBox.Text)).ToString();
+                        stopwatch.Stop();
+                        break;*/
+
+                    /*case "Полное возведение в степень":
+                        stopwatch.Start();
+                        FullExponentiation();
+                        stopwatch.Stop();
+                        Time_Label.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
+                        break;*/
             }
         }
         private void RoMethodPollarda()
         {
             BigInteger n = BigInteger.Parse(n_TextBox.Text);
-            BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
+            //BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
             BigInteger y = 1; BigInteger i = 0; BigInteger stage = 2; BigInteger x = 2;
             while (BigInteger.GreatestCommonDivisor(n, BigInteger.Abs(x - y)) == 1)
             {
@@ -94,15 +195,15 @@ namespace Attacks2RSA
             q_TextBox.Text = q.ToString();
             BigInteger pfi = (p - 1) * (q - 1);
             pfi_TextBox.Text = pfi.ToString();
-            BigInteger d = ModInverse(e_, pfi);
-            d_TextBox.Text = d.ToString();
+            //BigInteger d = ModInverse(e_, pfi);
+            //d_TextBox.Text = d.ToString();
         }
         private void RoMinusOneMethodPollarda()
         {
             BigInteger n = BigInteger.Parse(n_TextBox.Text);
             BigInteger e_ = BigInteger.Parse(e_TextBox.Text);
             BigInteger p;
-            List<BigInteger> B = ReshetoEratosphena((int)NewtonSqrt(n));
+            List<BigInteger> B = ReshetoEratosphena(100);
             Random rnd = new();
             BigInteger b = B[rnd.Next(0, B.Count)];
             while (true)
@@ -126,12 +227,8 @@ namespace Attacks2RSA
                 }
                 if (g == 1)
                 {
-                    if (B.IndexOf(b) == B[B.Count - 1])
-                    {
-                        p = 1;
-                        break;
-                    }
-                    else b = B[B.IndexOf(b) + 100];
+                    int newIndex = B.IndexOf(b) + 100;
+                    b = newIndex < B.Count ? B[newIndex] : B[B.Count - 1];
                 }
                 if (g == n)
                 {
@@ -285,23 +382,6 @@ namespace Attacks2RSA
             }
             foreach (BigInteger dec in decrypted) DecryptedText_TextBox.Text += rsa.alphabet[(int)dec];
         }
-        static BigInteger gcd(BigInteger num1, BigInteger num2)
-        {
-            BigInteger a = BigInteger.Abs(num1);
-            BigInteger b = BigInteger.Abs(num2);
-            while ((a != 0) && (b != 0) && (a != b))
-            {
-                if (a > b)
-                {
-                    a -= b;
-                }
-                else
-                {
-                    b -= a;
-                }
-            }
-            return BigInteger.Max(a, b);
-        }
         private void OpenHastad_Button_Click(object sender, EventArgs e)
         {
             Form2 form2 = new();
@@ -350,6 +430,134 @@ namespace Attacks2RSA
             pfi_TextBox.Text = pfi.ToString();
             BigInteger d = ModInverse(e_, pfi);
             d_TextBox.Text = d.ToString();
+        }*/
+        private static List<BigInteger> GenerateParam(int bitP, int bitQ)
+        {
+            List<BigInteger> param = new();
+            BigInteger p = 0;
+            BigInteger q = 0;
+            BigInteger n = 0;
+            BigInteger pfi = 0;
+            BigInteger e_ = 0;
+            BigInteger d = 0;
+            Thread qt = new(() => q = qf(bitQ));
+            Thread pt = new(() => p = pf(bitP));
+            pt.Start();
+            qt.Start();
+            pt.Join();
+            qt.Join();
+            n = p * q;
+            pfi = (p - 1) * (q - 1);
+            e_ = GenerateNumberWithLimits(2, pfi);
+            e_ = n / 3;
+            while (BigInteger.GreatestCommonDivisor(e_, pfi) != 1) e_ += 1;
+            BigInteger y = PAE(pfi, e_).Item2;
+            if (y < 0) d = y + pfi;
+            else d = y;
+            param.Add(p);
+            param.Add(q);
+            param.Add(n);
+            param.Add(pfi);
+            param.Add(e_);
+            param.Add(d);
+            return param;
+        }
+        private static (BigInteger, BigInteger, BigInteger) PAE(BigInteger a, BigInteger b)
+        {
+            BigInteger s1 = 1, s2 = 0;
+            BigInteger t1 = 0, t2 = 1;
+            while (b != 0)
+            {
+                BigInteger q = a / b;
+                BigInteger r = a % b;
+                a = b;
+                b = r;
+                BigInteger s = s1 - q * s2;
+                s1 = s2;
+                s2 = s;
+                BigInteger t = t1 - q * t2;
+                t1 = t2;
+                t2 = t;
+            }
+            return (s1, t1, a);
+        }
+        private static BigInteger pf(int bitNumber)
+        {
+            BigInteger p = 1024;
+            while (!TestMR(p, bitNumber))
+            {
+                p = GenerateNumber(bitNumber);
+                while (p <= 1024) p += 1;
+            }
+            return p;
+        }
+        private static BigInteger qf(int bitNumber)
+        {
+            BigInteger q = 1024;
+            while (!TestMR(q, bitNumber))
+            {
+                q = GenerateNumber(bitNumber);
+                while (q <= 1024) q += 1;
+            }
+            return q;
+        }
+        /*static List<BigInteger> FactorizeEllipticCurve(BigInteger n)
+        {
+            List<BigInteger> factors = new List<BigInteger>();
+
+            // Начальные значения параметров
+            BigInteger a = 1;
+            BigInteger b = 1;
+            BigInteger x = 2;
+            BigInteger y = 2;
+            BigInteger p = n;
+            BigInteger q = n;
+            BigInteger x1 = 0;
+            BigInteger y1 = 0;
+            BigInteger i = 1;
+
+            // Параметры алгоритма
+            BigInteger B = 20;
+            BigInteger j = 0;
+
+            // Генерация случайной точки на кривой
+            Random rand = new Random();
+            BigInteger seed = BigInteger.Abs(new BigInteger(rand.Next()));
+            BigInteger x0 = seed % n;
+            BigInteger y0 = (x0 * x0 * x0 + a * x0 + b) % n;
+
+            // Основной цикл факторизации
+            while (true)
+            {
+                BigInteger k = i * B + j;
+                x1 = (BigInteger.ModPow(x0, 2, n) + a + k * B) % n;
+                y1 = (x0 * x1 + b) % n;
+                x1 = (BigInteger.ModPow(x1, 2, n) + a + k * B) % n;
+                y1 = (x1 * x1 + a * x1 + b) % n;
+                p = BigInteger.GreatestCommonDivisor(BigInteger.Abs(x - x1), n);
+                q = BigInteger.GreatestCommonDivisor(BigInteger.Abs(y - y1), n);
+                if (p > 1 && p < n)
+                {
+                    factors.Add(p);
+                    factors.Add(n / p); // Добавляем второй фактор, разделив n на первый фактор
+                    return factors;
+                }
+                if (q > 1 && q < n)
+                {
+                    factors.Add(q);
+                    factors.Add(n / q); // Добавляем второй фактор, разделив n на первый фактор
+                    return factors;
+                }
+                if (i == j)
+                {
+                    i++;
+                    j = 0;
+                }
+                else
+                {
+                    j++;
+                }
+            }
         }*/
     }
 }

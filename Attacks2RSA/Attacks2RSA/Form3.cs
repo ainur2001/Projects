@@ -50,11 +50,11 @@ namespace Attacks2RSA
             {
                 while (true)
                 {
-                    int countBit = 100;
+                    int countBit = 75;
                     p = GeneratePrimeNumber(countBit);
                     q = GeneratePrimeNumber(countBit);
                     n = p * q;
-                    d = GeneratePrimeNumber(countBit/2); // Зависимость d от n. Необходимо: d < n^0.25
+                    d = GeneratePrimeNumber(15); // Зависимость d от n. Необходимо: d < n^0.25
                     phi = (p - 1) * (q - 1);
                     e = ModInverse(d, phi);
                     if (e != 0) break;
@@ -214,7 +214,7 @@ namespace Attacks2RSA
             stopwatch.Stop();
             d_TextBox.Text = d.ToString();
             DecryptedText_TextBox.Text = BigInteger.ModPow(BigInteger.Parse(EncryptedText_TextBox.Text), d, BigInteger.Parse(n_TextBox.Text)).ToString();
-            label5.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
+            label5.Text = "Дешифровка произошла за: " + stopwatch.Elapsed.TotalMilliseconds.ToString() + "ms.";
         }
     }
 }

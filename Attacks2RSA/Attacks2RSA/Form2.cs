@@ -49,8 +49,8 @@ namespace Attacks2RSA
             BigInteger tmp = Solve(C, n);
             BigInteger result = NthRoot(tmp, int.Parse(e1_TextBox.Text));
             stopwatch.Stop();
-            Decrypted_TextBox.Text = result.ToString() + "\r\n" + tmp;
-            label12.Text = "Дешифровка произошла за: " + stopwatch.ElapsedMilliseconds.ToString() + "ms.";
+            Decrypted_TextBox.Text = result.ToString();
+            label12.Text = "Дешифровка произошла за: " + stopwatch.Elapsed.TotalMilliseconds.ToString() + "ms.";
         }
         private void GenerateOpenKeys_Button_Click(object sender, EventArgs e)
         {
@@ -85,9 +85,9 @@ namespace Attacks2RSA
             {
                 while (true)
                 {
-                    e = 11;
-                    p = GeneratePrimeNumber(256);
-                    q = GeneratePrimeNumber(256);
+                    e = 31;
+                    p = GeneratePrimeNumber(40);
+                    q = GeneratePrimeNumber(40);
                     n = p * q;
                     phi = (p - 1) * (q - 1);
                     d = ModInverse(e, phi);
